@@ -1,0 +1,948 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乡忆ScentHome - 用科技连接思乡之情</title>
+    <style>
+        :root {
+            --primary-color: #e8c4a2;
+            --secondary-color: #8d7b68;
+            --accent-color: #a4907c;
+            --text-dark: #4a3f35;
+            --text-light: #f8f5f1;
+            --background-light: #f9f5f0;
+            --background-dark: #594a3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1506260408121-e353d10b87c7?q=80&w=1928') center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            position: relative;
+        }
+        
+        .nav-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 10;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cta-button {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 10px;
+        }
+        
+        .cta-button.outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--text-light);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: #d9b58f;
+        }
+        
+        .cta-button.outline:hover {
+            background-color: rgba(232, 196, 162, 0.2);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--secondary-color);
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--accent-color);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            padding: 6rem 2rem;
+        }
+        
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .product-description {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .product-price {
+            font-weight: 700;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+        
+        .product-button {
+            display: block;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            padding: 0.8rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .product-button:hover {
+            background-color: #d9b58f;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1770') center/cover fixed;
+            color: var(--text-light);
+            padding: 6rem 2rem;
+        }
+        
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-slider {
+            margin-top: 3rem;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+        
+        .testimonial-slider::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        
+        .testimonial-card {
+            flex: 0 0 auto;
+            width: 100%;
+            max-width: 500px;
+            margin-right: 2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            scroll-snap-align: start;
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .author-info p {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-icon {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-right: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .contact-form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-button:hover {
+            background-color: var(--accent-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <nav>
+                <div class="logo">
+                    <span class="logo-text">乡忆ScentHome</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#features">核心技术</a></li>
+                    <li><a href="#products">产品系列</a></li>
+                    <li><a href="#testimonials">用户体验</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="hero-content animate">
+            <h1 class="hero-title">用科技连接思乡之情</h1>
+            <p class="hero-subtitle">让每个远离家乡的人，都能随时感受家的温暖</p>
+            <div>
+                <a href="#products" class="cta-button">定制我的家乡香薰</a>
+                <a href="#about" class="cta-button outline">了解更多</a>
+            </div>
+        </div>
+    </header>
+    
+    <section id="about" class="section">
+        <h2 class="section-title">关于乡忆</h2>
+        <p class="section-subtitle">AI驱动的乡愁文化体验平台</p>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <p>"乡忆"是一个创新型科技文化融合平台，通过AI技术将人们对家乡的记忆和情感转化为可感知的嗅觉体验。我们利用先进的人工智能算法，结合传统香薰工艺，为用户提供定制化的"家乡气息"，满足日益增长的情感连接和文化认同需求。</p>
+                <br>
+                <p>无论你是身处异乡的游子，还是对家乡文化有深厚情感的人，乡忆都能帮助你通过气味唤起最真实、最温暖的家乡记忆。</p>
+                <br>
+                <p>我们的使命是保护和传承中国各地区的气味文化遗产，让每一份思乡之情都能得到慰藉，让每一段乡愁记忆都能被珍藏。</p>
+            </div>
+            
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1493210977798-4f655ac200a9?q=80&w=1936" alt="乡村风景">
+            </div>
+        </div>
+    </section>
+    
+    <section id="features" class="features">
+        <div class="features-container">
+            <h2 class="section-title" style="color: var(--text-light);">核心技术系统</h2>
+            <p class="section-subtitle" style="color: var(--primary-color);">用AI技术重现家乡的气息</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">AI香薰复刻引擎</h3>
+                    <p>通过自然语言处理技术分析用户描述的情感和记忆，将抽象描述转化为具体配方参数，精准还原家乡气息。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3 class="feature-title">图像识别系统</h3>
+                    <p>计算机视觉技术分析用户上传的家乡照片，识别自然环境、建筑和食物等元素，映射到相应的香薰成分。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="feature-title">区域特征数据库</h3>
+                    <p>全国各地区特色气味采集与分类，建立季节变化与气味关系模型，形成完整的地域文化与嗅觉记忆关联图谱。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="feature-title">智能配方生成</h3>
+                    <p>基于用户输入自动生成最匹配的香薰配方，个性化调整系统根据反馈优化配方，确保香气平衡。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="products" class="section">
+        <h2 class="section-title">产品系列</h2>
+        <p class="section-subtitle">定制专属于你的家乡气息</p>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1602928298849-325cec8771c0?q=80&w=1770" alt="四季家乡系列">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">四季家乡系列</h3>
+                    <p class="product-description">春有清明雨后、夏有荷塘月色、秋有金秋稻香、冬有雪后松林</p>
+                    <p class="product-price">¥298.00 起</p>
+                    <a href="#" class="product-button">立即定制</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1519751138087-5bf79df62d5b?q=80&w=1770" alt="节日特别版">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">节日特别版</h3>
+                    <p class="product-description">春节年味、中秋桂花、端午艾草、重阳菊香，传统节日气息</p>
+                    <p class="product-price">¥398.00 起</p>
+                    <a href="#" class="product-button">立即定制</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://itainan.com.tw/wp-content/uploads/2023/11/bbbb.jpg" alt="家常味道系列">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">家常味道系列</h3>
+                    <p class="product-description">北方饺子面食、南方蒸菜米香、西部烤肉香料、东部海鲜鲜香</p>
+                    <p class="product-price">¥328.00 起</p>
+                    <a href="#" class="product-button">立即定制</a>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://mall.iopenmall.tw/website/uploads_product/website_39090/P3909009162145_3_82507670.jpeg?hash=57600" alt="智能香薰设备">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">智能香薰设备</h3>
+                    <p class="product-description">AI控制智能扩香机，APP远程调节，定时功能，多场景模式</p>
+                    <p class="product-price">¥599.00 起</p>
+                    <a href="#" class="product-button">立即购买</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="testimonials" class="testimonials">
+        <div class="testimonials-container">
+            <h2 class="section-title" style="color: var(--text-light);">用户体验</h2>
+            <p class="section-subtitle" style="color: var(--primary-color);">他们如何找回家乡的记忆</p>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"在北京工作五年，一直思念家乡的味道。乡忆的'江南水乡'系列让我仿佛回到了小时候的夏天，那种河水和青草的气息太熟悉了，每次闻到都会让我想起奶奶家门前的小河。"</p>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="李小姐">
+                        </div>
+                        <div class="author-info">
+                            <h4>李小姐</h4>
+                            <p>来自浙江嘉兴</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"作为一名留学生，我给父母定制了'东北雪原'系列作为生日礼物。当他们打开香薰时，父亲竟然红了眼眶，说这就是他小时候林场的味道。这份礼物的意义远超我的预期。"</p>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="张先生">
+                        </div>
+                        <div class="author-info">
+                            <h4>张先生</h4>
+                            <p>来自黑龙江哈尔滨</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"我用照片和文字描述了家乡的腊肉制作场景，乡忆竟然能够还原出那种独特的烟熏味道，混合着木材和肉香。这不仅是一款产品，更是一种情感的传递，让我在异乡也能感受到家的温暖。"</p>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="王女士">
+                        </div>
+                        <div class="author-info">
+                            <h4>王女士</h4>
+                            <p>来自四川成都</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="section">
+        <h2 class="section-title">联系我们</h2>
+        <p class="section-subtitle">让我们一起找回家乡的记忆</p>
+        
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>联系方式</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <p>北京市朝阳区建国路88号文化创意园A座501室</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <p>400-888-9999</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <p>contact@scenthome.com</p>
+                    </div>
+                </div>
+                
+                <h3>关注我们</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-weixin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-weibo"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name" class="form-label">您的姓名</label>
+                        <input type="text" id="name" class="form-input" placeholder="请输入您的姓名">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">电子邮箱</label>
+                        <input type="email" id="email" class="form-input" placeholder="请输入您的电子邮箱">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">联系电话</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="请输入您的联系电话">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">留言内容</label>
+                        <textarea id="message" class="form-input" placeholder="请描述您对家乡气味的记忆，或您想了解的内容..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">发送留言</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" style="padding-top: 0;">
+        <h2 class="section-title">文化传承计划</h2>
+        <p class="section-subtitle">保护和传承中国气味文化遗产</p>
+        
+        <div class="about-content">
+            <div class="about-image">
+                <img src="https://china-art.co.jp/images/performingarts/1.jpg" alt="文化传承">
+            </div>
+            
+            <div class="about-text">
+                <p>乡忆不仅是一个商业项目，更是一个文化保护计划。我们致力于记录和保存中国各地区特色气味文化，建立全面的气味档案库。</p>
+                <br>
+                <p>我们正在开展"地方香薰图书馆"项目，通过采集各省市特色气味，保护濒危气味，复原历史气味，建立公共气味资源库，为后代留存珍贵的嗅觉文化遗产。</p>
+                <br>
+                <p>欢迎加入我们的"全国气味采集志愿者计划"，一起参与这项有意义的文化传承工作。</p>
+                <br>
+                <a href="#" class="cta-button" style="margin-left: 0;">了解更多</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>乡忆ScentHome</h3>
+                    <p style="margin-bottom: 1rem;">用科技连接思乡之情，让每个远离家乡的人都能随时感受家的温暖。</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-weixin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-weibo"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="#features">核心技术</a></li>
+                        <li><a href="#products">产品系列</a></li>
+                        <li><a href="#testimonials">用户体验</a></li>
+                        <li><a href="#contact">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>产品系列</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">四季家乡系列</a></li>
+                        <li><a href="#">节日特别版</a></li>
+                        <li><a href="#">家常味道系列</a></li>
+                        <li><a href="#">地域文化礼盒</a></li>
+                        <li><a href="#">智能香薰设备</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>帮助中心</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">配送政策</a></li>
+                        <li><a href="#">退换政策</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">使用条款</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 乡忆ScentHome. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // 简单的滚动动画
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // 滚动时显示动画
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.section');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.classList.add('animate');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+        
+        // 轮播图自动滚动
+        const testimonialSlider = document.querySelector('.testimonial-slider');
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        let currentIndex = 0;
+        
+        function nextTestimonial() {
+            currentIndex = (currentIndex + 1) % testimonialCards.length;
+            const offset = testimonialCards[0].offsetWidth + 32; // 加上margin
+            testimonialSlider.scrollLeft = currentIndex * offset;
+        }
+        
+        // 每5秒自动滚动到下一个评价
+        setInterval(nextTestimonial, 5000);
+    </script>
+</body>
+</html>
