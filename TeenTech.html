@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teen Tech Innovators | 引领青少年科技创新未来</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 全局样式 - 莫兰迪配色 */
+        :root {
+            --primary-color: #8A9A9A;      /* 莫兰迪灰绿 */
+            --secondary-color: #B8B4A9;    /* 莫兰迪灰棕 */
+            --accent-color: #C8A99E;       /* 莫兰迪粉棕 */
+            --dark-color: #4A4A4A;         /* 深灰 */
+            --light-color: #F4F4F2;        /* 米白 */
+            --text-color: #333333;         /* 文本色 */
+            --bg-color: #FAFAFA;           /* 背景色 */
+            --muted-color: #A0A0A0;        /* 次要文本色 */
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', 'Microsoft YaHei', '微软雅黑', sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 300;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+        
+        h1, h2, h3, h4 {
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+        
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            position: relative;
+            letter-spacing: -0.5px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--dark-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background: transparent;
+            color: var(--dark-color);
+            border: 1px solid var(--dark-color);
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            cursor: pointer;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--dark-color);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            color: var(--light-color);
+        }
+        
+        .btn:hover:before {
+            width: 100%;
+        }
+        
+        .btn-filled {
+            background: var(--dark-color);
+            color: var(--light-color);
+            border: none;
+        }
+        
+        .btn-filled:before {
+            background: var(--accent-color);
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .section-title {
+            margin-bottom: 80px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .section-title h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--muted-color);
+        }
+        
+        .section-divider {
+            width: 40px;
+            height: 2px;
+            background: var(--accent-color);
+            margin: 0 auto 40px;
+        }
+        
+        /* 导航栏 */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: transparent;
+            transition: all 0.4s ease;
+            padding: 20px 0;
+        }
+        
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 40px;
+            position: relative;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 400;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+        
+        /* 首页部分 */
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            overflow: hidden;
+            background-color: var(--light-color);
+            position: relative;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: var(--muted-color);
+            max-width: 600px;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            height: 80%;
+            z-index: 0;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+        }
+        
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--dark-color);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .hero-scroll .scroll-icon {
+            margin-top: 10px;
+            animation: scrollDown 2s infinite;
+        }
+        
+        @keyframes scrollDown {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(10px); opacity: 0.5; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* 关于我们部分 */
+        #about {
+            background-color: var(--bg-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+        
+        .about-image {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+        }
+        
+        .about-image:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--accent-color);
+            z-index: -1;
+        }
+        
+        .about-content h2 {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        .about-content p {
+            margin-bottom: 25px;
+        }
+        
+        .stats-container {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .stat-item {
+            position: relative;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 500;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--muted-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* 服务部分 */
+        #services {
+            background-color: var(--light-color);
+            position: relative;
+        }
+        
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .service-item {
+            position: relative;
+            padding: 40px 30px;
+            transition: all 0.3s ease;
+            background: transparent;
+            border-bottom: 1px solid var(--secondary-color);
+        }
+        
+        .service-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .service-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .service-item p {
+            color: var(--muted-color);
+        }
+        
+        /* 团队部分 */
+        #team {
+            background-color: var(--bg-color);
+        }
+        
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 60px;
+        }
+        
+        .team-member {
+            position: relative;
+        }
+        
+        .member-image {
+            height: 400px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: all 0.5s ease;
+        }
+        
+        .team-member:hover .member-image img {
+            filter: grayscale(0%);
+        }
+        
+        .member-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .member-position {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .member-bio {
+            color: var(--muted-color);
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: var(--dark-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* 项目展示部分 */
+        #projects {
+            background-color: var(--light-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: 300px;
+            gap: 20px;
+        }
+        
+        .project-item {
+            position: relative;
+            overflow: hidden;
+            grid-column: span 4;
+            grid-row: span 1;
+        }
+        
+        .project-item:nth-child(3n+1) {
+            grid-column: span 8;
+            grid-row: span 2;
+        }
+        
+        .project-item:nth-child(5n) {
+            grid-column: span 6;
+            grid-row: span 1;
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: all 0.5s ease;
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .project-item:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-item:hover .project-image img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+        
+        .project-title {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            transition: all 0.3s ease 0.1s;
+        }
+        
+        .project-category {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: translateY(20px);
+            transition: all 0.3s ease 0.2s;
+        }
+        
+        .project-item:hover .project-title,
+        .project-item:hover .project-category {
+            transform: translateY(0);
+        }
+        
+        /* 客户反馈部分 */
+        #testimonials {
+            background-color: var(--bg-color);
+            position: relative;
+        }
+        
+        .testimonial-container {
+            position: relative;
+            padding: 0 50px;
+        }
+        
+        .testimonial-slider {
+            overflow: hidden;
+        }
+        
+        .testimonial-item {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .testimonial-image {
+            height: 400px;
+            position: relative;
+        }
+        
+        .testimonial-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+        }
+        
+        .testimonial-content {
+            padding-right: 50px;
+        }
+        
+        .testimonial-text {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            font-weight: 300;
+            color: var(--dark-color);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .testimonial-text:before {
+            content: '"';
+            font-size: 5rem;
+            position: absolute;
+            top: -40px;
+            left: -30px;
+            color: var(--accent-color);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .testimonial-author {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .testimonial-position {
+            color: var(--muted-color);
+            font-size: 0.9rem;
+        }
+        
+        .swiper-button-next, .swiper-button-prev {
+            width: 50px;
+            height: 50px;
+            background: var(--light-color);
+            border-radius: 0;
+            color: var(--dark-color);
+            transition: all 0.3s ease;
+        }
+        
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background: var(--dark-color);
+            color: var(--light-color);
+        }
+        
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .swiper-pagination-bullet {
+            width: 30px;
+            height: 2px;
+            border-radius: 0;
+            background: var(--dark-color);
+            opacity: 0.3;
+        }
+        
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: var(--accent-color);
+        }
+        
+        /* 联系部分 */
+        #contact {
+            background-color: var(--light-color);
+            position: relative;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+        
+        .contact-details {
+            margin-bottom: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+        
+        .contact-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        
+        .contact-text p, .contact-text a {
+            color: var(--muted-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-text a:hover {
+            color: var(--accent-color);
+        }
+        
+        .contact-form h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--muted-color);
+            color: var(--dark-color);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        
+        .form-control::placeholder {
+            color: var(--muted-color);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 80px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--light-color);
+            margin-bottom: 20px;
+            display: block;
+            letter-spacing: -0.5px;
+        }
+        
+        .footer-logo span {
+            color: var(--accent-color);
+        }
+        
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-social a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: var(--light-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 1px;
+            background: var(--accent-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        
+        .subscribe-form {
+            position: relative;
+            margin-top: 20px;
+        }
+        
+        .subscribe-input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--light-color);
+            font-size: 0.9rem;
+        }
+        
+        .subscribe-input:focus {
+            outline: none;
+        }
+        
+        .subscribe-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            padding: 0 15px;
+            background: var(--accent-color);
+            border: none;
+            color: var(--light-color);
+            cursor: pointer;
+        }
+        
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* 回到顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--dark-color);
+            color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--accent-color);
+        }
+        
+        /* 滚动进度条 */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--accent-color);
+            width: 0%;
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+            
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-image {
+                width: 40%;
+            }
+            
+            .services-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .projects-grid {
+                grid-template-columns: repeat(8, 1fr);
+            }
+            
+            .project-item {
+                grid-column: span 4;
+            }
+            
+            .project-item:nth-child(3n+1) {
+                grid-column: span 8;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-content {
+                max-width: 600px;
+            }
+            
+            .hero-content p {
+                font-size: 1.3rem;
+            }
+            
+            .hero-image {
+                display: none;
+            }
+            
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .about-image:before {
+                display: none;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+            
+            .testimonial-item {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-image {
+                height: 300px;
+                margin-bottom: 30px;
+            }
+            
+            .testimonial-content {
+                padding-right: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--bg-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 250px;
+            }
+            
+            .project-item,
+            .project-item:nth-child(
+            .project-item,
+            .project-item:nth-child(3n+1),
+            .project-item:nth-child(5n) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 预加载动画 */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .preloader.fade-out {
+            opacity: 0;
+        }
+        
+        .loader {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--accent-color);
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* 动画效果 */
+        .reveal-text {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reveal-text span {
+            display: block;
+            transform: translateY(100%);
+            transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        
+        .reveal-text.active span {
+            transform: translateY(0);
+        }
+        
+        .image-reveal {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-reveal:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            transform: translateX(0);
+            transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        
+        .image-reveal.active:after {
+            transform: translateX(100%);
+        }
+        
+        /* 鼠标跟随效果 */
+        .cursor {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--accent-color);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            transition: all 0.2s ease;
+            z-index: 9999;
+            opacity: 0;
+        }
+        
+        .cursor-dot {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0;
+        }
+        
+        body:hover .cursor,
+        body:hover .cursor-dot {
+            opacity: 1;
+        }
+        
+        .cursor.active {
+            transform: translate(-50%, -50%) scale(1.5);
+            background: rgba(200, 169, 158, 0.1);
+            border-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <!-- 预加载动画 -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+    
+    <!-- 鼠标跟随效果 -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+    
+    <!-- 滚动进度条 -->
+    <div class="scroll-progress"></div>
+    
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Teen<span>Tech</span></a>
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link">首页</a></li>
+                    <li><a href="#about" class="nav-link">关于</a></li>
+                    <li><a href="#services" class="nav-link">服务</a></li>
+                    <li><a href="#team" class="nav-link">团队</a></li>
+                    <li><a href="#projects" class="nav-link">项目</a></li>
+                    <li><a href="#testimonials" class="nav-link">反馈</a></li>
+                    <li><a href="#contact" class="nav-link">联系</a></li>
+                </ul>
+                <div class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 首页部分 -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+                <h1 class="reveal-text"><span>青少年科技创新的<br>未来领导者</span></h1>
+                <p class="reveal-text"><span>我们是一个由高中生主导的科技创新平台，致力于连接年轻创新者与资源、导师和投资机会。</span></p>
+                <div class="hero-btns">
+                    <a href="#services" class="btn">探索服务</a>
+                    <a href="#contact" class="btn btn-filled">联系我们</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-image image-reveal" data-aos="fade-left" data-aos-duration="1200">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="青少年科技创新">
+        </div>
+        
+        <a href="#about" class="hero-scroll">
+            <span>向下滚动</span>
+            <i class="fas fa-chevron-down scroll-icon"></i>
+        </a>
+    </section>
+
+    <!-- 关于我们部分 -->
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image image-reveal" data-aos="fade-right" data-aos-duration="1000">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="团队合作">
+                </div>
+                <div class="about-content" data-aos="fade-left" data-aos-duration="1000">
+                    <h2 class="reveal-text"><span>我们的故事</span></h2>
+                    <p>Teen Tech Innovators 始于2023年，由一群对科技充满热情的高中生创立。我们注意到许多年轻人有出色的创意，但缺乏资源和指导来将这些想法转化为现实。</p>
+                    <p>我们的平台旨在填补这一空白，通过提供专业指导、资源对接和展示机会，帮助青少年科技创新者实现他们的潜力。我们相信，年轻人的创新思维可以解决世界上一些最紧迫的问题。</p>
+                    <p>今天，我们已经帮助超过100名青少年开发了他们的科技项目，其中15个项目获得了风险投资，3个项目已经成功商业化。</p>
+                    
+                    <div class="stats-container" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-item">
+                            <div class="stat-number"><span class="counter" data-target="100">0</span>+</div>
+                            <div class="stat-label">支持的创新项目</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number"><span class="counter" data-target="50">0</span>+</div>
+                            <div class="stat-label">专业导师</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number"><span class="counter" data-target="15">0</span>+</div>
+                            <div class="stat-label">成功融资案例</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务部分 -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2 class="reveal-text"><span>我们的服务</span></h2>
+                <div class="section-divider"></div>
+                <p class="text-center">我们提供全方位的支持，帮助青少年科技创新者从创意到实现的全过程。</p>
+            </div>
+            
+            <div class="services-container">
+                <div class="service-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>创新项目展示平台</h3>
+                    <p>提供线上线下展示空间，让青少年创新者向世界展示他们的科技创意和项目成果，获得反馈和认可。</p>
+                </div>
+                
+                <div class="service-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>导师配对系统</h3>
+                    <p>连接行业专家和成功创业者，提供一对一指导，帮助青少年创新者解决技术和商业化过程中的难题。</p>
+                </div>
+                
+                <div class="service-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>创业培训课程</h3>
+                    <p>提供STEM项目开发、商业计划书撰写、融资路演技巧和知识产权保护等专业培训课程。</p>
+                </div>
+                
+                <div class="service-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>资源对接中心</h3>
+                    <p>整合投资机构、创业比赛和高校创新创业项目资源，为青少年创新者提供全方位的资源支持。</p>
+                </div>
+                
+                <div class="service-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>国际交流项目</h3>
+                    <p>组织跨国交流活动，拓展青少年创新者的国际视野，促进全球青少年科技创新合作。</p>
+                </div>
+                
+                <div class="service-item" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>创业孵化计划</h3>
+                    <p>为有潜力的项目提供从创意到市场的全流程孵化支持，包括技术开发、市场策略和融资对接。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 团队部分 -->
+    <section id="team">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2 class="reveal-text"><span>核心团队</span></h2>
+                <div class="section-divider"></div>
+                <p class="text-center">认识我们充满激情的核心团队成员，他们致力于帮助青少年实现科技创新梦想。</p>
+            </div>
+            
+            <div class="team-container">
+                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member-image image-reveal">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="张明">
+                    </div>
+                    <div class="member-info">
+                        <h3>张明</h3>
+                        <span class="member-position">创始人 & CEO</span>
+                        <p class="member-bio">17岁的科技爱好者，曾获得全国青少年科技创新大赛金奖，致力于帮助更多青少年实现创新梦想。</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="member-image image-reveal">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="李婷">
+                    </div>
+                    <div class="member-info">
+                        <h3>李婷</h3>
+                        <span class="member-position">技术总监</span>
+                        <p class="member-bio">16岁的编程天才，精通多种编程语言，曾开发多款获奖应用，负责指导团队的技术项目开发。</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+                    <div class="member-image image-reveal">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="王浩">
+                    </div>
+                    <div class="member-info">
+                        <h3>王浩</h3>
+                        <span class="member-position">商务拓展总监</span>
+                        <p class="member-bio">17岁的商业奇才，擅长商业策划和资源整合，负责与企业、投资机构和教育机构的合作关系。</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member" data-aos="fade-up" data-aos-delay="400">
+                    <div class="member-image image-reveal">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="陈静">
+                    </div>
+                    <div class="member-info">
+                        <h3>陈静</h3>
+                        <span class="member-position">市场营销总监</span>
+                        <p class="member-bio">16岁的社交媒体达人，擅长品牌策划和内容创作，负责团队的品牌建设和市场推广工作。</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 项目展示部分 -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2 class="reveal-text"><span>项目展示</span></h2>
+                <div class="section-divider"></div>
+                <p class="text-center">探索由我们的青少年创新者开发的令人惊叹的科技项目。</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="智能环保监测系统">
+                        <div class="project-overlay">
+                            <h3 class="project-title">智能环保监测系统</h3>
+                            <span class="project-category">环保科技</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="AR学习助手">
+                        <div class="project-overlay">
+                            <h3 class="project-title">AR学习助手</h3>
+                            <span class="project-category">教育科技</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="智能助老机器人">
+                        <div class="project-overlay">
+                            <h3 class="project-title">智能助老机器人</h3>
+                            <span class="project-category">健康科技</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1581092921461-39b9d08a9b21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="生物识别安全系统">
+                        <div class="project-overlay">
+                            <h3 class="project-title">生物识别安全系统</h3>
+                            <span class="project-category">安全科技</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="智能农业系统">
+                        <div class="project-overlay">
+                            <h3 class="project-title">智能农业系统</h3>
+                            <span class="project-category">农业科技</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户反馈部分 -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2 class="reveal-text"><span>客户反馈</span></h2>
+                <div class="section-divider"></div>
+                <p class="text-center">听听我们的参与者、合作伙伴和导师对Teen Tech Innovators的评价。</p>
+            </div>
+            
+            <div class="testimonial-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="swiper testimonial-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <div class="testimonial-image image-reveal">
+                                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="赵小红">
+                                </div>
+                                <div class="testimonial-content">
+                                    <div class="testimonial-text">
+                                        Teen Tech Innovators彻底改变了我的创新之旅。在他们的帮助下，我的环保监测项目不仅获得了市级科技比赛一等奖，还成功获得了50万元的种子轮融资。
+                                    </div>
+                                    <div class="testimonial-author">赵小红</div>
+                                    <div class="testimonial-position">项目参与者, 16岁</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <div class="testimonial-image image-reveal">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="李明">
+                                </div>
+                                <div class="testimonial-content">
+                                    <div class="testimonial-text">
+                                        作为一名投资人，我对Teen Tech Innovators培养的年轻人才印象深刻。他们不仅有创新的想法，还具备将想法转化为可行商业模式的能力。我们已经投资了三个来自该平台的项目。
+                                    </div>
+                                    <div class="testimonial-author">李明</div>
+                                    <div class="testimonial-position">风险投资合伙人</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <div class="testimonial-item">
+                                <div class="testimonial-image image-reveal">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="王教授">
+                                </div>
+                                <div class="testimonial-content">
+                                    <div class="testimonial-text">
+                                        作为Teen Tech Innovators的导师，我亲眼目睹了这些年轻人的成长。他们的创造力和解决问题的能力令人惊叹。这个平台为青少年提供了一个真正能够发挥潜力的环境。
+                                    </div>
+                                    <div class="testimonial-author">王教授</div>
+                                    <div class="testimonial-position">人工智能专家, 导师</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系部分 -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2 class="reveal-text"><span>联系我们</span></h2>
+                <div class="section-divider"></div>
+                <p class="text-center">无论您是想加入我们、成为导师还是寻求合作，我们都期待听到您的声音。</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info" data-aos="fade-right" data-aos-duration="1000">
+                    <h3>联系方式</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>地址</h4>
+                                <p>北京市海淀区中关村创业大厦B座5层</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>电话</h4>
+                                <p>+86 10 8888 7777</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>邮箱</h4>
+                                <p><a href="mailto:info@teentechinnovators.com">info@teentechinnovators.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="map" style="height: 300px;"></div>
+                </div>
+                
+                <div class="contact-form" data-aos="fade-left" data-aos-duration="1000">
+                    <h3>发送消息</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="您的姓名" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="您的邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="主题" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="消息内容" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-filled">发送消息</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">Teen<span>Tech</span></a>
+                    <p>我们致力于赋能青少年科技创新者，帮助他们将创意转化为现实，成为未来的科技领袖。</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links-col">
+                    <h4 class="footer-heading">快
+                <div class="footer-links-col">
+                    <h4 class="footer-heading">快速链接</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="#services">服务</a></li>
+                        <li><a href="#team">团队</a></li>
+                        <li><a href="#projects">项目展示</a></li>
+                        <li><a href="#contact">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links-col">
+                    <h4 class="footer-heading">我们的服务</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">创新项目展示平台</a></li>
+                        <li><a href="#">导师配对系统</a></li>
+                        <li><a href="#">创业培训课程</a></li>
+                        <li><a href="#">资源对接中心</a></li>
+                        <li><a href="#">国际交流项目</a></li>
+                        <li><a href="#">创业孵化计划</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links-col">
+                    <h4 class="footer-heading">订阅我们</h4>
+                    <p>订阅我们的电子通讯，获取最新的活动和资源信息。</p>
+                    <form class="subscribe-form">
+                        <input type="email" class="subscribe-input" placeholder="您的邮箱地址" required>
+                        <button type="submit" class="subscribe-btn"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Teen Tech Innovators. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript 库 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    
+    <!-- 主JavaScript文件 -->
+    <script>
+        // 预加载动画
+        $(window).on('load', function() {
+            setTimeout(function() {
+                $('.preloader').addClass('fade-out');
+                setTimeout(function() {
+                    $('.preloader').css('display', 'none');
+                }, 500);
+            }, 1000);
+        });
+        
+        // 初始化AOS动画库
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+        
+        $(document).ready(function() {
+            // 鼠标跟随效果
+            const cursor = document.querySelector('.cursor');
+            const cursorDot = document.querySelector('.cursor-dot');
+            
+            document.addEventListener('mousemove', function(e) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
+            });
+            
+            document.addEventListener('mousedown', function() {
+                cursor.classList.add('active');
+            });
+            
+            document.addEventListener('mouseup', function() {
+                cursor.classList.remove('active');
+            });
+            
+            $('a, button, .btn, input, textarea').on('mouseenter', function() {
+                cursor.classList.add('active');
+            }).on('mouseleave', function() {
+                cursor.classList.remove('active');
+            });
+            
+            // 导航菜单切换
+            $('.menu-btn').click(function() {
+                $('.nav-links').toggleClass('active');
+                $(this).find('i').toggleClass('fa-bars fa-times');
+            });
+            
+            // 平滑滚动
+            $('.nav-link, .hero-scroll, .back-to-top').click(function(e) {
+                e.preventDefault();
+                var target = $($(this).attr('href'));
+                
+                if(target.length) {
+                    var scrollTo = target.offset().top;
+                    $('body, html').animate({
+                        scrollTop: scrollTo
+                    }, 1000);
+                }
+                
+                // 关闭移动端菜单
+                $('.nav-links').removeClass('active');
+                $('.menu-btn i').removeClass('fa-times').addClass('fa-bars');
+            });
+            
+            // 滚动时导航栏样式变化
+            $(window).scroll(function() {
+                var scroll = $(window).scrollTop();
+                
+                if(scroll >= 100) {
+                    $('header').addClass('scrolled');
+                } else {
+                    $('header').removeClass('scrolled');
+                }
+                
+                // 滚动进度条
+                var height = $(document).height() - $(window).height();
+                var progress = (scroll / height) * 100;
+                $('.scroll-progress').css('width', progress + '%');
+                
+                // 回到顶部按钮显示/隐藏
+                if(scroll >= 300) {
+                    $('.back-to-top').addClass('active');
+                } else {
+                    $('.back-to-top').removeClass('active');
+                }
+                
+                // 激活当前导航项
+                $('section').each(function() {
+                    var sectionId = $(this).attr('id');
+                    var sectionTop = $(this).offset().top - 100;
+                    var sectionHeight = $(this).height();
+                    
+                    if(scroll >= sectionTop && scroll < sectionTop + sectionHeight) {
+                        $('.nav-link').removeClass('active');
+                        $('.nav-links a[href="#' + sectionId + '"]').addClass('active');
+                    }
+                });
+                
+                // 文字显示动画
+                $('.reveal-text').each(function() {
+                    var textPosition = $(this).offset().top;
+                    var windowHeight = $(window).height();
+                    
+                    if(scroll > textPosition - windowHeight + 100) {
+                        $(this).addClass('active');
+                    }
+                });
+                
+                // 图片显示动画
+                $('.image-reveal').each(function() {
+                    var imagePosition = $(this).offset().top;
+                    var windowHeight = $(window).height();
+                    
+                    if(scroll > imagePosition - windowHeight + 100) {
+                        $(this).addClass('active');
+                    }
+                });
+            });
+            
+            // 数字计数动画
+            function startCounter() {
+                $('.counter').each(function() {
+                    var $this = $(this);
+                    var target = parseInt($this.attr('data-target'));
+                    
+                    $({ Counter: 0 }).animate({
+                        Counter: target
+                    }, {
+                        duration: 2000,
+                        easing: 'swing',
+                        step: function() {
+                            $this.text(Math.ceil(this.Counter));
+                        }
+                    });
+                });
+            }
+            
+            // 当元素进入视口时启动计数器
+            var counterSection = $('#about');
+            var counterOffset = counterSection.offset().top - window.innerHeight;
+            
+            $(window).scroll(function() {
+                var scroll = $(window).scrollTop();
+                
+                if(scroll > counterOffset && !counterSection.hasClass('counted')) {
+                    counterSection.addClass('counted');
+                    startCounter();
+                }
+            });
+            
+            // 初始化客户反馈轮播
+            var testimonialSwiper = new Swiper('.testimonial-slider', {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.testimonial-slider .swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.testimonial-slider .swiper-button-next',
+                    prevEl: '.testimonial-slider .swiper-button-prev',
+                }
+            });
+            
+            // 表单提交处理
+            $('#contactForm').submit(function(e) {
+                e.preventDefault();
+                
+                // 模拟表单提交
+                $(this).find('button').html('<i class="fas fa-spinner fa-spin"></i> 发送中...');
+                
+                setTimeout(function() {
+                    // 模拟成功响应
+                    $('#contactForm')[0].reset();
+                    $('#contactForm').find('button').html('发送消息');
+                    
+                    // 显示成功消息
+                    alert('您的消息已成功发送！我们将尽快与您联系。');
+                }, 2000);
+            });
+            
+            // 订阅表单处理
+            $('.subscribe-form').submit(function(e) {
+                e.preventDefault();
+                
+                // 模拟订阅处理
+                $(this).find('button').html('<i class="fas fa-spinner fa-spin"></i>');
+                
+                setTimeout(function() {
+                    $('.subscribe-form')[0].reset();
+                    $('.subscribe-form').find('button').html('<i class="fas fa-paper-plane"></i>');
+                    
+                    // 显示成功消息
+                    alert('感谢您的订阅！');
+                }, 1500);
+            });
+        });
+        
+        // 谷歌地图初始化
+        function initMap() {
+            // 地图位置坐标
+            var location = {lat: 39.9947, lng: 116.3397}; // 北京中关村坐标
+            
+            // 创建地图
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: location,
+                styles: [
+                    {
+                        "featureType": "all",
+                        "elementType": "labels.text.fill",
+                        "stylers": [{"saturation": 36}, {"color": "#333333"}, {"lightness": 40}]
+                    },
+                    {
+                        "featureType": "all",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [{"visibility": "on"}, {"color": "#ffffff"}, {"lightness": 16}]
+                    },
+                    {
+                        "featureType": "all",
+                        "elementType": "labels.icon",
+                        "stylers": [{"visibility": "off"}]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "geometry.fill",
+                        "stylers": [{"color": "#fefefe"}, {"lightness": 20}]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "geometry.stroke",
+                        "stylers": [{"color": "#fefefe"}, {"lightness": 17}, {"weight": 1.2}]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#f5f5f5"}, {"lightness": 20}]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#f5f5f5"}, {"lightness": 21}]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#dedede"}, {"lightness": 21}]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.fill",
+                        "stylers": [{"color": "#ffffff"}, {"lightness": 17}]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.stroke",
+                        "stylers": [{"color": "#ffffff"}, {"lightness": 29}, {"weight": 0.2}]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#ffffff"}, {"lightness": 18}]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#ffffff"}, {"lightness": 16}]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#f2f2f2"}, {"lightness": 19}]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [{"color": "#e9e9e9"}, {"lightness": 17}]
+                    }
+                ]
+            });
+            
+            // 添加标记
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: 'Teen Tech Innovators 总部',
+                animation: google.maps.Animation.DROP
+            });
+            
+            // 添加信息窗口
+            var infoWindow = new google.maps.InfoWindow({
+                content: '<div style="width:200px;text-align:center;padding:10px;"><strong>Teen Tech Innovators</strong><br>北京市海淀区中关村创业大厦B座5层</div>'
+            });
+            
+            marker.addListener('click', function() {
+                infoWindow.open(map, marker);
+            });
+        }
+    </script>
+</body>
+</html>
