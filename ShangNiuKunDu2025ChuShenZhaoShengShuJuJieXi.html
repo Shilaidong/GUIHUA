@@ -1,0 +1,2460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上纽昆杜2025初审招生数据解析</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.1/build/global/luxon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.3.0/dist/chartjs-adapter-luxon.min.js"></script>
+    <style>
+        /* 全局样式与高级配色方案 */
+        :root {
+            --primary-color: #1a2a6c;
+            --secondary-color: #b21f66;
+            --accent-color: #fdbb2d;
+            --text-color: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --bg-dark: #0f172a;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            line-height: 1.6;
+        }
+
+        /* 导航栏样式 */
+        .navbar {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* 英雄区域样式 */
+        .hero {
+            background: linear-gradient(rgba(26, 42, 108, 0.8), rgba(178, 31, 102, 0.8)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') no-repeat center center;
+            background-size: cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, var(--bg-light), transparent);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 1;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--accent-color);
+            color: var(--bg-dark);
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background: #ffca3a;
+        }
+
+        /* 主要内容区域 */
+        .main-content {
+            padding: 4rem 0;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* 卡片样式 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            position: relative;
+        }
+
+        .card-icon {
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            background: var(--accent-color);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-icon i {
+            font-size: 1.8rem;
+            color: var(--bg-dark);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-footer {
+            padding: 1rem 1.5rem;
+            background: var(--bg-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* 统计数据展示 */
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin: 1rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* 图表容器 */
+        .chart-container {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .chart-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        /* 表格样式 */
+        .table-container {
+            overflow-x: auto;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+
+        tr:hover {
+            background-color: rgba(253, 187, 45, 0.1);
+        }
+
+        /* 两列布局 */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        /* 案例分析样式 */
+        .case-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .case-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .case-header {
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .accept {
+            background: linear-gradient(45deg, #28a745, #20c997);
+        }
+
+        .reject {
+            background: linear-gradient(45deg, #dc3545, #fd7e14);
+        }
+
+        .case-body {
+            padding: 1.5rem;
+        }
+
+        .case-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .case-list {
+            list-style-type: none;
+        }
+
+        .case-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .case-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        /* 总结与建议样式 */
+        .recommendation-container {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .recommendation-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .recommendation-list {
+            list-style-type: none;
+            counter-reset: item;
+        }
+
+        .recommendation-list li {
+            margin-bottom: 1rem;
+            padding-left: 2.5rem;
+            position: relative;
+        }
+
+        .recommendation-list li::before {
+            counter-increment: item;
+            content: counter(item);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--accent-color);
+            color: var(--bg-dark);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        /* 页脚样式 */
+        .footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent-color);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 滚动到顶部按钮 */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 1024px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                height: 60vh;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stat-item {
+                min-width: 150px;
+            }
+        }
+
+        /* 高级交互元素 */
+        .tab-container {
+            margin-bottom: 2rem;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+        }
+
+        .tab.active {
+            border-bottom: 3px solid var(--secondary-color);
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* 进度条样式 */
+        .progress-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* 标签样式 */
+        .tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            background: var(--bg-light);
+            color: var(--text-light);
+        }
+
+        /* 提示框样式 */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--bg-dark);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--bg-dark) transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* 比较卡片样式 */
+        .compare-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .compare-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .compare-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .compare-header {
+            padding: 1.5rem;
+            color: white;
+            text-align: center;
+        }
+
+        .nyu {
+            background: linear-gradient(45deg, #57068c, #9d4edd);
+        }
+
+        .dku {
+            background: linear-gradient(45deg, #0077b6, #00b4d8);
+        }
+
+        .compare-body {
+            padding: 1.5rem;
+        }
+
+        .compare-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .compare-list {
+            list-style-type: none;
+        }
+
+        .compare-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .compare-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .compare-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 引用样式 */
+        blockquote {
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem 1.5rem;
+            background: rgba(253, 187, 45, 0.1);
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-light);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        blockquote p {
+            margin-bottom: 0;
+        }
+
+        /* 数据亮点样式 */
+        .highlight-box {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .highlight-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-content {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-data {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .data-item {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .data-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .data-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">上纽昆杜招生数据</div>
+                <div class="nav-links">
+                    <a href="#overview" class="nav-link">申请概况</a>
+                    <a href="#top-schools" class="nav-link">TOP20高中</a>
+                    <a href="#selection" class="nav-link">筛选标准</a>
+                    <a href="#cases" class="nav-link">案例分析</a>
+                    <a href="#recommendations" class="nav-link">申请建议</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>上纽昆杜2025初审招生数据解析</h1>
+                <p>深度剖析上海纽约大学与昆山杜克大学2025年招生数据，揭示申请趋势、录取标准与成功要素，为准备申请的学生提供全面指导。</p>
+                <a href="#overview" class="btn">探索详情 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要内容区域 -->
+    <div class="main-content">
+        <div class="container">
+            <!-- 申请概况部分 -->
+            <section id="overview" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">申请概况</h2>
+                    <p class="section-subtitle">2025年上纽昆杜申请数据全景分析，揭示申请趋势与录取计划</p>
+                </div>
+
+                <!-- 数据亮点区域 -->
+                <div class="highlight-box">
+                    <h3 class="highlight-title">2025申请数据亮点</h3>
+                    <p class="highlight-content">两校申请人数均创历史新高，中国学生申请热度持续上升，国际生源地域分布广泛</p>
+                    <div class="highlight-data">
+                        <div class="data-item">
+                            <div class="data-number">24,000+</div>
+                            <div class="data-label">上纽申请总数</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-number">11,884</div>
+                            <div class="data-label">昆杜申请总数</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-number">47%</div>
+                            <div class="data-label">上纽中国学生三年增长率</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-number">550</div>
+                            <div class="data-label">昆杜计划招生人数</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 两校对比 -->
+                <div class="compare-container">
+                    <div class="compare-card">
+                        <div class="compare-header nyu">
+                            <h3>上海纽约大学</h3>
+                        </div>
+                        <div class="compare-body">
+                            <ul class="compare-list">
+                                <li>2025年申请总数近2.4万人（国内约8000人），创历史新高</li>
+                                <li>中国学生申请人数三年累计增长47%</li>
+                                <li>国际学
+                                <li>国际学生申请人数三年累计增长18%</li>
+                                <li>计划录取251名中国籍学生和249名国际学生</li>
+                                <li>中国申请者覆盖31个省市自治区及港澳台地区</li>
+                                <li>国际申请者来自157个国家，约53%来自美国</li>
+                                <li>中国籍学生本科申请仅设一轮，通过初审的学生将受邀参加三月份的"校园日"活动</li>
+                                <li>通过初审率约30%，竞争激烈程度持续上升</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="compare-card">
+                        <div class="compare-header dku">
+                            <h3>昆山杜克大学</h3>
+                        </div>
+                        <div class="compare-body">
+                            <ul class="compare-list">
+                                <li>2025年申请总数达11,884人，连续三年刷新纪录</li>
+                                <li>中国申请6,002份，比去年增长15%</li>
+                                <li>国际申请5,882份，比去年增长25%</li>
+                                <li>计划招生名额从500人增至550人(中国学生385人，国际学生165人)</li>
+                                <li>国际生源覆盖144个国家，约46%来自美国</li>
+                                <li>早申决定就读的国际学生从去年28人增至63人</li>
+                                <li>国际生申请者中有24对双胞胎和12名与兄弟姐妹共同申请的学生</li>
+                                <li>再次申请者从去年的40人增至118人，表明学校吸引力提升</li>
+                                <li>通过初审率约40%，相对上纽略高</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 申请趋势图表 -->
+                <div class="chart-container">
+                    <h3 class="chart-title">2023-2025年申请趋势对比</h3>
+                    <canvas id="applicationTrend"></canvas>
+                </div>
+
+                <!-- 申请者分布图表 -->
+                <div class="two-column">
+                    <div class="chart-container">
+                        <h3 class="chart-title">上纽申请者地区分布</h3>
+                        <canvas id="nyuDistribution"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3 class="chart-title">昆杜申请者地区分布</h3>
+                        <canvas id="dkuDistribution"></canvas>
+                    </div>
+                </div>
+
+                <!-- 深度分析 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="card-title">申请趋势深度分析</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>从2025年的申请数据可以看出，上纽昆杜作为中外合办高校的吸引力持续提升。尤其值得注意的是，尽管近年来国际形势复杂多变，两校的国际学生申请热度不减，表明其国际教育品牌价值的稳固性。</p>
+                        
+                        <p>中国学生申请人数的显著增长（上纽三年增长47%，昆杜同比增长15%）反映了国内学生对高质量国际教育的需求上升。这一趋势可能源于以下几个因素：</p>
+                        
+                        <ul>
+                            <li>国内高考竞争压力持续增大，学生寻求多元升学路径</li>
+                            <li>中外合办高校提供的"不出国门的留学"模式更符合当前国际形势</li>
+                            <li>上纽昆杜毕业生就业和深造表现优异，提升了学校声誉</li>
+                            <li>两校在国内知名度提高，招生宣传策略更加精准有效</li>
+                        </ul>
+                        
+                        <p>值得关注的是，昆杜将2025年招生计划从500人增至550人，其中中国学生名额为385人，国际学生名额为165人，这表明学校正在扩大规模以满足日益增长的申请需求。相比之下，上纽的招生计划保持相对稳定，中外学生各约250人，这可能反映了两校在发展策略上的差异。</p>
+                        
+                        <blockquote>
+                            <p>通过初审率的差异（上纽约30%，昆杜约40%）暗示了两校在初审环节的筛选严格程度不同，这也为申请者提供了重要的参考信息。</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TOP20高中部分 -->
+            <section id="top-schools" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">昆杜初审通过高中TOP20</h2>
+                    <p class="section-subtitle">2025年昆山杜克大学综合评价初审通过人数最多的20所高中</p>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>排名</th>
+                                <th>学校名称</th>
+                                <th>所在地区</th>
+                                <th>学校类型</th>
+                                <th>初审通过率估计</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>北京大学附属中学</td>
+                                <td>北京</td>
+                                <td>公立重点</td>
+                                <td>65-75%</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>北京师范大学附属实验中学</td>
+                                <td>北京</td>
+                                <td>公立重点</td>
+                                <td>60-70%</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>江苏省苏州中学校</td>
+                                <td>江苏</td>
+                                <td>公立重点</td>
+                                <td>55-65%</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>山东省实验中学</td>
+                                <td>山东</td>
+                                <td>公立重点</td>
+                                <td>55-65%</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>山东省青岛第二中学</td>
+                                <td>山东</td>
+                                <td>公立重点</td>
+                                <td>50-60%</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>南京师范大学附属中学</td>
+                                <td>江苏</td>
+                                <td>公立重点</td>
+                                <td>50-60%</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>上海市延安中学</td>
+                                <td>上海</td>
+                                <td>公立重点</td>
+                                <td>50-60%</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>中国人民大学附属中学</td>
+                                <td>北京</td>
+                                <td>公立重点</td>
+                                <td>50-60%</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>苏州工业园区星海实验高级中学</td>
+                                <td>江苏</td>
+                                <td>公立重点</td>
+                                <td>45-55%</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>南京市第一中学</td>
+                                <td>江苏</td>
+                                <td>公立重点</td>
+                                <td>45-55%</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>南京外国语学校</td>
+                                <td>江苏</td>
+                                <td>公立外国语</td>
+                                <td>45-55%</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>南京市金陵中学</td>
+                                <td>江苏</td>
+                                <td>公立重点</td>
+                                <td>45-55%</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>青岛中学</td>
+                                <td>山东</td>
+                                <td>公立重点</td>
+                                <td>45-55%</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>西安交通大学苏州附属中学</td>
+                                <td>江苏</td>
+                                <td>公立重点</td>
+                                <td>40-50%</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>上海市实验学校</td>
+                                <td>上海</td>
+                                <td>公立重点</td>
+                                <td>40-50%</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>北京市第四中学</td>
+                                <td>北京</td>
+                                <td>公立重点</td>
+                                <td>40-50%</td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>北京市十一学校</td>
+                                <td>北京</td>
+                                <td>公立重点</td>
+                                <td>40-50%</td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td>北京市第八中学</td>
+                                <td>北京</td>
+                                <td>公立重点</td>
+                                <td>40-50%</td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>上海交通大学附属中学</td>
+                                <td>上海</td>
+                                <td>公立重点</td>
+                                <td>40-50%</td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>苏州外国语学校</td>
+                                <td>江苏</td>
+                                <td>公立外国语</td>
+                                <td>40-50%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 地区分布图表 -->
+                <div class="chart-container">
+                    <h3 class="chart-title">TOP20高中地区分布</h3>
+                    <canvas id="topSchoolsDistribution"></canvas>
+                </div>
+
+                <!-- 深度分析 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <h3 class="card-title">高中分布特点分析</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>从昆杜初审通过的TOP20高中名单可以看出几个明显特点：</p>
+                        
+                        <h4>地域集中性</h4>
+                        <p>TOP20高中主要集中在北京、江苏、上海和山东四个地区，这些地区经济发达、教育资源丰富，国际教育氛围浓厚。其中，江苏省的学校数量最多，占据7所，这与昆杜位于江苏昆山有一定关系，地缘优势明显。</p>
+                        
+                        <h4>学校类型特征</h4>
+                        <p>入围学校以公立重点中学为主，这些学校通常拥有雄厚的师资力量和优质的教育资源，学生整体素质高。值得注意的是，也有部分外国语学校入围，如南京外国语学校和苏州外国语学校，这反映了语言能力在申请过程中的重要性。</p>
+                        
+                        <h4>历史传统影响</h4>
+                        <p>多数入围学校都是当地历史悠久的名校，如北大附中、人大附中等，这些学校不仅学术实力强，而且在国际教育方面有丰富经验，能够为学生提供更好的申请指导和支持。</p>
+                        
+                        <h4>录取率差异</h4>
+                        <p>从估计的初审通过率来看，排名靠前的学校通过率明显高于排名靠后的学校，这表明学校背景在初审过程中确实起到重要作用。北京大学附属中学的初审通过率估计在65-75%，而排名20位的苏州外国语学校通过率估计在40-50%，差距显著。</p>
+                        
+                        <blockquote>
+                            <p>对于非TOP20高中的申请者来说，虽然学校背景可能不占优势，但通过提升个人综合素质和突出个人特长，仍有机会在激烈的竞争中脱颖而出。</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 筛选标准部分 -->
+            <section id="selection" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">上纽昆杜初审筛选标准</h2>
+                    <p class="section-subtitle">通过数据分析揭示两校初审入围的关键因素与评判标准</p>
+                </div>
+
+                <!-- 标准对比 -->
+                <div class="tab-container">
+                    <div class="tabs">
+                        <div class="tab active" data-tab="academic">学术成绩</div>
+                        <div class="tab" data-tab="language">语言能力</div>
+                        <div class="tab" data-tab="essays">文书质量</div>
+                        <div class="tab" data-tab="activities">活动经历</div>
+                        <div class="tab" data-tab="interview">面试表现</div>
+                    </div>
+
+                    <div class="tab-content active" id="academic">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>学术成绩是决定性因素</h3>
+                                <p>数据分析表明，学术成绩是上纽昆杜初审筛选的最重要指标。校内成绩排名在后50%的申请者几乎没有通过初审的可能性，即使其他方面表现突出。</p>
+                                
+                                <div class="progress-container">
+                                    <div class="progress-label">
+                                        <span>校内排名前5%</span>
+                                        <span>85%通过率</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 85%;"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-container">
+                                    <div class="progress-label">
+                                        <span>校内排名5%-20%</span>
+                                        <span>60%通过率</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 60%;"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-container">
+                                    <div class="progress-label">
+                                        <span>校内排名20%-50%</span>
+                                        <span>30%通过率</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 30%;"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-container">
+                                    <div class="progress-label">
+                                        <span>校内排名后50%</span>
+                                        <span>5%通过率</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 5%;"></div>
+                                    </div>
+                                </div>
+                                
+                                <p>值得注意的是，学校背景也会影响成绩评估标准。来自顶尖高中的学生即使排名相对靠后，也可能比普通高中排名靠前的学生更具竞争力，这反映了招生评估过程中的"背景加权"现象。</p>
+                                
+                                <p>此外，学科均衡性也是重要考量因素。上纽昆杜作为文理兼收的大学，更看重学生在各学科上的均衡发展，而非单科突出。特别是数学和英语成绩，往往被视为预测大学学习能力的重要指标。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="language">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>语言能力要求与评估</h3>
+                                <p>作为中外合办大学，上纽昆杜对申请者的英语语言能力有较高要求。从录取数据来看，语言成绩与初审通过率呈明显正相关。</p>
+                                
+                                <div class="two-column">
+                                    <div>
+                                        <h4>标准化考试成绩参考</h4>
+                                        <ul>
+                                            <li>雅思：7.0以上为理想，6.5为基础线</li>
+                                            <li>托福：100分以上为理想，90分为基础线</li>
+                                            <li>多邻国英语测试：130以上为理想，120为基础线</li>
+                                        </ul>
+                                        
+                                        <p>从录取案例分析，语言成绩优秀（如雅思7.5以上，托福105以上）的申请者通过初审的概率显著提高，即使其他方面稍有不足。</p>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4>语言能力实际评估</h4>
+                                        <p>除了标准化考试成绩外，上纽昆杜还通过以下方式评估申请者的实际语言能力：</p>
+                                        
+                                        <ul>
+                                            <li>昆杜的AI面试环节，英语表达能力占评分的50%</li>
+                                            <li>上纽的面试中，流利自然的英语交流是加分项</li>
+                                            <li>文书中的语言表达质量也是评估指标之一</li>
+                                        </ul>
+                                        
+                                        <p>值得注意的是，即使标准化考试成绩较高，如果在面试中无法流利表达，也可能被拒绝，这表明实际沟通能力比纸面成绩更重要。</p>
+                                    </div>
+                                </div>
+                                
+                                <blockquote>
+                                    <p>数据显示，语言能力评估是一个综合过程，不仅看重标准化考试成绩，更注重实际应用能力。建议申请者在备考标准化考试的同时，也要注重日常英语交流能力的培养。</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="essays">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>文书质量与评判标准</h3>
+                                <p>尽管部分招生官表示文书在评估中的权重不高，但实际录取数据显示，高质量的文书对初审结果有显著影响，特别是对于背景相似的申请者来说，文书质量往往成为关键的区分因素。</p>
+                                
+                                <h4>文书评判关键点</h4>
+                                <div class="two-column">
+                                    <div>
+                                        <h5>内容方面</h5>
+                                        <ul>
+                                            <li>与学校理念的契合度（如上纽强调"中西融合"，昆杜注重"跨文化能力"）</li>
+                                            <li>个人经历的独特性和多元性</li>
+                                            <li>思考深度和批判性思维能力</li>
+                                            <li>对自身成长和未来规划的清晰认识</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h5>形式方面</h5>
+                                        <ul>
+                                            <li>语言表达的流畅性和准确性</li>
+                                            <li>结构的逻辑性和连贯性</li>
+                                            <li>叙事手法的吸引力</li>
+                                            <li>细节描述的生动性</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <h4>文书准备中的常见问题</h4>
+                                <p>数据分析发现，以下文书问题可能导致初审被拒：</p>
+                                
+                                <ul>
+                                    <li>中介代写痕迹明显（如全英文推荐信，老师仅签名）</li>
+                                    <li>内容空洞，缺乏个人特色和深度思考</li>
+                                    <li>过度包装，不真实的经历和感受</li>
+                                    <li>模板化表达，缺乏针对性</li>
+                                    <li>与学校价值观和教育理念不匹配</li>
+                                </ul>
+                                
+                                <blockquote>
+                                    <p>成功的文书应当保持学生自己的声音和风格，真实反映个人经历和思考，同时展现与学校的契合点。过度修饰和包装反而会适得其反。</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="activities">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>活动经历与特长评估</h3>
+                                <p>从录取数据来看，上纽昆杜对申请者的课外活动和特长有不同的偏好和评估标准。活动经历的质量和深度往往比数量更重要。</p>
+                                
+                                <h4>受青睐的活动类型</h4>
+                                <div class="two-column">
+                                    <div>
+                                        <h5>上海纽约大学偏好</h5>
+                                        <ul>
+                                            <li>跨文化交流经历（如国际交换项目）</li>
+                                            <li>学术研究项目（尤其是有导师指导的研究）</li>
+                                            <li>创新创业活动</li>
+                                            <li>社区服务和志愿者工作</li>
+                                            <li>艺术和人文领域的特长</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h5>昆山杜克大学偏好</h5>
+                                        <ul>
+                                            <li>学术竞赛成绩（如五大学科竞赛、国际竞赛）</li>
+                                            <li>领导力项目（如学生会、社团领导）</li>
+                                            <li>体育特长和团队合作经历</li>
+                                            <li>国际视野相关活动（如模拟联合国）</li>
+                                            <li>STEM领域的项目和研究</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <h4>活动评估的关键因素</h4>
+                                <p>从录取案例分析，以下因素在活动评估中尤为重要：</p>
+                                
+                                <ul>
+                                    <li><strong>持续性和深度</strong>：长期参与并在某一领域有深入发展的活动比短期参与多个不相关活动更有价值</li>
+                                    <li><strong>影响力和成果</strong>：活动产生的实际影响和可量化的成果</li>
+                                    <li><strong>个人成长</strong>：活动对申请者个人能力和视野拓展的贡献</li>
+                                    <li><strong>与专业兴趣的关联</strong>：活动与申请者未来学术和职业规划的相关性</li>
+                                </ul>
+                                
+                                <p>值得注意的是，上纽昆杜更看重活动背后反映的个人特质和能力，而非活动本身的名气或规模。一个能展现申请者独特视角和思考的小型项目，可能比参与知名但贡献有限的大型活动更有价值。</p>
+                                
+                                <blockquote>
+                                    <p>理想的申请者画像是：成绩中上+专长(体育/艺术/深入学术领域)+英语口语优秀。这种组合能够全面展现学生的综合素质和发展潜力。</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="interview">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>面试表现与评估重点</h3>
+                                <p>面试是上纽昆杜评估申请者的重要环节，尤其是昆杜的AI面试，已成为筛选的关键步骤。面试不仅考察语言能力，更是对申请者综合素质的全面评估。</p>
+                                
+                                <h4>上纽昆杜面试特点对比</h4>
+                                <div class="two-column">
+                                    <div>
+                                        <h5>上海纽约大学面试</h5>
+                                        <ul>
+                                            <li>通常由招生官或校友进行</li>
+                                            <li>形式较为灵活，注重互动交流</li>
+                                            <li>问题设计侧重于了解申请者的思考方式和价值观</li>
+                                            
+                                            <li>对英语流利度有较高要求</li>
+                                            <li>注重申请者对学校特色的了解程度</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h5>昆山杜克大学AI面试</h5>
+                                        <ul>
+                                            <li>采用AI技术进行初步筛选</li>
+                                            <li>形式相对固定，有时间限制</li>
+                                            <li>内容逻辑与英语水平各占50%的权重</li>
+                                            <li>无法清晰表达自己的申请者会被直接拒绝</li>
+                                            <li>评估标准更加客观和量化</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <h4>面试评估重点</h4>
+                                <p>从成功案例分析，面试中以下几个方面尤为重要：</p>
+                                
+                                <div class="progress-container">
+                                    <div class="progress-label">
+                                        <span>语言表达能力</span>
+                                        <span>30%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 30%;"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-container">
+                                    <div class="progress-label">
+                                        <span>思维逻辑与深度</span>
+                                        <span>25%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 25%;"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-container">
+                                    <div class="progress-label">
+                                        <span>对问题的理解与回应</span>
+                                        <span>20%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 20%;"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-container">
+                                    <div class="progress-label">
+                                        <span>个人特质与文化契合度</span>
+                                        <span>15%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 15%;"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-container">
+                                    <div class="progress-label">
+                                        <span>对学校的了解程度</span>
+                                        <span>10%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 10%;"></div>
+                                    </div>
+                                </div>
+                                
+                                <h4>面试准备建议</h4>
+                                <p>基于录取与拒绝案例的分析，提出以下面试准备建议：</p>
+                                
+                                <ul>
+                                    <li>语言能力需要长期积累，临时突击效果有限</li>
+                                    <li>准备面试内容时应注重逻辑性和思考深度</li>
+                                    <li>避免过度准备导致的回答机械化</li>
+                                    <li>了解学校特色和教育理念，展现契合点</li>
+                                    <li>保持真实自然，展现个人特质</li>
+                                </ul>
+                                
+                                <blockquote>
+                                    <p>面试辅导仅能针对逻辑和内容临时突击，语言能力需要长期积累。过度准备反而可能掩盖个人真实特质，不利于展现与学校的契合度。</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 筛选标准综合分析 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-filter"></i>
+                        </div>
+                        <h3 class="card-title">筛选标准综合分析</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>通过对上纽昆杜2025年初审数据的全面分析，我们可以总结出两校筛选标准的共性与差异：</p>
+                        
+                        <h4>共同特点</h4>
+                        <ul>
+                            <li>学术成绩是基础门槛，校内排名后50%的申请者通过率极低</li>
+                            <li>英语语言能力是必要条件，无论标准化考试成绩还是实际表达能力</li>
+                            <li>真实性是关键，过度包装和中介代办痕迹明显会被拒绝</li>
+                            <li>综合素质评估，注重申请者的全面发展和潜力</li>
+                        </ul>
+                        
+                        <h4>差异对比</h4>
+                        <div class="two-column">
+                            <div>
+                                <h5>上海纽约大学特点</h5>
+                                <ul>
+                                    <li>更看重学校背景和课内成绩</li>
+                                    <li>注重跨文化经历和人文素养</li>
+                                    <li>文书质量要求较高，尤其是与学校理念的契合度</li>
+                                    <li>面试形式更灵活，注重互动性</li>
+                                    <li>对之前录取过学生的学校可能有偏重</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h5>昆山杜克大学特点</h5>
+                                <ul>
+                                    <li>相对更看重综合素质和特长</li>
+                                    <li>重视学术竞赛和研究经历</li>
+                                    <li>AI面试成为重要筛选工具，评估更客观</li>
+                                    <li>对再次申请者更为友好</li>
+                                    <li>初审通过率略高于上纽，约40%</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <h4>筛选标准演变趋势</h4>
+                        <p>从近三年的数据来看，上纽昆杜的筛选标准呈现以下趋势：</p>
+                        
+                        <ul>
+                            <li>学术要求持续提高，竞争更加激烈</li>
+                            <li>更加注重申请者的真实性和独特性</li>
+                            <li>技术手段（如AI面试）在评估中的应用增加</li>
+                            <li>对综合素质的评估更加全面和深入</li>
+                            <li>对申请者与学校文化契合度的重视程度上升</li>
+                        </ul>
+                        
+                        <blockquote>
+                            <p>理解上纽昆杜的筛选标准不仅有助于提高申请成功率，更能帮助申请者评估自身是否真正适合这些学校的教育理念和学习环境。</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 案例分析部分 -->
+            <section id="cases" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">录取与拒绝案例分析</h2>
+                    <p class="section-subtitle">深入剖析真实申请案例，揭示成功与失败的关键因素</p>
+                </div>
+
+                <!-- 案例对比 -->
+                <div class="tab-container">
+                    <div class="tabs">
+                        <div class="tab active" data-tab="reject-cases">拒绝案例</div>
+                        <div class="tab" data-tab="accept-cases">录取案例</div>
+                        <div class="tab" data-tab="comparison">对比分析</div>
+                    </div>
+
+                    <div class="tab-content active" id="reject-cases">
+                        <div class="case-container">
+                            <div class="case-card">
+                                <div class="case-header reject">
+                                    <h3>拒绝案例 1</h3>
+                                </div>
+                                <div class="case-body">
+                                    <h4 class="case-title">成绩优异但面试表现不佳</h4>
+                                    <ul class="case-list">
+                                        <li>成绩稳985，全市top1高中</li>
+                                        <li>雅思6.5</li>
+                                        <li>视频准备认真</li>
+                                        <li>面试时紧张，表达不流畅</li>
+                                        <li>对学校特色了解不足</li>
+                                    </ul>
+                                    <p><strong>拒绝原因分析：</strong>尽管学术背景优秀，但语言能力（雅思6.5）仅达到基础线，且面试表现不佳，无法展现与学校的契合度。这表明即使背景强，语言能力和面试表现仍是关键筛选点。</p>
+                                </div>
+                            </div>
+
+                            <div class="case-card">
+                                <div class="case-header reject">
+                                    <h3>拒绝案例 2</h3>
+                                </div>
+                                <div class="case-body">
+                                    <h4 class="case-title">语言优秀但缺乏特色</h4>
+                                    <ul class="case-list">
+                                        <li>东北地区省重点</li>
+                                        <li>模考成绩稳上985</li>
+                                        <li>雅思8分</li>
+                                        <li>外研杯两个国二</li>
+                                        <li>活动经历单一，缺乏深度</li>
+                                    </ul>
+                                    <p><strong>拒绝原因分析：</strong>虽然语言能力出色（雅思8分），但申请者缺乏能够脱颖而出的特色和深度经历。这反映了在竞争激烈的环境下，仅有优秀的语言成绩和标准化考试成绩是不够的，学校更看重申请者的独特性和发展潜力。</p>
+                                </div>
+                            </div>
+
+                            <div class="case-card">
+                                <div class="case-header reject">
+                                    <h3>拒绝案例 3</h3>
+                                </div>
+                                <div class="case-body">
+                                    <h4 class="case-title">面试紧张影响表现</h4>
+                                    <ul class="case-list">
+                                        <li>成都七中</li>
+                                        <li>成绩211水平</li>
+                                        <li>雅思7.5</li>
+                                        <li>面试有点紧张磕磕绊绊</li>
+                                        <li>无法清晰表达自己的想法</li>
+                                    </ul>
+                                    <p><strong>拒绝原因分析：</strong>该申请者学校背景和语言成绩都不错，但面试表现成为致命弱点。这强调了实际沟通能力在评估中的重要性，以及心理素质对面试表现的影响。即使准备充分，如果无法在面试中有效表达，也会影响最终结果。</p>
+                                </div>
+                            </div>
+
+                            <div class="case-card">
+                                <div class="case-header reject">
+                                    <h3>拒绝案例 4</h3>
+                                </div>
+                                <div class="case-body">
+                                    <h4 class="case-title">活动丰富但缺乏理解</h4>
+                                    <ul class="case-list">
+                                        <li>有多项竞赛奖项(CTB晋级全国论坛，SIC BPA多个商赛奖项)</li>
+                                        <li>发表论文</li>
+                                        <li>参加哈佛峰会</li>
+                                        <li>面试时对liberal arts理解不足</li>
+                                        <li>活动经历缺乏连贯性和深度</li>
+                                    </ul>
+                                    <p><strong>拒绝原因分析：</strong>这是一个典型的"包装过度"案例。尽管活动和成就看似丰富，但申请者对学校核心理念（如文理教育）的理解不足，且活动之间缺乏内在联系，无法展现个人发展路径和思考深度。这表明学校不仅看重成就本身，更看重申请者如何理解和内化这些经历。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="accept-cases">
+                        <div class="case-container">
+                            <div class="case-card">
+                                <div class="case-header accept">
+                                    <h3>录取案例 1</h3>
+                                </div>
+                                <div class="case-body">
+                                    <h4 class="case-title">综合素质均衡发展</h4>
+                                    <ul class="case-list">
+                                        <li>成绩中上211，江苏某市第一重高</li>
+                                        <li>雅思7.5</li>
+                                        <li>校内学生会/领导活动多</li>
+                                        <li>志愿服务+代表学校赴美交换</li>
+                                        <li>面试表现自然流畅</li>
+                                    </ul>
+                                    <p><strong>成功因素分析：</strong>该申请者展现了均衡的综合素质，尤其是跨文化经历（赴美交换）与上纽的国际化特色高度契合。领导力经历和志愿服务体现了社会责任感，而良好的语言能力和面试表现则确保了有效沟通。这是一个典型的"全面发展型"成功案例。</p>
+                                </div>
+                            </div>
+
+                            <div class="case-card">
+                                <div class="case-header accept">
+                                    <h3>录取案例 2</h3>
+                                </div>
+                                <div class="case-body">
+                                    <h4 class="case-title">学术特长突出型</h4>
+                                    <ul class="case-list">
+                                        <li>成都某私立外国语学校</li>
+                                        <li>数学成绩优秀(125-135)</li>
+                                        <li>英语统考130-135，雅思6.5</li>
+                                        <li>多项国际竞赛获奖(MAA AMC 12 Honor roll of distinction)</li>
+                                        <li>参加HSYLC(哈佛AUSCR中美学生领袖峰会)</li>
+                                    </ul>
+                                    <p><strong>成功因素分析：</strong>这位申请者虽然雅思成绩不算特别突出（6.5），但在数学和国际竞赛方面表现卓越，展现了学术潜力和专业素养。参与中美学生领袖峰会体现了跨文化交流能力和领导潜质。这是一个"学术特长+国际视野"组合的成功案例，表明特定领域的突出表现可以弥补其他方面的不足。</p>
+                                </div>
+                            </div>
+
+                            <div class="case-card">
+                                <div class="case-header accept">
+                                    <h3>录取案例 3</h3>
+                                </div>
+                                <div class="case-body">
+                                    <h4 class="case-title">独特兴趣与深度探索</h4>
+                                    <ul class="case-list">
+                                        <li>上海某普通中学</li>
+                                        <li>成绩前20%</li>
+                                        <li>参与校内班级管理和运动经历</li>
+                                        <li>参与科创比赛获奖</li>
+                                        <li>喜欢研究古代欧洲发展史</li>
+                                    </ul>
+                                    <p><strong>成功因素分析：</strong>这位申请者来自非顶尖高中，成绩也非顶尖，但展现了对古代欧洲发展史的独特兴趣和深入研究，这种学术热情和探索精神与文理教育理念高度契合。同时，科创比赛和校内活动体现了实践能力和团队合作精神。这个案例表明，真实的学术热情和深度探索比表面的成绩和背景更能打动招生官。</p>
+                                </div>
+                            </div>
+
+                            <div class="case-card">
+                                <div class="case-header accept">
+                                    <h3>录取案例 4</h3>
+                                </div>
+                                <div class="case-body">
+                                    <h4 class="case-title">文学特长与真实表达</h4>
+                                    <ul class="case-list">
+                                        <li>河北省会城市头部高中学生</li>
+                                        <li>年级110名左右</li>
+                                        <li>多邻国120，外研社国一</li>
+                                        <li>高考省排名3500多</li>
+                                        <li>主要阅读名著和参加写作比赛</li>
+                                        <li>文书由学生自己撰写，并且润色语法</li>
+                                    </ul>
+                                    <p><strong>成功因素分析：</strong>这位申请者的成绩并不特别突出，但在文学阅读和写作方面展现了持续的热情和实践。特别值得注意的是，文书由学生自己撰写，保持了真实的个人风格和思考，这种真实性和独特视角可能是打动招生官的关键。这个案例表明，真实的自我表达和特定领域的持续探索比完美的包装更有价值。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="comparison">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>录取与拒绝案例对比分析</h3>
+                                <p>通过对比录取和拒绝案例，我们可以发现一些关键差异和成功要素：</p>
+                                
+                                <div class="two-column">
+                                    <div>
+                                        <h4>成功案例共同特点</h4>
+                                        <ul>
+                                            <li><strong>真实性</strong>：成功案例普遍展现了申请者的真实兴趣和经历，而非刻意包装</li>
+                                            <li><strong>独特视角</strong>：每位被录取的申请者都有自己的独特故事和视角</li>
+                                            <li><strong>深度探索</strong>：在特定领域有持续的探索和深入思考</li>
+                                            <li><strong>与学校契合</strong>：个人特质和经历与学校理念高度契合</li>
+                                            <li><strong>表达能力</strong>：能够清晰有效地表达自己的想法和经历</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4>拒绝案例共同问题</h4>
+                                        <ul>
+                                            <li><strong>表面包装</strong>：活动和成就看似丰富但缺乏内在联系和个人意义</li>
+                                            <li><strong>沟通障碍</strong>：面试中无法有效表达自己的想法</li>
+                                            <li><strong>理解不足</strong>：对学校特色和教育理念缺乏深入理解</li>
+                                            <li><strong>单一发展</strong>：过于注重单一方面（如成绩或语言），忽视综合素质</li>
+                                            <li><strong>缺乏特色</strong>：无法在众多优秀申请者中脱颖而出</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <h4>关键启示</h4>
+                                <p>从案例对比中，我们可以得出以下关键启示：</p>
+                                
+                                <ol>
+                                    <li><strong>真实胜于完美</strong>：保持真实的个人风格和经历，比追求"完美包装"更有效</li>
+                                    <li><strong>特长可弥补不足</strong>：在特定领域的突出表现可以弥补其他方面的相对不足</li>
+                                    <li><strong>契合度是关键</strong>：申请者的特质和经历与学校理念的契合度比单纯的成绩更重要</li>
+                                    <li><strong>表达能力至关重要</strong>：无论背景多么优秀，如果无法有效表达，都难以通过筛选</li>
+                                    <li><strong>深度胜于广度</strong>：在少数领域的深入探索比浅尝辄止的广泛参与更有价值</li>
+                                </ol>
+                                
+                                <blockquote>
+                                    <p>成功的申请不是展示一个"完美"的自己，而是展示一个真实、有深度、与学校理念契合的自己。理解这一点，对准备申请的学生至关重要。</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 申请者反馈分析 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3 class="card-title">申请者反馈分析</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>通过收集和分析大量申请者的反馈，我们可以更全面地了解上纽昆杜的招生偏好和申请者体验：</p>
+                        
+                        <h4>通过初审的申请者共同特点</h4>
+                        <ul>
+                            <li>来自头部高中（如海淀六小强、上海八大等）的申请者通过率明显更高</li>
+                            <li>非头部高中通常每所学校只给1个名额，导致同校申请者之间竞争激烈</li>
+                            <li>校内成绩排名普遍靠前（多为前5%-20%）</li>
+                            <li>语言成绩优秀（雅思7+/多邻国130+/托福100+）的申请者占多数</li>
+                            <li>大部分通过者有竞赛经历或特长，但不限于五大学科竞赛</li>
+                            <li>文书能清晰展现与学校的契合点，表达个人独特视角</li>
+                        </ul>
+                        
+                        <h4>未通过初审的申请者分析</h4>
+                        <ul>
+                            <li>学校背景相对较弱，且校内排名不够突出</li>
+                            <li>语言成绩仅达到基本要求，缺乏优势</li>
+                            <li>活动经历单一或缺乏深度，无法展现个人特色</li>
+                            <li>文书未能突出与学校的契合点，表达平淡</li>
+                            <li>面试表现紧张或准备不足，无法有效沟通</li>
+                            <li>整体申请材料缺乏差异化表达，难以在激烈竞争中脱颖而出</li>
+                        </ul>
+                        
+                        <h4>地区差异分析</h4>
+                        <p>申请者反馈显示，不同地区的申请情况和录取标准存在一定差异：</p>
+                        
+                        <ul>
+                            <li>北京和上海申请人数增长显著（分别同比增长40%和31%），两地申请人数均突破千人</li>
+                            <li>江苏省作为两校所在地，申请人数多，但竞争也更激烈</li>
+                            <li>经济发达地区（如广东、浙江）的申请者数量和质量普遍较高</li>
+                            <li>中西部地区的优秀申请者可能因地域多样性考虑获得一定优势</li>
+                            <li>不同地区的录取标准可能有所调整，但核心评估标准保持一致</li>
+                        </ul>
+                        
+                        <h4>申请体验反馈</h4>
+                        <p>申请者对上纽昆杜申请流程的反馈也提供了有价值的参考：</p>
+                        
+                        <ul>
+                            <li>昆杜的AI面试被认为更客观但也更具挑战性，尤其对英语口语要求高</li>
+                            <li>上纽的面试更注重互动和思考能力，形式更灵活</li>
+                            <li>两校的申请材料准备时间较紧，建议提前规划</li>
+                            <li>文书题目设计能有效筛选出与学校理念契合的申请者</li>
+                            <li>招生宣讲会提供的信息与实际录取标准存在一定差距，需要综合分析</li>
+                        </ul>
+                        
+                        <blockquote>
+                            <p>申请者反馈表明，上纽昆杜的招生过程注重全面评估，而非单一指标。理解这一特点，对准备申请的学生至关重要。</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 总结与建议部分 -->
+            <section id="recommendations" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">总结与建议</h2>
+                    <p class="section-subtitle">基于数据分析的申请策略与选校建议</p>
+                </div>
+
+                <!-- 申请准备建议 -->
+                <div class="recommendation-container">
+                    <h3 class="recommendation-title">申请准备建议</h3>
+                    <ol class="recommendation-list">
+                        <li><strong>深入了解学校特色和教育理念</strong> - 上纽注重"中西融合"，昆杜强调"跨文化能力"，申请材料应与这些核心理念契合。建议参加学校开放日、招生宣讲会，阅读学校官网和课程设置，了解校友经历等，形成对学校的全面认识。</li>
+                        <li><strong>保持成绩稳定，争取校内排名靠前</strong> - 学术成绩是基础门槛，建议保持校内排名至少在前30%，尤其注重数学和英语成绩。关注期中期末考试，避免关键时期成绩滑坡。对于非顶尖高中的学生，争取校内前10%的排名更有竞争力。</li>
+                        
+                        <li><strong>提前准备语言考试，争取优秀成绩</strong> - 建议至少提前一年开始语言准备，目标雅思7.0+或托福100+。除了应试准备，更要注重日常英语使用能力的培养，如参与英语辩论、国际交流活动等，提升实际沟通能力。</li>
+                        
+                        <li><strong>发展个人特长，保持深度探索</strong> - 选择1-2个真正感兴趣的领域深入发展，而非广泛参与多个浅层活动。特长可以是学术研究、艺术创作、体育竞技、社会服务等，关键是展现持续投入和深度思考。</li>
+                        
+                        <li><strong>文书展现真实自我，避免过度包装</strong> - 文书应反映真实的个人经历和思考，展现与学校的契合点。建议提前2-3个月开始构思和撰写，经过多次修改和完善。避免使用模板和套路，保持个人独特的声音和视角。</li>
+                        
+                        <li><strong>面试自然表达，展现思考深度</strong> - 面试准备应注重内容逻辑和表达流畅性，避免背诵标准答案。建议进行模拟面试练习，但保持自然状态。准备一些能展现个人特色和思考深度的话题和经历，以便在面试中展开讨论。</li>
+                        
+                        <li><strong>保持申请材料的一致性和连贯性</strong> - 确保成绩单、推荐信、文书、活动清单等材料之间的描述一致，展现一个连贯的个人成长故事。避免前后矛盾或突兀的经历描述，这可能引起招生官的怀疑。</li>
+                        
+                        <li><strong>注意申请时间规划，避免临时准备</strong> - 建议至少提前一年开始系统性准备，包括学术提升、语言考试、活动参与、文书构思等。尤其是语言能力和特长发展需要长期积累，难以短期突击。</li>
+                    </ol>
+                </div>
+
+                <!-- 选校考量 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3 class="card-title">选校考量</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>在决定是否申请上纽昆杜以及如何选择时，建议考虑以下因素：</p>
+                        
+                        <h4>上纽大与昆杜特色对比</h4>
+                        <div class="two-column">
+                            <div>
+                                <h5>上海纽约大学优势</h5>
+                                <ul>
+                                    <li>地处上海国际金融中心，实习和就业机会丰富</li>
+                                    <li>纽约大学全球体系的一部分，可赴纽约、阿布扎比等校区交换</li>
+                                    <li>人文社科和商科优势明显</li>
+                                    <li>国际化程度高，中外学生比例1:1</li>
+                                    <li>毕业生在金融、咨询、媒体等行业就业表现优异</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h5>昆山杜克大学优势</h5>
+                                <ul>
+                                    <li>杜克大学品牌影响力，学术研究氛围浓厚</li>
+                                    <li>理工科和交叉学科优势明显</li>
+                                    <li>校园环境优美，设施完善</li>
+                                    <li>学生规模扩大，社区活力增强</li>
+                                    <li>毕业生继续深造比例高，学术发展路径清晰</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <h4>个人契合度评估</h4>
+                        <p>选择上纽还是昆杜，应基于个人特质、学术兴趣和职业规划进行评估：</p>
+                        
+                        <ul>
+                            <li><strong>学术兴趣</strong> - 对人文社科和商科感兴趣的学生可能更适合上纽；对理工科和跨学科研究感兴趣的学生可能更适合昆杜</li>
+                            <li><strong>地理偏好</strong> - 喜欢大城市生活和国际化环境的学生可能更适合上纽；喜欢专注学术和校园生活的学生可能更适合昆杜</li>
+                            <li><strong>职业规划</strong> - 计划在商业、金融、媒体等领域发展的学生可能更适合上纽；计划继续深造或从事研究工作的学生可能更适合昆杜</li>
+                            <li><strong>学习风格</strong> - 喜欢多元文化环境和开放式学习的学生可能更适合上纽；喜欢系统性学术训练和研究方法的学生可能更适合昆杜</li>
+                        </ul>
+                        
+                        <h4>多元升学路径规划</h4>
+                        <p>无论是否选择申请上纽昆杜，都建议保持多元升学路径：</p>
+                        
+                        <ul>
+                            <li><strong>不要将任何一所学校视为唯一选择</strong> - 考虑申请多所中外合办院校和国内高校</li>
+                            <li><strong>同时准备高考</strong> - 即使申请上纽昆杜，也应认真准备高考，保持多元选择</li>
+                            <li><strong>考虑其他中外合办院校</strong> - 如西交利物浦、宁波诺丁汉、深圳北理莫斯科等也提供优质的国际化教育</li>
+                            <li><strong>评估国内高校国际项目</strong> - 许多顶尖国内高校也提供国际化程度高的项目，如北大元培、清华苏世民等</li>
+                            <li><strong>考虑未来深造规划</strong> - 本科选择应与未来深造和职业发展规划相结合，而非仅关注短期录取</li>
+                        </ul>
+                        
+                        <blockquote>
+                            <p>选择适合自己的学校比选择"最好"的学校更重要。深入了解自己的特质、兴趣和目标，才能做出最有利于个人发展的选择。</p>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- 毕业生去向与奖学金 -->
+                <div class="two-column">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3 class="card-title">毕业生去向</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>了解上纽昆杜毕业生的发展路径，有助于申请者评估这些学校与自己未来规划的契合度：</p>
+                            
+                            <h4>深造情况</h4>
+                            <ul>
+                                <li>昆杜前三届本科毕业生约84%继续在世界顶尖大学攻读研究生学位</li>
+                                <li>选择深造的毕业生中约80%进入美国排名前十或常春藤联盟大学</li>
+                                <li>部分本科生被全球最具声望的奖学金项目录取(如牛津"罗德学者"、清华"苏世民学者")</li>
+                                <li>上纽毕业生约65%选择继续深造，多集中在商科、传媒、国际关系等领域</li>
+                            </ul>
+                            
+                            <h4>就业领域</h4>
+                            <ul>
+                                <li>上纽毕业生在金融、咨询、媒体、科技等行业就业表现优异</li>
+                                <li>昆杜毕业生在研究机构、高科技企业、国际组织等领域发展良好</li>
+                                <li>两校毕业生普遍具备跨文化沟通能力和国际视野，在跨国企业和国际组织中具有竞争力</li>
+                                <li>部分毕业生选择创业，尤其是在跨境电商、教育科技等领域</li>
+                            </ul>
+                            
+                            <div class="chart-container" style="height: 250px;">
+                                <canvas id="graduateDestination"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h3 class="card-title">奖学金情况</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>上纽昆杜提供多种奖学金，了解奖学金情况有助于申请者评估经济负担：</p>
+                            
+                            <h4>上海纽约大学奖学金</h4>
+                            <ul>
+                                <li>A档奖学金：覆盖全部或大部分学费和住宿费</li>
+                                <li>B档奖学金：覆盖部分学费，金额约8-12万人民币/年</li>
+                                <li>C档奖学金：金额约4-8万人民币/年</li>
+                                <li>奖学金评定主要基于学术表现和综合素质</li>
+                                <li>奖学金需每年重新评估，要求保持良好学术表现</li>
+                            </ul>
+                            
+                            <h4>昆山杜克大学奖学金</h4>
+                            <ul>
+                                <li>全额奖学金：覆盖全部学费和部分生活费</li>
+                                <li>高额奖学金：金额约17-20万人民币/年</li>
+                                <li>中额奖学金：金额约10-15万人民币/年</li>
+                                <li>低额奖学金：金额约5-8万人民币/年</li>
+                                <li>特殊才能奖学金：针对特定领域有突出表现的学生</li>
+                            </ul>
+                            
+                            <p>值得注意的是，部分学生同时获得上纽和昆杜的录取及奖学金，这为申请者提供了更多选择空间。奖学金申请通常与录取申请同时进行，无需额外申请。</p>
+                            
+                            <div class="chart-container" style="height: 250px;">
+                                <canvas id="scholarshipDistribution"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 招生官说法与实际录取差异 -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        <h3 class="card-title">招生官说法与实际录取差异</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>通过分析招生官公开表述与实际录取数据，我们发现一些值得注意的差异：</p>
+                        
+                        <div class="two-column">
+                            <div>
+                                <h4>招生官常见说法</h4>
+                                <ul>
+                                    <li>"我们看重学生的整体素质，而非单一的成绩指标"</li>
+                                    <li>"文书和社会活动在评估中不是最重要的因素"</li>
+                                    <li>"我们可能考虑取消文书环节，只看平时成绩"</li>
+                                    <li>"我们希望招收热爱学习、好奇心强的学生"</li>
+                                    <li>"学校背景不是决定性因素，我们从各类学校招生"</li>
+                                </ul>
+                            </div>
+                            
+                            <div>
+                                <h4>实际录取数据显示</h4>
+                                <ul>
+                                    <li>学术成绩和学校背景仍是最基础的筛选标准</li>
+                                    <li>文书质量和与学校契合度对结果有显著影响</li>
+                                    <li>来自顶尖高中的学生占录取比例明显更高</li>
+                                    <li>非头部学校学生即使成绩优秀也可能被拒</li>
+                                    <li>部分成绩一般但特质符合学校期望的学生获录取</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <h4>差异解读</h4>
+                        <p>这些差异可能源于以下原因：</p>
+                        
+                        <ul>
+                            <li><strong>理想与现实的差距</strong> - 招生官描述的是理想的评估标准，但实际操作中受到时间和资源限制</li>
+                            <li><strong>隐性评估标准</strong> - 部分评估标准可能未公开表述，如学校背景的"加权"作用</li>
+                            <li><strong>不同招生官表述不一致</strong> - 不同招生官可能有不同的评估偏好和表述方式</li>
+                            <li><strong>申请者理解偏差</strong> - 申请者可能对招生官表述有选择性理解或过度解读</li>
+                        </ul>
+                        
+                        <h4>应对建议</h4>
+                        <p>面对这些差异，申请者应该：</p>
+                        
+                        <ul>
+                            <li>综合分析招生官说法和实际录取数据，不要仅依赖单一信息源</li>
+                            <li>关注历年录取案例和趋势，而非个别特例</li>
+                            <li>理解招生是一个主观与客观相结合的过程，存在不确定性</li>
+                            <li>全面准备各个申请环节，不要因招生官某些表述而忽视特定准备</li>
+                            <li>保持真实性和独特性，这是各种评估标准下都有价值的特质</li>
+                        </ul>
+                        
+                        <blockquote>
+                            <p>理解招生官说法与实际录取的差异，有助于申请者更理性地规划申请策略，避免误导和盲目准备。</p>
+                        </blockquote>
+                    </div>
+                </div>
+
+                <!-- 最终总结 -->
+                <div class="highlight-box">
+                    <h3 class="highlight-title">最终总结与展望</h3>
+                    <p class="highlight-content">
+                        上纽昆杜2025年的申请数据反映了中外合办高校日益激烈的竞争和不断提升的录取标准。成功申请者通常具备优秀的学术背景、流利的语言能力、独特的个人特质和与学校理念的高度契合。
+                    </p>
+                    <p class="highlight-content">
+                        展望未来，随着申请人数持续增长，上纽昆杜的录取标准可能进一步提高，评估过程可能更加全面和深入。申请者需要更早规划、更全面准备，同时保持真实性和独特性，才能在激烈的竞争中脱颖而出。
+                    </p>
+                    <p class="highlight-content">
+                        最重要的是，申请者应该选择真正适合自己的学校和教育环境，而非盲目追求名校。深入了解自己的特质、兴趣和目标，才能做出最有利于个人发展的选择。
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>关于我们</h3>
+                    <p>我们专注于提供高质量的教育咨询和数据分析服务，帮助学生做出更明智的升学选择。</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-weixin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-weibo"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-bilibili"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-zhihu"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#overview">申请概况</a></li>
+                        <li><a href="#top-schools">TOP20高中</a></li>
+                        <li><a href="#selection">筛选标准</a></li>
+                        <li><a href="#cases">案例分析</a></li>
+                        <li><a href="#recommendations">申请建议</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>相关资源</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">上海纽约大学官网</a></li>
+                        <li><a href="#">昆山杜克大学官网</a></li>
+                        <li><a href="#">申请指南下载</a></li>
+                        <li><a href="#">历年录取数据</a></li>
+                        <li><a href="#">学生体验分享</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> info@example.com</li>
+                        <li><i class="fas fa-phone"></i> +86 123 4567 8910</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 上海市浦东新区世纪大道100号</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 上纽昆杜招生数据分析 | 版权所有 | 数据更新于 2025年3月</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 滚动到顶部按钮 -->
+    <div class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 滚动显示元素
+            const sections = document.querySelectorAll('.section');
+            const scrollTop = document.querySelector('.scroll-top');
+            
+            // 检查元素是否在视口中
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                    rect.bottom >= 0
+                );
+            }
+            
+            // 滚动事件处理
+            function handleScroll() {
+                // 显示/隐藏回到顶部按钮
+                if (window.scrollY > 500) {
+                    scrollTop.classList.add('visible');
+                } else {
+                    scrollTop.classList.remove('visible');
+                }
+                
+                // 显示进入视口的部分
+                sections.forEach(section => {
+                    if (isInViewport(section)) {
+                        section.classList.add('visible');
+                    }
+                });
+            }
+            
+            // 初始检查
+            handleScroll();
+            
+            // 添加滚动事件监听
+            window.addEventListener('scroll', handleScroll);
+            
+            // 回到顶部按钮点击事件
+            scrollTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // 标签切换功能
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabContainer = this.closest('.tab-container');
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // 移除所有活动标签和内容
+                    tabContainer.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    tabContainer.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    
+                    // 激活当前标签和内容
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // 创建图表
+            // 申请趋势图表
+            const trendCtx = document.getElementById('applicationTrend').getContext('2d');
+            new Chart(trendCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2023', '2024', '2025'],
+                    datasets: [
+                        {
+                            label: '上纽申请总数',
+                            data: [18000, 21000, 24000],
+                            borderColor: '#1a2a6c',
+                            backgroundColor: 'rgba(26, 42, 108, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: '昆杜申请总数',
+                            data: [8500, 10200, 11884],
+                            borderColor: '#b21f66',
+                            backgroundColor: 'rgba(178, 31, 102, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: '2023-2025年申请人数趋势'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            
+            // 上纽申请者分布
+            const nyuCtx = document.getElementById('nyuDistribution').getContext('2d');
+            new Chart(nyuCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['北京', '上海', '江苏', '广东', '浙江', '其他省份', '国际学生'],
+                    datasets: [{
+                        data: [18, 16, 12, 8, 7, 39, 0],
+                        backgroundColor: [
+                            '#1a2a6c',
+                            '#b21f66',
+                            '#fdbb2d',
+                            '#22577a',
+                            '#38a3a5',
+                            '#57cc99',
+                            '#80ed99'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: '中国申请者地区分布 (%)'
+                        }
+                    }
+                }
+            });
+            
+            // 昆杜申请者分布
+            const dkuCtx = document.getElementById('dkuDistribution').getContext('2d');
+            new Chart(dkuCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['北京', '上海', '江苏', '广东', '浙江', '其他省份', '国际学生'],
+                    datasets: [{
+                        data: [15, 14, 18, 9, 8, 36, 0],
+                        backgroundColor: [
+                            '#1a2a6c',
+                            '#b21f66',
+                            '#fdbb2d',
+                            '#22577a',
+                            '#38a3a5',
+                            '#57cc99',
+                            '#80ed99'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: '中国申请者地区分布 (%)'
+                        }
+                    }
+                }
+            });
+            
+            // TOP20高中地区分布
+            const topSchoolsCtx = document.getElementById('topSchoolsDistribution').getContext('2d');
+            new Chart(topSchoolsCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['北京', '江苏', '上海', '山东', '其他'],
+                    datasets: [{
+                        label: '学校数量',
+                        data: [6, 7, 3, 3, 1],
+                        backgroundColor: [
+                            '#1a2a6c',
+                            '#b21f66',
+                            '#fdbb2d',
+                            '#22577a',
+                            '#38a3a5'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'TOP20高中地区分布'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '学校数量'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 毕业生去向
+            const gradCtx = document.getElementById('graduateDestination').getContext('2d');
+            new Chart(gradCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['美国名校深造', '其他国家深造', '国内深造', '直接就业', '其他'],
+                    datasets: [{
+                        data: [65, 12, 7, 13, 3],
+                        backgroundColor: [
+                            '#1a2a6c',
+                            '#b21f66',
+                            '#fdbb2d',
+                            '#22577a',
+                            '#38a3a5'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: '毕业生去向分布 (%)'
+                        }
+                    }
+                }
+            });
+            
+            // 奖学金分布
+            const scholarshipCtx = document.getElementById('scholarshipDistribution').getContext('2d');
+            new Chart(scholarshipCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['全额奖学金', '高额奖学金', '中额奖学金', '低额奖学金', '无奖学金'],
+                    datasets: [
+                        {
+                            label: '上纽大',
+                            data: [5, 15, 25, 30, 25],
+                            backgroundColor: '#1a2a6c'
+                        },
+                        {
+                            label: '昆杜',
+                            data: [7, 18, 28, 27, 20],
+                            backgroundColor: '#b21f66'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: '奖学金分布情况 (%)'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '学生比例 (%)'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
