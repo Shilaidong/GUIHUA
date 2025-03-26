@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>食品安全专业 - 名校申请与职业发展</title>
+    <title>刘欣容 - 精致留学方案</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap');
+        :root {
+            --primary-color: #4942A6;
+            --secondary-color: #6A66A3;
+            --accent-color: #D0A062;
+            --text-color: #333;
+            --light-text: #767676;
+            --background: #F8F8F8;
+            --card-bg: #FFFFFF;
+            --dark-bg: #2A2D45;
+            --border-radius: 8px;
+            --border-color: rgba(73, 66, 166, 0.1);
+            --animation-duration: 0.8s;
+            --spacing-unit: 8px;
+        }
         
         * {
             margin: 0;
@@ -14,385 +33,1645 @@
         }
         
         body {
-            font-family: 'Raleway', sans-serif;
-            color: #333;
-            background-color: #f9f9f9;
+            font-family: 'Noto Sans SC', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        header {
-            background-color: #1a1a1a;
-            color: #fff;
-            padding: 60px 0;
-            text-align: center;
-        }
-        
-        .header-content {
-            max-width: 800px;
-            margin: 0 auto;
+        h1, h2, h3, h4, h5 {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 600;
+            line-height: 1.3;
         }
         
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: calc(var(--spacing-unit) * 5);
+            color: var(--primary-color);
         }
         
         h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: #1a1a1a;
-            font-weight: 600;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            margin-bottom: calc(var(--spacing-unit) * 4);
             position: relative;
-            padding-bottom: 15px;
+            display: inline-block;
         }
         
-        h2:after {
+        h2::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 80px;
+            width: 60%;
             height: 3px;
-            background-color: #c9a36f;
+            background-color: var(--accent-color);
+            bottom: -8px;
+            left: 0;
+            transition: width 0.4s ease;
+        }
+        
+        h2:hover::after {
+            width: 100%;
         }
         
         h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #1a1a1a;
-            font-weight: 500;
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            color: var(--primary-color);
         }
         
         p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            line-height: 1.8;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            font-size: clamp(1rem, 1.1vw, 1.1rem);
         }
         
-        .subtitle {
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 calc(var(--spacing-unit) * 3);
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: calc(var(--spacing-unit) * 4) 0;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: calc(var(--spacing-unit) * 2);
+        }
+        
+        .logo-text {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 700;
             font-size: 1.5rem;
-            color: #c9a36f;
-            margin-bottom: 20px;
-            font-weight: 300;
+            color: var(--primary-color);
         }
         
-        .gold-text {
-            color: #c9a36f;
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: calc(var(--spacing-unit) * 6) 0;
         }
         
-        .section {
-            padding: 80px 0;
-            background-color: #fff;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        .hero-background {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background-color: rgba(73, 66, 166, 0.03);
+            clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+            z-index: -1;
         }
         
-        .section-dark {
-            background-color: #1a1a1a;
-            color: #fff;
+        .hero-content {
+            max-width: 60%;
+            position: relative;
         }
         
-        .section-dark h2 {
-            color: #fff;
+        .hero-accent {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            opacity: 0.1;
+            top: -40px;
+            left: -60px;
+            z-index: -1;
         }
         
-        .school-card {
-            margin-bottom: 30px;
-            background-color: #fff;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        .hero h1 {
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+            color: var(--secondary-color);
+            margin-bottom: calc(var(--spacing-unit) * 5);
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: calc(var(--spacing-unit) * 2);
+            margin-top: calc(var(--spacing-unit) * 4);
+        }
+        
+        .btn {
+            padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
             transition: all 0.3s ease;
-            padding: 25px;
+            font-size: 1rem;
         }
         
-        .school-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
         }
         
-        .school-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: #1a1a1a;
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--primary-color);
         }
         
-        .school-rank {
-            color: #c9a36f;
-            font-weight: 600;
-            margin-bottom: 15px;
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* University Cards Section */
+        .university-section {
+            padding: calc(var(--spacing-unit) * 10) 0;
+        }
+        
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto calc(var(--spacing-unit) * 8) auto;
+        }
+        
+        .university-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: calc(var(--spacing-unit) * 4);
+            margin-top: calc(var(--spacing-unit) * 6);
+        }
+        
+        .university-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            padding: calc(var(--spacing-unit) * 3);
+            border: 1px solid var(--border-color);
+        }
+        
+        .university-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+        
+        .university-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--background);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            border: 1px solid var(--border-color);
+        }
+        
+        .university-logo img {
+            max-width: 60%;
+            max-height: 60%;
+        }
+        
+        .university-rank {
+            display: inline-block;
+            padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 1);
+            background-color: rgba(73, 66, 166, 0.1);
+            color: var(--primary-color);
+            border-radius: calc(var(--border-radius) / 2);
+            font-size: 0.9rem;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+        
+        .university-name {
+            font-size: 1.4rem;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            color: var(--primary-color);
+        }
+        
+        .university-program {
             font-size: 1.1rem;
+            margin-bottom: calc(var(--spacing-unit) * 2);
         }
         
-        .career-path {
-            margin-bottom: 50px;
-            padding: 25px;
-            background-color: #fff;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        .university-info {
+            margin-top: calc(var(--spacing-unit) * 3);
         }
         
-        .path-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-            color: #1a1a1a;
-            border-left: 4px solid #c9a36f;
-            padding-left: 15px;
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: calc(var(--spacing-unit) * 1.5);
+        }
+        
+        .info-label {
+            font-weight: 500;
+            width: 110px;
+            flex-shrink: 0;
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        .info-value {
+            font-weight: 600;
+            flex-grow: 1;
+        }
+        
+        /* Chart Section */
+        .stats-section {
+            padding: calc(var(--spacing-unit) * 10) 0;
+            background-color: var(--dark-bg);
+            color: white;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--spacing-unit) * 6);
+            align-items: center;
+        }
+        
+        .stats-text h2,
+        .stats-text h3 {
+            color: white;
+        }
+        
+        .stats-text h2::after {
+            background-color: var(--accent-color);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            padding: calc(var(--spacing-unit) * 2);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            padding: calc(var(--spacing-unit) * 10) 0;
         }
         
         .timeline {
             position: relative;
-            padding: 30px 0;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: calc(var(--spacing-unit) * 5) 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .timeline-item {
+            padding: calc(var(--spacing-unit) * 2) 0;
+            position: relative;
+            width: 50%;
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
+            flex-direction: column;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            align-self: flex-end;
+            padding-left: calc(var(--spacing-unit) * 4);
+        }
+        
+        .timeline-item:nth-child(even) {
+            align-self: flex-start;
+            padding-right: calc(var(--spacing-unit) * 4);
+            margin-left: auto;
+            text-align: right;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-color);
+            border: 4px solid var(--background);
+            border-radius: 50%;
+            top: calc(var(--spacing-unit) * 4);
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-marker {
+            left: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-marker {
+            right: -10px;
+        }
+        
+        .timeline-date {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: calc(var(--spacing-unit) * 1);
         }
         
         .timeline-content {
-            width: 48%;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            background-color: var(--card-bg);
+            padding: calc(var(--spacing-unit) * 3);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             position: relative;
-            margin-bottom: 20px;
         }
         
-        .timeline-year {
-            color: #c9a36f;
-            font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
+        .timeline-content h3 {
+            margin-bottom: calc(var(--spacing-unit) * 2);
         }
         
-        @media (max-width: 768px) {
-            .timeline-content {
-                width: 100%;
-            }
+        /* Application Process */
+        .process-section {
+            padding: calc(var(--spacing-unit) * 10) 0;
+            background-color: rgba(73, 66, 166, 0.03);
         }
         
-        .success-factors {
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: calc(var(--spacing-unit) * 4);
+            margin-top: calc(var(--spacing-unit) * 6);
+        }
+        
+        .process-step {
+            padding: calc(var(--spacing-unit) * 3);
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .step-number {
+            position: absolute;
+            font-size: 8rem;
+            font-weight: 700;
+            color: rgba(73, 66, 166, 0.05);
+            top: -20px;
+            right: -10px;
+            z-index: -1;
+            font-family: 'Noto Serif SC', serif;
+        }
+        
+        .step-title {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: calc(var(--spacing-unit) * 10) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(73, 66, 166, 0.05) 0%, rgba(73, 66, 166, 0) 100%);
+            z-index: -1;
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-box {
+            background-color: var(--card-bg);
+            padding: calc(var(--spacing-unit) * 6) calc(var(--spacing-unit) * 4);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 1;
+            border: 1px solid var(--border-color);
+        }
+        
+        .cta-title {
+            color: var(--primary-color);
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+        
+        .cta-accent {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        .cta-accent.top-right {
+            top: -50px;
+            right: -50px;
+        }
+        
+        .cta-accent.bottom-left {
+            bottom: -50px;
+            left: -50px;
+        }
+        
+            /* 就业与专业分析部分 */
+        .career-analysis-section {
+            padding: calc(var(--spacing-unit) * 10) 0;
+            background-color: rgba(73, 66, 166, 0.02);
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: calc(var(--spacing-unit) * 4);
+            margin-top: calc(var(--spacing-unit) * 6);
+        }
+
+        .analysis-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: calc(var(--spacing-unit) * 4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            flex-direction: column;
         }
-        
-        .factor-column {
-            width: 48%;
-            margin-bottom: 20px;
+
+        .analysis-card h3 {
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            color: var(--primary-color);
+            position: relative;
         }
-        
-        @media (max-width: 768px) {
-            .factor-column {
-                width: 100%;
+
+        .analysis-card h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: -8px;
+            left: 0;
+        }
+
+        .chart-wrapper {
+            height: 250px;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+
+        .analysis-text {
+            margin-top: auto;
+        }
+
+        /* 职业发展路径 */
+        .career-path {
+            position: relative;
+            padding: calc(var(--spacing-unit) * 2) 0;
+        }
+
+        .career-path::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 15px;
+            width: 2px;
+            background-color: var(--border-color);
+        }
+
+        .path-node {
+            position: relative;
+            padding-left: calc(var(--spacing-unit) * 5);
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+
+        .node-dot {
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            border: 5px solid var(--card-bg);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .node-content {
+            background-color: rgba(73, 66, 166, 0.05);
+            padding: calc(var(--spacing-unit) * 2);
+            border-radius: var(--border-radius);
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .node-content h4 {
+            color: var(--primary-color);
+            margin-bottom: calc(var(--spacing-unit) * 1);
+            font-size: 1.1rem;
+        }
+
+        @media screen and (max-width: 992px) {
+            .analysis-grid {
+                grid-template-columns: 1fr;
             }
         }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: calc(var(--spacing-unit) * 8) 0 calc(var(--spacing-unit) * 4);
+        }
+  
+      
+      
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: calc(var(--spacing-unit) * 8) 0 calc(var(--spacing-unit) * 4);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: calc(var(--spacing-unit) * 6);
+            margin-bottom: calc(var(--spacing-unit) * 6);
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            margin-right: calc(var(--spacing-unit) * 2);
+        }
+        
+        .footer-logo-text {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: white;
+        }
+        
+        .footer-links h3,
+        .footer-contact h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: calc(var(--spacing-unit) * 1.5);
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            align-items: flex-start;
+        }
+        
+        .contact-icon {
+            margin-right: calc(var(--spacing-unit) * 1.5);
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+        
+        .contact-text {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: calc(var(--spacing-unit) * 3);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .fade-in {
+            opacity: 0;
+        }
+        
+        .fade-right {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        
+        .fade-left {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        
+        /* Responsive */
+        @media screen and (max-width: 992px) {
+            .hero-content {
+                max-width: 80%;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 40px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: calc(var(--spacing-unit) * 8) !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+            }
+            
+            .timeline-marker {
+                left: 30px !important;
+                right: auto !important;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .hero-content {
+                max-width: 100%;
+            }
+            
+            .hero-background {
+                width: 100%;
+                clip-path: none;
+            }
+            
+            .cta-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+      
+      
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1>食品安全专业 - 名校申请与职业发展</h1>
-            <p class="subtitle">专业硕士留学规划与职业发展蓝图</p>
-        </div>
-    </header>
-    
     <div class="container">
-        <section class="section">
-            <h2>专业方向概览</h2>
-            <p>食品安全与质量管理是当代社会不可或缺的重要领域，涉及食品生产、加工、流通及消费全链条的质量控制与安全保障。随着全球食品贸易的日益频繁和消费者对食品安全意识的提高，该领域的人才需求持续扩大，专业前景广阔。</p>
-            
-            <p>作为一名南京中医药大学食品安全专业的学生，您已经获得了食品安全方面的专业基础知识。通过攻读全球顶尖学府的硕士学位，您将进一步拓展国际视野，掌握前沿技术与管理理念，为未来在监管部门或跨国企业的职业发展奠定坚实基础。</p>
-        </section>
-        
-        <section class="section section-dark">
-            <div class="container">
-                <h2>申请专业与院校</h2>
-                <p>根据您的学术背景和职业规划，我们精选了以下全球顶尖院校的相关专业，这些院校不仅在学术研究上享有盛誉，其毕业生也备受雇主青睐。</p>
+        <header class="header">
+            <div class="logo">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%234942A6' d='M50 5C25.1 5 5 25.1 5 50s20.1 45 45 45 45-20.1 45-45S74.9 5 50 5zm0 80c-19.3 0-35-15.7-35-35s15.7-35 35-35 35 15.7 35 35-15.7 35-35 35z'/%3E%3Cpath fill='%23D0A062' d='M65 40H45v-5h20v5zm0 10H45v5h20v-5zm-30 0h5v5h-5v-5zm0-10h5v-5h-5v5z'/%3E%3C/svg%3E" alt="Logo">
+                <div class="logo-text">AFY留学</div>
             </div>
-        </section>
-        
-        <section class="section">
-            <h3>香港地区顶尖院校</h3>
-            
-            <div class="school-card">
-                <h4 class="school-name">香港大学</h4>
-                <p class="school-rank">全球排名：QS第17位</p>
-                <h5>食品安全和毒理学理学硕士</h5>
-                <p>该项目注重食品安全监管和毒理学的专业培养，课程涵盖食品中的化学和微生物危害、毒理学原理以及监管毒理学等内容。毕业生能够胜任食品安全监管部门的高级职位，负责制定和执行食品安全标准，是通往体制内高级职位的理想途径。</p>
-                <p><strong class="gold-text">职业发展方向：</strong> 食品药品监督管理局、海关、检验检疫部门、卫生监督部门</p>
+        </header>
+    </div>
+    
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-accent"></div>
+                <h1 class="fade-up">刘欣容 - 精致留学方案</h1>
+                <p class="hero-subtitle fade-up">为您量身定制的香港与新加坡顶尖高校申请规划</p>
+                <p class="fade-up">基于您的专业背景与职业规划，我们精心挑选了10所世界排名前列的院校，涵盖食品科学、营养学与健康管理等专业方向，助您实现留学梦想。</p>
+                <div class="cta-group fade-up">
+                    <a href="#universities" class="btn btn-primary">浏览推荐院校</a>
+                    <a href="#timeline" class="btn btn-secondary">申请时间规划</a>
+                </div>
             </div>
-            
-            <div class="school-card">
-                <h4 class="school-name">香港大学</h4>
-                <p class="school-rank">全球排名：QS第17位</p>
-                <h5>食品工业领域理学硕士：管理和营销</h5>
-                <p>该项目将食品科学与商业管理紧密结合，培养学生在食品加工、质量管理、市场研究、财务规划和产品开发等方面的综合能力。课程设置兼顾理论与实践，注重培养学生的领导力和战略思维，为食品行业的商业决策提供理论支持。</p>
-                <p><strong class="gold-text">职业发展方向：</strong> 跨国食品企业管理岗位、食品安全咨询机构、食品行业监管部门</p>
+        </div>
+    </section>
+    
+    <section id="universities" class="university-section">
+        <div class="container">
+            <div class="section-intro fade-up">
+                <h2>院校推荐</h2>
+                <p>基于您的食品安全专业背景，我们精选了以下院校与专业，它们不仅在全球排名卓越，而且与您的职业规划高度契合。</p>
             </div>
             
-            <div class="school-card">
-                <h4 class="school-name">香港中文大学</h4>
-                <p class="school-rank">全球排名：QS第36位</p>
-                <h5>营养、食品科学与技术硕士</h5>
-                <p>香港中文大学的这一专业是多学科交叉的前沿课程，将营养学、食品科学和食品技术相结合。学生将深入研究食品的化学、物理和微生物特性，掌握现代食品加工技术，并了解营养与健康的关系。该项目培养的复合型人才在食品企业和健康产业具有广阔的发展空间。</p>
-                <p><strong class="gold-text">职业发展方向：</strong> 食品研发部门、营养咨询机构、健康食品产业、食品标准制定机构</p>
+            <div class="university-grid">
+                <div class="university-card fade-up">
+                    <div class="card-accent"></div>
+                    <div class="university-logo">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%234942A6' d='M20 30h60v40H20z'/%3E%3Cpath fill='%23D0A062' d='M50 20L30 30h40z'/%3E%3Cpath fill='%23D0A062' d='M45 50h10v10H45z'/%3E%3C/svg%3E" alt="NUS Logo">
+                    </div>
+                    <div class="university-rank">QS全球排名：#8</div>
+                    <h3 class="university-name">新加坡国立大学</h3>
+                    <div class="university-program">食品科学与人类营养学硕士</div>
+                    <div class="university-info">
+                        <div class="info-item">
+                            <span class="info-label">学费：</span>
+                            <span class="info-value">48,000新元/年</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">语言要求：</span>
+                            <span class="info-value">雅思 6.0</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">申请截止：</span>
+                            <span class="info-value">2024年3月15日</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="university-card fade-up">
+                    <div class="card-accent"></div>
+                    <div class="university-logo">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%234942A6' d='M20 30h60v40H20z'/%3E%3Cpath fill='%23D0A062' d='M50 20L30 30h40z'/%3E%3Cpath fill='%23D0A062' d='M45 50h10v10H45z'/%3E%3C/svg%3E" alt="NUS Logo">
+                    </div>
+                    <div class="university-rank">QS全球排名：#8</div>
+                    <h3 class="university-name">新加坡国立大学</h3>
+                    <div class="university-program">营养与生活方式医学硕士</div>
+                    <div class="university-info">
+                        <div class="info-item">
+                            <span class="info-label">学费：</span>
+                            <span class="info-value">待定</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">语言要求：</span>
+                            <span class="info-value">雅思 6.0</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">申请截止：</span>
+                            <span class="info-value">2024年9月30日</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="university-card fade-up">
+                    <div class="card-accent"></div>
+                    <div class="university-logo">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle fill='%234942A6' cx='50' cy='50' r='30'/%3E%3Cpath fill='%23D0A062' d='M50 25L30 60h40z'/%3E%3C/svg%3E" alt="NTU Logo">
+                    </div>
+                    <div class="university-rank">QS全球排名：#15</div>
+                    <h3 class="university-name">新加坡南洋理工大学</h3>
+                    <div class="university-program">精密科学仪器硕士</div>
+                    <div class="university-info">
+                        <div class="info-item">
+                            <span class="info-label">学费：</span>
+                            <span class="info-value">45,780新元/年</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">语言要求：</span>
+                            <span class="info-value">雅思 6.0</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">申请截止：</span>
+                            <span class="info-value">2025年2月28日</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="university-card fade-up">
+                    <div class="card-accent"></div>
+                    <div class="university-logo">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle fill='%234942A6' cx='50' cy='50' r='30'/%3E%3Cpath fill='%23D0A062' d='M50 25                    <path fill='%23D0A062' d='M50 25L30 60h40z'/%3E%3C/svg%3E" alt="NTU Logo">
+                    </div>
+                    <div class="university-rank">QS全球排名：#15</div>
+                    <h3 class="university-name">新加坡南洋理工大学</h3>
+                    <div class="university-program">生物商务与生物创业硕士</div>
+                    <div class="university-info">
+                        <div class="info-item">
+                            <span class="info-label">学费：</span>
+                            <span class="info-value">65,400新元/年</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">语言要求：</span>
+                            <span class="info-value">雅思 7.0</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">申请截止：</span>
+                            <span class="info-value">2025年5月31日</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="university-card fade-up">
+                    <div class="card-accent"></div>
+                    <div class="university-logo">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%234942A6' x='20' y='20' width='60' height='60'/%3E%3Cpath fill='%23D0A062' d='M50 35L35 55h30z'/%3E%3C/svg%3E" alt="HKU Logo">
+                    </div>
+                    <div class="university-rank">QS全球排名：#17</div>
+                    <h3 class="university-name">香港大学</h3>
+                    <div class="university-program">食品安全和毒理学理学硕士</div>
+                    <div class="university-info">
+                        <div class="info-item">
+                            <span class="info-label">学费：</span>
+                            <span class="info-value">190,000港币/年</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">语言要求：</span>
+                            <span class="info-value">雅思 6.0，小分5.5</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">申请截止：</span>
+                            <span class="info-value">2025年4月30日</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="university-card fade-up">
+                    <div class="card-accent"></div>
+                    <div class="university-logo">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%234942A6' x='20' y='20' width='60' height='60'/%3E%3Cpath fill='%23D0A062' d='M50 35L35 55h30z'/%3E%3C/svg%3E" alt="HKU Logo">
+                    </div>
+                    <div class="university-rank">QS全球排名：#17</div>
+                    <h3 class="university-name">香港大学</h3>
+                    <div class="university-program">食品工业领域理学硕士：管理和营销</div>
+                    <div class="university-info">
+                        <div class="info-item">
+                            <span class="info-label">学费：</span>
+                            <span class="info-value">195,000港币/年</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">语言要求：</span>
+                            <span class="info-value">雅思 6.0，小分5.5</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">申请截止：</span>
+                            <span class="info-value">2025年3月31日</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="university-card fade-up">
+                    <div class="card-accent"></div>
+                    <div class="university-logo">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle fill='%234942A6' cx='50' cy='50' r='25'/%3E%3Cpath fill='%23D0A062' d='M50 30L30 70h40z'/%3E%3C/svg%3E" alt="CUHK Logo">
+                    </div>
+                    <div class="university-rank">QS全球排名：#36</div>
+                    <h3 class="university-name">香港中文大学</h3>
+                    <div class="university-program">营养、食品科学与技术硕士</div>
+                    <div class="university-info">
+                        <div class="info-item">
+                            <span class="info-label">学费：</span>
+                            <span class="info-value">157,500港币/年</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">语言要求：</span>
+                            <span class="info-value">雅思 6.5</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">申请截止：</span>
+                            <span class="info-value">2025年3月31日</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="university-card fade-up">
+                    <div class="card-accent"></div>
+                    <div class="university-logo">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%234942A6' d='M25 25h50v50H25z'/%3E%3Cpath fill='%23D0A062' d='M35 35h30v5H35zM35 45h30v5H35zM35 55h30v5H35z'/%3E%3C/svg%3E" alt="HKUST Logo">
+                    </div>
+                    <div class="university-rank">QS全球排名：#47</div>
+                    <h3 class="university-name">香港科技大学</h3>
+                    <div class="university-program">环境健康与安全硕士</div>
+                    <div class="university-info">
+                        <div class="info-item">
+                            <span class="info-label">学费：</span>
+                            <span class="info-value">145,000港币/年</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">语言要求：</span>
+                            <span class="info-value">雅思 6.5，小分5.5</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">申请截止：</span>
+                            <span class="info-value">2025年6月1日</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="university-card fade-up">
+                    <div class="card-accent"></div>
+                    <div class="university-logo">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%234942A6' d='M30 30h40v40H30z'/%3E%3Cpath fill='%23D0A062' d='M40 40h20v20H40z'/%3E%3C/svg%3E" alt="PolyU Logo">
+                    </div>
+                    <div class="university-rank">QS全球排名：#57</div>
+                    <h3 class="university-name">香港理工大学</h3>
+                    <div class="university-program">营养与健康活龄理学硕士（营养学实践）</div>
+                    <div class="university-info">
+                        <div class="info-item">
+                            <span class="info-label">学费：</span>
+                            <span class="info-value">190,200港币/年</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">语言要求：</span>
+                            <span class="info-value">雅思 6.5，小分6.0</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">申请截止：</span>
+                            <span class="info-value">2025年4月30日</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="university-card fade-up">
+                    <div class="card-accent"></div>
+                    <div class="university-logo">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle fill='%234942A6' cx='50' cy='50' r='30'/%3E%3Cpath fill='%23D0A062' d='M35 50h30v5H35z'/%3E%3Cpath fill='%23D0A062' d='M35 40h30v5H35z'/%3E%3Cpath fill='%23D0A062' d='M35 60h30v5H35z'/%3E%3C/svg%3E" alt="CityU Logo">
+                    </div>
+                    <div class="university-rank">QS全球排名：#62</div>
+                    <h3 class="university-name">香港城市大学</h3>
+                    <div class="university-program">健康科学与管理硕士</div>
+                    <div class="university-info">
+                        <div class="info-item">
+                            <span class="info-label">学费：</span>
+                            <span class="info-value">201,000港币/年</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">语言要求：</span>
+                            <span class="info-value">雅思 6.5</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">申请截止：</span>
+                            <span class="info-value">2025年4月30日</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="school-card">
-                <h4 class="school-name">香港理工大学</h4>
-                <p class="school-rank">全球排名：QS第57位</p>
-                <h5>营养与健康活龄理学硕士</h5>
-                <p>该项目聚焦于营养、食品与健康的关系，尤其关注人口老龄化背景下的健康营养需求。课程设置全面涵盖营养评估、营养教育与咨询、公共健康营养学等内容，培养具有专业实践能力的营养师和健康管理人才。</p>
-                <p><strong class="gold-text">职业发展方向：</strong> 健康食品行业、营养咨询、公共卫生部门、健康管理机构</p>
+        </div>
+    </section>
+    
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stats-text fade-right">
+                    <h2>申请数据分析</h2>
+                    <p>我们对近三年申请数据进行了分析，帮助您了解不同学校的竞争情况和接受率。根据您的背景，我们评估了您在各校的录取概率，助您做出更明智的申请决策。</p>
+                    <h3>核心要点</h3>
+                    <p>• 香港大学录取竞争激烈，GPA达85分以上才有较高把握</p>
+                    <p>• 新加坡高校相对更看重实习经历和专业匹配度</p>
+                    <p>• 对于双非院校申请者，香港理工和城市大学更有机会</p>
+                    <p>• 实习经历对食品安全/监管方向的申请尤为重要</p>
+                </div>
+                <div class="chart-container fade-left">
+                    <canvas id="admissionChart"></canvas>
+                </div>
             </div>
-        </section>
-        
-        <section class="section">
-            <h3>新加坡顶尖院校</h3>
-            
-            <div class="school-card">
-                <h4 class="school-name">新加坡国立大学</h4>
-                <p class="school-rank">全球排名：QS第8位</p>
-                <h5>食品科学与人类营养学硕士</h5>
-                <p>新加坡国立大学的这一项目是亚洲地区食品科学领域的顶尖课程，提供全面的食品科学专业教育，包括食品生物科学、现代食品加工技术、功能性食品和人类营养等内容。该课程与新加坡食品产业紧密合作，为学生提供丰富的实践机会。</p>
-                <p><strong class="gold-text">职业发展方向：</strong> 国际食品企业、食品研发中心、食品安全监管机构、营养研究机构</p>
+        </div>
+    </section>
+    
+    <section id="timeline" class="timeline-section">
+        <div class="container">
+            <div class="section-intro fade-up">
+                <h2>申请时间规划</h2>
+                <p>我们为您制定了详细的申请时间表，确保您能在每个关键节点做好充分准备。从成绩提升到材料准备，从语言考试到最终录取，全程无忧。</p>
             </div>
-            
-            <div class="school-card">
-                <h4 class="school-name">新加坡南洋理工大学</h4>
-                <p class="school-rank">全球排名：QS第15位</p>
-                <h5>精密科学仪器硕士</h5>
-                <p>该项目虽非直接的食品专业，但其培养的精密仪器领域的专业知识对食品安全检测至关重要。学生将掌握先进的分析技术和仪器操作，这些技能在食品安全检测、质量控制和新型检测方法开发方面有重要应用价值，尤其适合希望专注于食品检测技术发展的学生。</p>
-                <p><strong class="gold-text">职业发展方向：</strong> 食品检测机构、实验室管理、科学仪器研发、医疗器械质量体系</p>
-            </div>
-        </section>
-        
-        <section class="section section-dark">
-            <div class="container">
-                <h2>职业发展规划</h2>
-                <p>基于您的专业背景和求职意向，以下职业发展路径将帮助您实现从学术到职场的平稳过渡，并在食品安全与管理领域实现长期职业成功。</p>
-            </div>
-        </section>
-        
-        <section class="section">
-            <h3>核心职业发展路径</h3>
-            
-            <div class="career-path">
-                <h4 class="path-title">食品监管与检验路径（体制内）</h4>
-                <p>这一路径适合希望进入政府监管部门的毕业生，包括食品药品监督管理局、质量监督检验检疫局、海关等机构。</p>
-                <p><strong class="gold-text">职位晋升路线：</strong> 检验员/助理检验师 → 检验师 → 高级检验师 → 部门主管 → 部门负责人</p>
-                <p><strong class="gold-text">薪资预期：</strong> 起薪8,000-12,000元/月，5年后可达25,000-30,000元/月</p>
-                <p><strong class="gold-text">职业优势：</strong> 工作稳定性高，社会保障完善，发展路径清晰，具有较高社会地位</p>
-            </div>
-            
-            <div class="career-path">
-                <h4 class="path-title">企业质量管理路径</h4>
-                <p>这一路径适合希望在跨国食品企业或大型食品制造商工作的毕业生，负责质量体系建设和管理。</p>
-                <p><strong class="gold-text">职位晋升路线：</strong> 质量工程师 → 质量主管 → 质量经理 → 质量总监 → 运营副总裁</p>
-                <p><strong class="gold-text">薪资预期：</strong> 起薪12,000-18,000元/月，5年后可达30,000-40,000元/月</p>
-                <p><strong class="gold-text">职业优势：</strong> 工作环境国际化，职业上升空间大，薪资水平较高</p>
-            </div>
-            
-            <div class="career-path">
-                <h4 class="path-title">医疗器械质量管理路径（备选）</h4>
-                <p>这一路径利用食品安全与质量管理的知识基础，拓展至医疗器械行业的质量体系和国际认证领域。</p>
-                <p><strong class="gold-text">职位晋升路线：</strong> 质量工程师 → 体系工程师 → 注册经理 → 质量合规总监</p>
-                <p><strong class="gold-text">薪资预期：</strong> 起薪15,000-20,000元/月，5年后可达35,000-45,000元/月</p>
-                <p><strong class="gold-text">职业优势：</strong> 行业前景广阔，国际化程度高，薪资水平在食品相关行业中最具竞争力</p>
-            </div>
-        </section>
-        
-        <section class="section">
-            <h3>职业发展五年规划</h3>
             
             <div class="timeline">
-                <div class="timeline-item">
+                <div class="timeline-item fade-right">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-date">2025年3-4月</div>
                     <div class="timeline-content">
-                        <div class="timeline-year">第1年</div>
-                        <h4>奠基期</h4>
-                        <p>• 完成硕士学位，获取专业资格认证（HACCP内审员、ISO9001质量管理体系内审员）</p>
-                        <p>• 进入目标行业（监管部门或企业），适应工作环境</p>
-                        <p>• 建立专业人脉网络，参加行业协会活动</p>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-year">第2年</div>
-                        <h4>专业成长期</h4>
-                        <p>• 主导或参与至少一个完整的质量管理项目</p>
-                        <p>• 深入了解行业法规和标准</p>
-                        <p>• 体制内：准备相关职称考试</p>
-                        <p>• 企业：寻求跨部门合作机会，拓展视野</p>
+                        <h3>基础准备阶段</h3>
+                        <p>• 与辅导员确认辅修和选修课选择可能性</p>
+                        <p>• 开始雅思基础学习，建立学习计划</p>
+                        <p>• 咨询学长学姐关于GPA提升经验</p>
                     </div>
                 </div>
                 
-                <div class="timeline-item">
+                <div class="timeline-item fade-left">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-date">2025年5-7月</div>
                     <div class="timeline-content">
-                        <div class="timeline-year">第3年</div>
-                        <h4>能力提升期</h4>
-                        <p>• 获取高级专业认证（高级食品安全管理师、FSSC22000体系审核员）</p>
-                        <p>• 开始管理小型团队或项目</p>
-                        <p>• 建立专业领域的影响力，参与行业标准制定</p>
-                        <p>• 体制内：晋升至中级职称</p>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-year">第4年</div>
-                        <h4>管理转型期</h4>
-                        <p>• 从技术专家向管理者转型</p>
-                        <p>• 负责部门预算和资源规划</p>
-                        <p>• 企业：晋升至部门经理或区域负责人</p>
-                        <p>• 体制内：晋升至科室负责人或项目负责人</p>
+                        <h3>能力提升阶段</h3>
+                        <p>• 期中考试冲刺，确保各科成绩优异</p>
+                        <p>• 雅思学习进入强化阶段</p>
+                        <p>• 确定暑期实习单位，完成面试和录取</p>
                     </div>
                 </div>
                 
-                <div class="timeline-item">
+                <div class="timeline-item fade-right">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-date">2025年7-8月</div>
                     <div class="timeline-content">
-                        <div class="timeline-year">第5年</div>
-                        <h4>领导力成熟期</h4>
-                        <p>• 制定部门战略规划和发展方向</p>
-                        <p>• 参与组织重大决策，提供专业建议</p>
-                        <p>• 企业：晋升至质量总监或区域负责人</p>
-                        <p>• 体制内：晋升至处级管理岗位</p>
-                        <p>• 规划下一个五年的职业发展目标</p>
+                        <h3>实习与测试阶段</h3>
+                        <p>• 完成食品监管部门暑期实习</p>
+                        <p>• 雅思学习进入冲刺阶段</p>
+                        <p>• 开始准备申请材料（个人陈述初稿、简历等）</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-left">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-date">2025年9-10月</div>
+                    <div class="timeline-content">
+                        <h3>申请材料准备</h3>
+                        <p>• 参加第一次正式雅思考试</p>
+                        <p>• 联系推荐人，准备推荐信</p>
+                        <p>• 完成食品企业兼职实习</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-right">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-date">2025年11-12月</div>
+                    <div class="timeline-content">
+                        <h3>提交申请</h3>
+                        <p>• 完成所有申请材料的准备</p>
+                        <p>• 如需，参加第二次雅思考试</p>
+                        <p>• 规划春节期间医疗器械企业实习</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-left">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-date">2026年1-3月</div>
+                    <div class="timeline-content">
+                        <h3>面试与跟踪</h3>
+                        <p>• 应对可能的面试邀请</p>
+                        <p>• 跟踪申请进度，及时回复学校邮件</p>
+                        <p>• 研究各录取学校的奖学金和住宿信息</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-right">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-date">2026年4-5月</div>
+                    <div class="timeline-content">
+                        <h3>录取决策</h3>
+                        <p>• 收到录取结果，评估各offer</p>
+                        <p>• 确定最终就读学校，支付留位费</p>
+                        <p>• 开始准备签证和住宿申请</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-left">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-date">2026年6-7月</div>
+                    <div class="timeline-content">
+                        <h3>行前准备</h3>
+                        <p>• 完成所有入学前准备工作</p>
+                        <p>• 办理签证、体检等手续</p>
+                        <p>• 参加学校可能的pre-sessional课程</p>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <section class="section">
-            <h3>成功关键因素</h3>
-            <p>要在食品安全与管理领域取得卓越成就，需要关注以下关键成功因素：</p>
+        </div>
+    </section>
+    
+    <section class="process-section">
+        <div class="container">
+            <div class="section-intro fade-up">
+                <h2>个性化申请优势</h2>
+                <p>我们为您量身定制的申请方案，包含以下核心策略与关键环节，确保申请过程顺利，提高录取成功率。</p>
+            </div>
             
-            <div class="success-factors">
-                <div class="factor-column">
-                    <h4 class="gold-text">专业能力</h4>
-                    <p>• 扎实的食品科学与安全专业知识</p>
-                    <p>• 先进检测技术和设备操作能力</p>
-                    <p>• 质量管理体系的建立和维护能力</p>
-                    <p>• 法规理解和合规性评估能力</p>
+            <div class="process-steps">
+                <div class="process-step fade-up">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">差异化申请策略</h3>
+                    <p>突出您食品安全专业背景与申请专业的高度匹配，展示您对食品安全监管的深入了解与专业素养。</p>
                 </div>
                 
-                <div class="factor-column">
-                    <h4 class="gold-text">软技能</h4>
-                    <p>• 跨部门沟通与协作能力</p>
-                    <p>• 项目管理和问题解决能力</p>
-                    <p>• 团队领导力和资源调配能力</p>
-                    <p>• 国际化视野和跨文化适应能力</p>
+                <div class="process-step fade-up">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">GPA提升计划</h3>
+                    <p>针对核心课程与专业课程进行重点攻坚，通过辅修和选修课优化，争取GPA达到85分以上的竞争水平。</p>
+                </div>
+                
+                <div class="process-step fade-up">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">雅思备考规划</h3>
+                    <p>系统化语言能力提升，从听说读写四个维度进行针对性训练，确保达到目标院校的语言要求。</p>
+                </div>
+                
+                <div class="process-step fade-up">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">实习体系构建</h3>
+                    <p>构建"监管+企业"双轨实习体系，强化食品安全专业背景，提升简历竞争力，为未来就业奠定基础。</p>
+                </div>
+                
+                <div class="process-step fade-up">
+                    <div class="step-number">5</div>
+                    <h3 class="step-title">专业证书获取</h3>
+                    <p>获取HACCP内审员、ISO9001质量管理体系等专业证书，提升专业能力认证，强化申请竞争力。</p>
+                </div>
+                
+                <div class="process-step fade-up">
+                    <div class="step-number">6</div>
+                    <h3 class="step-title">申请材料定制</h3>
+                    <p>针对不同学校定制个人陈述，突出与该校课程的契合点，确保申请材料的个性化和真实性。</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+   <section class="career-analysis-section">
+    <div class="container">
+        <div class="section-intro fade-up">
+            <h2>就业前景与专业分析</h2>
+            <p>基于您的食品安全专业背景，我们分析了香港与新加坡相关行业的就业趋势、薪资水平及专业发展路径，帮助您做出更明智的留学决策。</p>
+        </div>
+        
+        <div class="analysis-grid">
+            <div class="analysis-card fade-up">
+                <h3>行业就业分布</h3>
+                <div class="chart-wrapper">
+                    <canvas id="careerDistributionChart"></canvas>
+                </div>
+                <div class="analysis-text">
+                    <p>食品安全与营养学专业毕业生在多个行业拥有广阔就业前景，其中食品制造企业、政府监管机构和医疗健康领域需求最为旺盛。</p>
+                </div>
+            </div>
+            
+            <div class="analysis-card fade-up">
+                <h3>薪资水平比较</h3>
+                <div class="chart-wrapper">
+                    <canvas id="salaryComparisonChart"></canvas>
+                </div>
+                <div class="analysis-text">
+                    <p>新加坡与香港地区食品安全相关职位起薪丰厚，且随工作经验增长迅速提升，其中食品研发与质量管理岗位薪资增长最为显著。</p>
+                </div>
+            </div>
+            
+            <div class="analysis-card fade-up">
+                <h3>专业技能需求</h3>
+                <div class="chart-wrapper">
+                    <canvas id="skillsRadarChart"></canvas>
+                </div>
+                <div class="analysis-text">
+                    <p>行业雇主最看重的五大核心能力包括食品安全体系构建、质量管理、法规解读、风险评估与实验分析能力，其中数据分析能力需求正快速增长。</p>
+                </div>
+            </div>
+            
+            <div class="analysis-card fade-up">
+                <h3>职业发展路径</h3>
+                <div class="career-path">
+                    <div class="path-node">
+                        <div class="node-dot"></div>
+                        <div class="node-content">
+                            <h4>初级阶段 (0-2年)</h4>
+                            <p>食品安全检测员、质量控制专员、营养咨询助理</p>
+                        </div>
+                    </div>
+                    <div class="path-node">
+                        <div class="node-dot"></div>
+                        <div class="node-content">
+                            <h4>中级阶段 (3-5年)</h4>
+                            <p>食品安全主管、质量管理经理、营养顾问</p>
+                        </div>
+                    </div>
+                    <div class="path-node">
+                        <div class="node-dot"></div>
+                        <div class="node-content">
+                            <h4>高级阶段 (6-10年)</h4>
+                            <p>食品安全总监、质量体系负责人、研发经理</p>
+                        </div>
+                    </div>
+                    <div class="path-node">
+                        <div class="node-dot"></div>
+                        <div class="node-content">
+                            <h4>专家阶段 (10年+)</h4>
+                            <p>食品安全顾问、行业标准制定专家、企业技术负责人</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</section>  
+  
+<section class="cta-section">
+    <div class="cta-background"></div>
+    <div class="container">
+        <div class="cta-container">
+            <div class="cta-box fade-up">
+                <div class="cta-accent top-right"></div>
+                <div class="cta-accent bottom-left"></div>
+                <h2 class="cta-title">开启您的留学之旅</h2>
+                <p>我们已为您量身定制了完整的留学方案，涵盖院校选择、申请准备到最终录取的全过程。让我们共同努力，助您实现留学梦想！</p>
+                <div class="cta-group">
+                    <a href="https://yim3b3yk2no.feishu.cn/docx/Mj7IdfB4hov9FgxGKu8cI2k1n9e?from=from_copylink" class="btn btn-primary" target="_blank">咨询方案链接</a>
+                    <a href="#" class="btn btn-secondary">具体参见群内资料</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+   
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='white' d='M50 5C25.1 5 5 25.1 5 50s20.1 45 45 45 45-20.1 45-45S74.9 5 50 5zm0 80c-19.3 0-35-15.7-35-35s15.7-35 35-35 35 15.7 35 35-15.7 35-35 35z'/%3E%3Cpath fill='%23D0A062' d='M65 40H45v-5h20v5zm0 10H45v5h20v-5zm-30 0h5v5h-5v-5zm0-10h5v-5h-5v5z'/%3E%3C/svg%3E" alt="Logo">
+                        <div class="footer-logo-text">AFY留学</div>
+                    </div>
+                    <p>AFY留学专注于为学生提供高质量的留学申请服务，涵盖全球顶尖院校申请、签证办理、海外生活指导等全方位支持。</p>
+                </div>
+   
+             
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-text">mira@afyedu.cn</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">杭州市拱墅区隐秀三宝寺秌集</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 AFY留学咨询. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // GSAP Animations
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Hero animations - set initial state first
+    gsap.set('.hero .fade-up', {
+        opacity: 0,
+        y: 30
+    });
+    
+    // Then animate
+    gsap.to('.hero .fade-up', {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power2.out'
+    });
+    
+    // Scroll animations - use fromTo to ensure proper initial and final states
+    gsap.utils.toArray('.fade-up:not(.hero .fade-up)').forEach(element => {
+        gsap.fromTo(element, 
+            { opacity: 0, y: 30 },
+            {
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            }
+        );
+    });
+    
+    gsap.utils.toArray('.fade-right').forEach(element => {
+        gsap.fromTo(element,
+            { opacity: 0, x: -30 },
+            {
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            }
+        );
+    });
+    
+    gsap.utils.toArray('.fade-left').forEach(element => {
+        gsap.fromTo(element,
+            { opacity: 0, x: 30 },
+            {
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+                ease: 'power2.out'
+            }
+        );
+    });
+    
+    gsap.utils.toArray('.fade-in').forEach(element => {
+        gsap.fromTo(element,
+            { opacity: 0 },
+            {
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 85%',
+                    toggleActions: 'play none none none'
+                },
+                opacity: 1,
+                duration: 0.8,
+                ease: 'power2.out'
+            });
+        });
+        
+        // Chart
+        const ctx = document.getElementById('admissionChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['NUS', 'NTU', 'HKU', 'CUHK', 'HKUST', 'PolyU', 'CityU'],
+                datasets: [{
+                    label: '申请竞争指数',
+                    data: [9.5, 8.7, 9.8, 8.2, 7.8, 7.2, 6.9],
+                    backgroundColor: [
+                        'rgba(73, 66, 166, 0.7)',
+                        'rgba(73, 66, 166, 0.7)',
+                        'rgba(73, 66, 166, 0.7)',
+                        'rgba(73, 66, 166, 0.7)',
+                        'rgba(73, 66, 166, 0.7)',
+                        'rgba(73, 66, 166, 0.7)',
+                        'rgba(73, 66, 166, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(73, 66, 166, 1)',
+                        'rgba(73, 66, 166, 1)',
+                        'rgba(73, 66, 166, 1)',
+                        'rgba(73, 66, 166, 1)',
+                        'rgba(73, 66, 166, 1)',
+                        'rgba(73, 66, 166, 1)',
+                        'rgba(73, 66, 166, 1)'
+                    ],
+                    borderWidth: 1
+                }, {
+                    label: '个人录取概率',
+                    data: [5.7, 6.8, 5.2, 7.1, 7.5, 8.2, 8.5],
+                    backgroundColor: [
+                        'rgba(208, 160, 98, 0.7)',
+                        'rgba(208, 160, 98, 0.7)',
+                        'rgba(208, 160, 98, 0.7)',
+                        'rgba(208, 160, 98, 0.7)',
+                        'rgba(208, 160, 98, 0.7)',
+                        'rgba(208, 160, 98, 0.7)',
+                        'rgba(208, 160, 98, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(208, 160, 98, 1)',
+                        'rgba(208, 160, 98, 1)',
+                        'rgba(208, 160, 98, 1)',
+                        'rgba(208, 160, 98, 1)',
+                        'rgba(208, 160, 98, 1)',
+                        'rgba(208, 160, 98, 1)',
+                        'rgba(208, 160, 98, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 10,
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 0.7)'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: 'rgba(255, 255, 255, 0.7)'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'rgba(255, 255, 255, 0.9)'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                        titleColor: 'rgba(255, 255, 255, 0.9)',
+                        bodyColor: 'rgba(255, 255, 255, 0.9)',
+                        displayColors: false
+                    }
+                }
+            }
+        });
+        
+        // 新增的职业分析图表
+        // 行业就业分布饼图
+        const careerDistCtx = document.getElementById('careerDistributionChart');
+        if (careerDistCtx) {
+            const careerDistChart = new Chart(careerDistCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['食品制造企业', '政府监管机构', '医疗健康机构', '研究机构', '教育机构', '咨询顾问公司'],
+                    datasets: [{
+                        data: [32, 24, 18, 12, 8, 6],
+                        backgroundColor: [
+                            'rgba(73, 66, 166, 0.8)',
+                            'rgba(73, 66, 166, 0.6)',
+                            'rgba(73, 66, 166, 0.4)',
+                            'rgba(208, 160, 98, 0.8)',
+                            'rgba(208, 160, 98, 0.6)',
+                            'rgba(208, 160, 98, 0.4)'
+                        ],
+                        borderColor: 'white',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                font: {
+                                    size: 12
+                                },
+                                padding: 15
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // 薪资水平比较条形图
+        const salaryCtx = document.getElementById('salaryComparisonChart');
+        if (salaryCtx) {
+            const salaryChart = new Chart(salaryCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['起薪', '3年经验', '5年经验', '8年经验'],
+                    datasets: [{
+                        label: '香港 (万港币/年)',
+                        data: [25, 38, 52, 78],
+                        backgroundColor: 'rgba(73, 66, 166, 0.7)',
+                        borderColor: 'rgba(73, 66, 166, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: '新加坡 (万新元/年)',
+                        data: [4.8, 7.2, 9.5, 14.2],
+                        backgroundColor: 'rgba(208, 160, 98, 0.7)',
+                        borderColor: 'rgba(208, 160, 98, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '薪资水平 (当地货币)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // 专业技能需求雷达图
+        const skillsCtx = document.getElementById('skillsRadarChart');
+        if (skillsCtx) {
+            const skillsChart = new Chart(skillsCtx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        '食品安全体系', 
+                        '质量管理', 
+                        '法规解读', 
+                        '风险评估', 
+                        '实验分析', 
+                        '数据分析',
+                        '项目管理'
+                    ],
+                    datasets: [{
+                        label: '行业需求度',
+                        data: [95, 90, 85, 80, 75, 85, 70],
+                        fill: true,
+                        backgroundColor: 'rgba(73, 66, 166, 0.2)',
+                        borderColor: 'rgba(73, 66, 166, 0.8)',
+                        pointBackgroundColor: 'rgba(73, 66, 166, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(73, 66, 166, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                display: true
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 100
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+
+    </script>
 </body>
 </html>
