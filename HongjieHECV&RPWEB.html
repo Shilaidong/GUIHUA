@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hongjie He | Research Portfolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #7c3aed;
+            --accent-light: #a78bfa;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --bg: #030712;
+            --bg-alt: #0f172a;
+            --border: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-subtitle {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.4);
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* About Section */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .education-card {
+            background-color: var(--bg-alt);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 3px solid var(--accent);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .education-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card h4 {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .education-card .meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Research Experience */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--border);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-left {
+            left: 0;
+        }
+
+        .timeline-right {
+            left: 50%;
+        }
+
+        .timeline-left::after {
+            right: -10px;
+        }
+
+        .timeline-right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 2rem;
+            background-color: var(--bg-alt);
+            border-radius: 15px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-date {
+            color: var(--accent-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-alt);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-tag {
+            background-color: rgba(124, 58, 237, 0.1);
+            color: var(--accent-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        /* Research Proposal */
+        .proposal-section {
+            background-color: var(--bg-alt);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .proposal-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .proposal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .proposal-content {
+            background-color: var(--bg);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .proposal-section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            margin-top: 2.5rem;
+            color: var(--accent-light);
+        }
+
+        .proposal-section-title:first-child {
+            margin-top: 0;
+        }
+
+        .proposal-text {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .proposal-list {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .proposal-list li {
+            margin-bottom: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Process Image */
+        .process-image {
+            width: 100%;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .process-image:hover {
+            transform: scale(1.02);
+        }
+
+        .image-caption {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        /* Timeline Image */
+        .timeline-image {
+            width: 100%;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .skills-category {
+            margin-bottom: 2rem;
+        }
+
+        .skills-category-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-light);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background-color: var(--bg-alt);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        /* Publications Section */
+        .publication-card {
+            background-color: var(--bg-alt);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .publication-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .publication-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .publication-authors {
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .publication-journal {
+            color: var(--accent-light);
+            font-style: italic;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .publication-doi {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 8rem 0;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-subtitle {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .contact-label {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            font-weight: 500;
+        }
+
+        /* References */
+        .reference {
+            margin-bottom: 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--bg-alt);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-left::after, .timeline-right::after {
+                left: 15px;
+            }
+            
+            .timeline-right {
+                left: 0;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section {
+                padding: 5rem 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Canvas for 3D background */
+        #canvas-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas-background"></canvas>
+
+    <nav class="nav">
+        <div class="container nav-container">
+            <a href="#" class="logo">Hongjie He</a>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#research" class="nav-link">Research</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#proposal" class="nav-link">Proposal</a>
+                <a href="#publications" class="nav-link">Publications</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-subtitle">Mathematics & Biochemistry</h2>
+                <h1 class="hero-title">Hongjie He</h1>
+                <p class="hero-description">
+                    Researcher at the intersection of AI, enzyme engineering, and industrial biocatalysis. 
+                    Focused on developing advanced computational models for optimizing biological systems.
+                </p>
+                <a href="#proposal" class="hero-cta">View Research Proposal</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        I am a dual-degree student pursuing a Bachelor of Science in Mathematics and Biochemistry & Molecular Biology at the University of Western Australia, while simultaneously completing a Bachelor of Science in Biotechnology at Southwest University in China.
+                    </p>
+                    <p>
+                        My research interests lie at the intersection of artificial intelligence, computational biology, and industrial enzyme engineering. I am particularly focused on developing AI-driven optimization models for enhancing enzyme performance in industrial biocatalysis applications.
+                    </p>
+                    <p>
+                        With experience across multiple research institutions including Zhejiang University, Shanghai I-Hub Research Program, and Stevens Institute of Technology, I have developed expertise in AI-driven enzyme engineering, change point detection in statistical models, and advanced deep learning interpretability techniques.
+                    </p>
+                </div>
+                <div class="education">
+                    <div class="education-card">
+                        <h3>University of Western Australia</h3>
+                        <h4>Bachelor of Science, Mathematics & Biochemistry and Molecular Biology</h4>
+                        <div class="meta">
+                            <span>Perth, Australia</span>
+                            <span>Expected Spring 2026</span>
+                        </div>
+                        <div class="meta" style="margin-top: 0.5rem;">
+                            <span>Average Grade: 83.25 (WAM)</span>
+                            <span>GPA: 6.75/7.0</span>
+                        </div>
+                    </div>
+                    <div class="education-card">
+                        <h3>Southwest University</h3>
+                        <h4>Bachelor of Science, Biotechnology</h4>
+                        <div class="meta">
+                            <span>Chongqing, China</span>
+                            <span>Expected Spring 2026</span>
+                        </div>
+                        <div class="meta" style="margin-top: 0.5rem;">
+                            <span>Average Grade: 75.067</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="research" class="section">
+        <div class="container">
+            <h2 class="section-title">Research Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Mar 2025 – May 2025 (Planned)</div>
+                        <h3 class="timeline-title">Zhejiang University (ZJU)</h3>
+                        <h4 class="timeline-subtitle">Undergraduate Researcher, School of Pharmacy (Remote)</h4>
+                        <p class="timeline-description">
+                            Developing an AI-driven enzyme engineering framework focusing on glucose dehydrogenase (GDH) optimization utilizing the EVOLVEpro model. Performing sequence optimization, molecular docking, and molecular dynamics simulations to evaluate catalytic efficiency and structural stability of engineered GDH variants.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jan 2025 – Present</div>
+                        <h3 class="timeline-title">Shanghai I-HUB Research Program</h3>
+                        <h4 class="timeline-subtitle">Undergraduate Researcher</h4>
+                        <p class="timeline-description">
+                            Constructed a Python-based analytical framework integrating data simulation, preprocessing, and dynamic change point detection (CPD) within the Rasch model. Developed an enhanced Rasch model incorporating maximum likelihood estimation (MLE), KL divergence, and CPD techniques to dynamically track student ability shifts over time.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jan 2025 – Present</div>
+                        <h3 class="timeline-title">Stevens Institute of Technology</h3>
+                        <h4 class="timeline-subtitle">Undergraduate Researcher (Remote)</h4>
+                        <p class="timeline-description">
+                            Conceived and led a research project introducing CF-CAM, an advanced gradient-based class activation mapping method designed to enhance interpretability of deep learning models. Integrated DBSCAN clustering and bilateral filtering into the CF-CAM algorithm to significantly reduce interpretability bias arising from gradient noise.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Sep 2024 – Present</div>
+                        <h3 class="timeline-title">Southwest University (SWU)</h3>
+                        <h4 class="timeline-subtitle">Undergraduate Researcher</h4>
+                        <p class="timeline-description">
+                            Working on two projects: (1) Investigating lactate-related gene signatures as prognostic predictors in esophageal squamous cell carcinoma (ESCC), and (2) Studying the effect of gut microbiome and blood metabolites on colorectal cancer using bidirectional Mendelian randomization and mediation analysis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Project Experience</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Hypoxia-Induced Lactic Acid Metabolic Reprogramming</h3>
+                        <p class="project-description">
+                            Conducted integrative bioinformatics analyses utilizing multi-omics datasets to systematically screen and identify critical genes implicated in hypoxia-induced metabolic reprogramming in ESCC. Co-designed experimental validation strategies focusing on the POGLUT1/Notch signaling pathway.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Bioinformatics</span>
+                            <span class="project-tag">Multi-omics</span>
+                            <span class="project-tag">ESCC</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Industrial Enzyme Engineering Internship</h3>
+                        <p class="project-description">
+                            Gained practical experience in industrial enzyme manufacturing workflows at Hangzhou Peiding Biotechnology Co., Ltd. Studied fundamental synthetic biology techniques and developed a comprehensive understanding of enzyme engineering strategies for industrial biotechnology.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Enzyme Engineering</span>
+                            <span class="project-tag">Synthetic Biology</span>
+                            <span class="project-tag">Industrial Biotechnology</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">CF-CAM: Enhanced Deep Learning Interpretability</h3>
+                        <p class="project-description">
+                            Developed CF-CAM, an advanced gradient-based class activation mapping method that enhances the interpretability of deep learning models by integrating DBSCAN clustering and bilateral filtering to reduce gradient noise and interpretability bias.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Deep Learning</span>
+                            <span class="project-tag">Interpretability</span>
+                            <span class="project-tag">Computer Vision</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proposal" class="proposal-section">
+        <div class="container proposal-container">
+            <h2 class="proposal-title">Research Proposal</h2>
+            <div class="proposal-content">
+                <h3 class="proposal-section-title">AI-Driven Enzyme Optimization and Industrial Optimization Model Design</h3>
+                <p class="proposal-text">
+                    Evolution of Glucose Dehydrogenase Based on EVOLVEpro and Its Integrated Application in Steroid Biocatalysis Systems
+                </p>
+                
+                <h3 class="proposal-section-title">1. Introduction</h3>
+                <p class="proposal-text">
+                    Enzyme engineering is a cornerstone of industrial biocatalysis, enhancing catalytic efficiency, stability, and substrate specificity. Glucose dehydrogenase (GDH) is vital in biotechnological applications, particularly for cofactor regeneration in redox reactions. This study proposes leveraging AI-driven protein engineering tools to optimize GDH for advanced industrial use. Using an enhanced EVOLVEpro model, we aim to design GDH variants with superior catalytic performance. These variants will be validated through molecular docking and dynamics simulations for binding efficiency and stability, followed by synthesis and enzymatic evaluation. For industrial application, optimized GDH will be integrated into ursodeoxycholic acid (UDCA) production within bile acid biosynthesis pathways. Additionally, an AI-based industrial optimization model will be developed to process outputs from biological large models, incorporating industrial parameters (e.g., pH, temperature, and production conditions) to enhance optimization reliability. This model will extend beyond UDCA synthesis, offering broader applicability in enzyme and drug molecule optimization. By integrating artificial intelligence, computational biology, and industrial bioprocess design, this research seeks to advance biocatalyst performance and contribute to industrial enzyme and pharmaceutical development.
+                </p>
+                
+                <h3 class="proposal-section-title">2. Background</h3>
+                <h4 style="color: var(--accent-light); margin-bottom: 1rem; font-size: 1.4rem;">2.1. Research Status</h4>
+                <p class="proposal-text">
+                    Recent progress in AI-driven protein design has revolutionized enzyme engineering. Tools like EVOLVEpro and other deep learning models have optimized enzyme sequences, yielding significant performance improvements. Molecular docking and dynamics simulations provide critical insights into enzyme-substrate interactions, while experimental validation ensures functional relevance. In industrial contexts, integrating AI-optimized enzymes into large-scale bioprocesses requires computational models to predict optimal conditions. Studies on bile acid biosynthesis underscore enzyme engineering's role in cofactor regeneration, positioning GDH as an ideal target for AI-driven optimization. However, there remains a gap in enhancing industrial optimization models to effectively bridge conventional biological large models with real-world production environments—a challenge this study aims to address.
+                </p>
+                
+                <h4 style="color: var(--accent-light); margin-bottom: 1rem; font-size: 1.4rem;">2.2. Models and Processes</h4>
+                <h5 style="color: var(--text); margin-bottom: 0.8rem; font-size: 1.2rem;">2.2.1. EVOLVEpro Model</h5>
+                <p class="proposal-text">
+                    Protein engineering is essential in biology and medicine, yet traditional methods like directed evolution are labor-intensive, relying on extensive mutant libraries and high-throughput screening, often missing optimal variants. Computational approaches using protein language models (PLMs) predict functional mutations but offer limited gains. EVOLVEpro, introduced in Science (November 2024), integrates PLMs with few-shot active learning regression to streamline enzyme evolution. Using a lightweight random forest regressor, it interprets PLM embeddings and optimizes protein activity with minimal experimental data (e.g., 10 data points), outperforming zero-shot predictions across diverse proteins—e.g., enhancing antibody binding affinity (40-fold) and T7 RNA polymerase fidelity (100-fold).
+                </p>
+                <p class="proposal-text">
+                    In this study, I propose enhancing EVOLVEpro by replacing its random forest regressor with XGBoost, a gradient boosting decision tree model offering superior nonlinear modeling, stability, and interpretability for high-dimensional PLM outputs. An active learning mechanism combining predicted values and uncertainty estimates will further improve mutant screening efficiency within limited experimental budgets. This EVOLVEpro-XGB model is expected to elevate accuracy and sample efficiency in GDH optimization.
+                </p>
+                
+                <h5 style="color: var(--text); margin-bottom: 0.8rem; font-size: 1.2rem;">2.2.2. 7β-Reductase + Glucose Dehydrogenase Catalytic System and UDCA Synthesis</h5>
+                <p class="proposal-text">
+                    Ursodeoxycholic acid (UDCA), a key bile acid for hepatobiliary treatments and steroid drug intermediates, is synthesized via 7-hydroxyl epimerization of chenodeoxycholic acid (CDCA). Traditional chemical synthesis involves complex, low-yield steps with toxic reagents, posing environmental and safety risks. Early biological methods using 7α- and 7β-hydroxysteroid dehydrogenases (7α-HSDH and 7β-HSDH) lack cofactor regeneration, requiring costly exogenous NAD(P)H and limiting scalability.
+                </p>
+                
+                <div class="process-image-container">
+                    <img src="https://pic1.imgdb.cn/item/67e3c83d0ba3d5a1d7e3fae5.png" alt="GDH Catalytic System" class="process-image">
+                    <p class="image-caption">Figure 1: 7β-Reductase + Glucose Dehydrogenase Catalytic System for UDCA Synthesis</p>
+                </div>
+                   <p class="proposal-text">
+              </p>             
+                <p class="proposal-text">
+                    Integrating GDH addresses these issues by regenerating NADPH via glucose oxidation, enhancing efficiency. Studies demonstrate recombinant Escherichia coli co-expressing 7α-HSDH, 7β-HSDH, and GDH achieve 99% CDCA-to-UDCA conversion (100 mM, 2 hours, 2L scale), with large-scale validation at 500L. This system offers a green, efficient platform for UDCA production, which this study will further optimize.
+                </p>
+                
+                <h3 class="proposal-section-title">3. Objectives and Hypotheses</h3>
+                <p class="proposal-text">
+                    This study hypothesizes that AI-driven protein engineering, centered on an optimized EVOLVEpro model, can rapidly identify high-performance GDH mutants with minimal data, improving catalytic efficiency, thermal stability, and solvent tolerance. Integrating these mutants into the 7β-HSDH-based UDCA synthesis system will enhance conversion rates and demonstrate industrial scalability and cost-effectiveness. Additionally, an AI industrial optimization model compatible with biological large models (e.g., ProtT5, AlphaFold) can bridge laboratory optimization with industrial realities by incorporating practical parameters, enhancing AI applicability.
+                </p>
+                
+                <p class="proposal-text">
+                    <strong>Key Objectives:</strong>
+                </p>
+                <ul class="proposal-list">
+                    <li>Optimize EVOLVEpro Structure: Replace the random forest regressor with XGBoost to improve predictive accuracy and active learning efficiency for enzyme optimization.</li>
+                    <li>Design and Screen GDH Mutants: Generate and select high-performance GDH variants using the enhanced EVOLVEpro model and active learning.</li>
+                    <li>Structural and Molecular Validation: Use AutoDock and GROMACS for docking and dynamics simulations to assess mutant binding and stability.</li>
+                    <li>Enzyme Synthesis and Testing: Express, purify, and evaluate GDH mutants' kinetics (Km, Vmax, kcat) and stability under varied conditions.</li>
+                    <li>Industrial Integration: Integrate optimized GDH into UDCA synthesis, optimizing fermentation and validating scalability in bioreactors.</li>
+                    <li>Develop AI Industrial Model: Construct a generalizable model integrating biological and industrial data for enzyme and drug optimization.</li>
+                </ul>
+                
+                <h3 class="proposal-section-title">4. Timeline</h3>
+                <div class="process-image-container">
+                    <img src="https://pic1.imgdb.cn/item/67e3c8be0ba3d5a1d7e3fc5d.png" alt="Project Timeline" class="timeline-image">
+                    <p class="image-caption">Figure 2: Project Timeline and Milestones</p>
+                </div>
+                
+                <h3 class="proposal-section-title">5. References</h3>
+                <p class="reference">
+                    1. Jiang, K., Yan, Z., Di Bernardo, M., Sgrizzi, S. R., Villiger, L., Kayabolen, A., Kim, B. J., Carscadden, J. K., Hiraizumi, M., Nishimasu, H., Gootenberg, J. S., & Abudayyeh, O. O. (2025). Rapid in silico directed evolution by a protein language model with EVOLVEpro. Science, 387(6673), eadr6006.
+                </p>
+                <p class="reference">
+                    2. Zhang, X., Xin, J., Liu, M., Zhang, Y., Luan, H., Feng, W., Wang, F., Xu, W., & Song, P. (2025). Cost-effective whole-cell biosynthesis of ursodeoxycholic acid using engineered Escherichia coli with a multienzyme cascade. Frontiers in Microbiology, 16, 1538237.
+                </p>
+                <p class="reference">
+                    3. Zhang, X., Fan, D., Hua, X., & Zhang, T. (2019). Large-scale production of ursodeoxycholic acid from chenodeoxycholic acid by engineering 7α- and 7β-hydroxysteroid dehydrogenase. Bioprocess and Biosystems Engineering, 42, 1537–1545.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div>
+                    <div class="skills-category">
+                        <h3 class="skills-category-title">Programming</h3>
+                        <div class="skills-list">
+                            <span class="skill-item">Python (proficient)</span>
+                            <span class="skill-item">R (intermediate)</span>
+                            <span class="skill-item">MATLAB (intermediate)</span>
+                        </div>
+                    </div>
+                    <div class="skills-category">
+                        <h3 class="skills-category-title">Laboratory</h3>
+                        <div class="skills-list">
+                            <span class="skill-item">PCR</span>
+                            <span class="skill-item">Protein Purification</span>
+                            <span class="skill-item">Cell Culture</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="skills-category">
+                        <h3 class="skills-category-title">Data Analytics</h3>
+                        <div class="skills-list">
+                            <span class="skill-item">RStudio</span>
+                            <span class="skill-item">Jupyter Lab</span>
+                            <span class="skill-item">MATLAB</span>
+                            <span class="skill-item">Microsoft Excel</span>
+                            <span class="skill-item">Machine Learning</span>
+                        </div>
+                    </div>
+                    <div class="skills-category">
+                        <h3 class="skills-category-title">Awards & Honors</h3>
+                        <div class="skills-list">
+                            <span class="skill-item">iHUB Research Program Certificate (2025)</span>
+                            <span class="skill-item">Top 10 Ranking, UWA SMMC (2024)</span>
+                            <span class="skill-item">UWA Global Excellence Scholarship (2024)</span>
+                            <span class="skill-item">MOOC Psychological Committee Certificate (2023)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications" class="section">
+        <div class="container">
+            <h2 class="section-title">Publications</h2>
+            <div class="publication-card">
+                <h3 class="publication-title">Characterization of a novel exopolysaccharide from Acinetobacter rhizosphaerae with ability to enhance the salt stress resistance of rice seedlings</h3>
+                <p class="publication-authors">Sun K, Li Z, Lian M, Li Q, Wang R, Gu Y, Lei P, He H, Xu H, Sha F, Sun L.</p>
+                <p class="publication-journal">International Journal of Biological Macromolecules. 2024 Jan;256(Pt 2):128438.</p>
+                <p class="publication-doi">doi: 10.1016/j.ijbiomac.2023.128438. PMID: 38042318.</p>
+            </div>
+            <div class="publication-card">
+                <h3 class="publication-title">Lactate-Related Gene Signatures as Prognostic Predictors and Comprehensive Analysis of Immune Profiles in Esophageal Squamous Cell Carcinoma (ESCC)</h3>
+                <p class="publication-authors">[Authors], He H (Third Author)</p>
+                <p class="publication-journal">Under review in a JCR Q1 journal</p>
+            </div>
+            <div class="publication-card">
+                <h3 class="publication-title">Effect of Gut Microbiome and Blood Metabolites on Colorectal Cancer: A Bidirectional Mendelian Randomization and Mediation Analysis</h3>
+                <p class="publication-authors">[Authors], He H (Second Author)</p>
+                <p class="publication-journal">Under review in a JCR Q2 journal</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="contact-title">Contact</h2>
+            <p class="contact-subtitle">Feel free to reach out for research collaborations, questions about my work, or any other inquiries.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <p class="contact-label">Email</p>
+                    <p class="contact-value">24462401@student.uwa.edu.au</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <p class="contact-label">Phone</p>
+                    <p class="contact-value">(61) 413993696</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <p class="contact-label">Location</p>
+                    <p class="contact-value">Perth, Australia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">© 2025 Hongjie He. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Three.js background
+        function initThreeBackground() {
+            const canvas = document.getElementById('canvas-background');
+            const renderer = new THREE.WebGLRenderer({
+                canvas,
+                antialias: true,
+                alpha: true
+            });
+            
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+            
+            // Create particles
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 1500;
+            const posArray = new Float32Array(particlesCount * 3);
+            
+            for (let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 15;
+            }
+            
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.02,
+                color: 0x7c3aed,
+                transparent: true,
+                opacity: 0.8
+            });
+            
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+            
+            function animate() {
+                requestAnimationFrame(animate);
+                particlesMesh.rotation.x += 0.0005;
+                particlesMesh.rotation.y += 0.0005;
+                renderer.render(scene, camera);
+            }
+            
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            }
+            
+            window.addEventListener('resize', onWindowResize);
+            onWindowResize();
+            animate();
+        }
+        
+        // Initialize GSAP animations
+        function initAnimations() {
+            // Hero animations
+            gsap.to('.hero-subtitle', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                delay: 0.2
+            });
+            
+            gsap.to('.hero-title', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                delay: 0.4
+            });
+            
+            gsap.to('.hero-description', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                delay: 0.6
+            });
+            
+            gsap.to('.hero-cta', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                delay: 0.8
+            });
+            
+            // Scroll animations
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Timeline items
+            gsap.utils.toArray('.timeline-item').forEach(item => {
+                gsap.to(item, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 80%',
+                        toggleActions: 'play none none none'
+                    }
+                });
+            });
+            
+            // Project cards
+            gsap.utils.toArray('.project-card').forEach((card, i) => {
+                gsap.to(card, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    delay: i * 0.2,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    }
+                });
+            });
+            
+            // Publication cards
+            gsap.utils.toArray('.publication-card').forEach((card, i) => {
+                gsap.to(card, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    delay: i * 0.2,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    }
+                });
+            });
+            
+            // Process images
+            gsap.utils.toArray('.process-image-container').forEach(container => {
+                gsap.from(container, {
+                    opacity: 0,
+                    y: 50,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: container,
+                        start: 'top 85%',
+                        toggleActions: 'play none none none'
+                    }
+                });
+            });
+            
+            // Nav scroll effect
+            gsap.to('.nav', {
+                scrollTrigger: {
+                    start: 'top -10',
+                    end: '+=1',
+                    toggleClass: {targets: '.nav', className: 'scrolled'}
+                }
+            });
+        }
+        
+        // Smooth scrolling for navigation links
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initThreeBackground();
+            initAnimations();
+            initSmoothScrolling();
+        });
+    </script>
+</body>
+</html>
