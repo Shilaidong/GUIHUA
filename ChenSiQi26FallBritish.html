@@ -1,0 +1,2018 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈思齐 - 英国名校申请规划</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700&family=Noto+Sans+SC:wght@100;300;400;500;700;900&display=swap');
+        
+        :root {
+            --primary: #0f172a;
+            --secondary: #a8834f;
+            --tertiary: #f8fafc;
+            --accent: #d4af37;
+            --text: #1e293b;
+            --light-text: #64748b;
+            --background: #ffffff;
+            --card-bg: #f8fafc;
+            --shadow: rgba(15, 23, 42, 0.08);
+            --gradient-1: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --gradient-2: linear-gradient(135deg, #a8834f 0%, #d4af37 100%);
+            --gradient-3: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            color: var(--text);
+            background-color: var(--background);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+        
+        .app-container {
+            max-width: 100%;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            background: var(--background);
+        }
+        
+        .header {
+            padding: 30px 25px 40px;
+            background: var(--gradient-1);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='rgba(255,255,255,0.05)' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.6;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .profile-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            background: var(--gradient-2);
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            font-weight: 500;
+            box-shadow: 0 10px 20px rgba(168, 131, 79, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-image::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+        
+        .profile-info h1 {
+            font-size: 26px;
+            margin-bottom: 5px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        
+        .profile-info p {
+            font-size: 15px;
+            opacity: 0.85;
+            margin: 0;
+            font-weight: 300;
+        }
+        
+        .header-stats {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .stat {
+            flex: 1;
+            text-align: center;
+            padding: 15px 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            margin-right: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .stat:last-child {
+            margin-right: 0;
+        }
+        
+        .stat:active {
+            transform: scale(0.95);
+        }
+        
+        .stat-value {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+        
+        .nav-container {
+            position: relative;
+            margin-top: -25px;
+            padding: 0 20px;
+            z-index: 10;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            background: white;
+            padding: 5px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1);
+            position: relative;
+        }
+        
+        .nav-tab {
+            flex: 1;
+            padding: 12px 5px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--light-text);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-tab.active {
+            color: white;
+        }
+        
+        .nav-indicator {
+            position: absolute;
+            height: 85%;
+            top: 7.5%;
+            left: 0;
+            background: var(--gradient-2);
+            border-radius: 12px;
+            z-index: 1;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .content {
+            padding: 30px 20px 80px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.17, 0.67, 0.35, 0.98);
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            box-shadow: 0 8px 16px rgba(15, 23, 42, 0.15);
+        }
+        
+        .section-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            margin: 0;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px var(--shadow);
+            transition: transform 0.4s cubic-bezier(0.17, 0.67, 0.35, 0.98), box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--gradient-2);
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+        
+        .card:active {
+            transform: scale(0.98);
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+            color: var(--primary);
+        }
+        
+        .card-badge {
+            background: var(--gradient-2);
+            color: white;
+            font-size: 13px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(168, 131, 79, 0.3);
+        }
+        
+        .card-content p {
+            font-size: 15px;
+            margin-bottom: 12px;
+            line-height: 1.7;
+            color: var(--text);
+        }
+        
+        .card-content p strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .card-content ul {
+            padding-left: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .card-content li {
+            font-size: 15px;
+            margin-bottom: 8px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+        
+        .card-content h3 {
+            font-size: 17px;
+            margin: 20px 0 12px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
+        }
+        
+        .tag {
+            background: rgba(15, 23, 42, 0.05);
+            color: var(--light-text);
+            font-size: 13px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-right: 10px;
+            font-weight: 500;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+            padding-left: 35px;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 12px;
+            height: 100%;
+            width: 2px;
+            background: var(--gradient-2);
+            border-radius: 1px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -35px;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--secondary);
+            z-index: 1;
+            box-shadow: 0 0 0 4px rgba(168, 131, 79, 0.2);
+        }
+        
+        .timeline-dot::before {
+            content: "";
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gradient-2);
+        }
+        
+        .timeline-date {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-date::before {
+            content: "";
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23a8834f' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z'/%3E%3C/svg%3E");
+            background-size: contain;
+            margin-right: 8px;
+        }
+        
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px var(--shadow);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .timeline-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .timeline-desc {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+        
+        .school-card {
+            display: flex;
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px var(--shadow);
+            transition: transform 0.4s cubic-bezier(0.17, 0.67, 0.35, 0.98);
+        }
+        
+        .school-card:active {
+            transform: scale(0.98);
+        }
+        
+        .school-info {
+            flex: 1;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .school-logo {
+            width: 90px;
+            height: 90px;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .school-logo::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+        
+        .school-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--primary);
+        }
+        
+        .school-program {
+            font-size: 15px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .school-stats {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .school-stat {
+            margin-right: 20px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .school-stat-label {
+            color: var(--light-text);
+            margin-right: 5px;
+        }
+        
+        .school-stat-value {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .progress-container {
+            margin: 25px 0;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        .progress-title {
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        .progress-value {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: rgba(15, 23, 42, 0.08);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-2);
+            border-radius: 5px;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.17, 0.67, 0.35, 0.98);
+            position: relative;
+        }
+        
+        .progress-fill::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0) 0%, 
+                rgba(255,255,255,0.4) 50%, 
+                rgba(255,255,255,0) 100%);
+            animation: shine 2s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .chart-container {
+            height: 250px;
+            margin: 30px 0;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .floating-button {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background: var(--gradient-2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(168, 131, 79, 0.4);
+            z-index: 100;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+        }
+        
+        .floating-button:active {
+            transform: scale(0.92);
+            box-shadow: 0 4px 10px rgba(168, 131, 79, 0.3);
+        }
+        
+        .floating-button svg {
+            width: 26px;
+            height: 26px;
+        }
+        
+        .language-progress {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+        
+        .language-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .language-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .language-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+        
+        .language-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .skill-item {
+            margin-bottom: 18px;
+        }
+        
+        .skill-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .skill-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text);
+        }
+        
+        .skill-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: rgba(15, 23, 42, 0.08);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-fill {
+            height: 100%;
+            background: var(--gradient-2);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.17, 0.67, 0.35, 0.98);
+        }
+        
+        .steps {
+            position: relative;
+            margin: 30px 0;
+            padding-left: 25px;
+        }
+        
+        .steps::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 12px;
+            height: 100%;
+            width: 1px;
+            background: rgba(15, 23, 42, 0.15);
+        }
+        
+        .step {
+            position: relative;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+        }
+        
+        .step:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: -25px;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--gradient-2);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(168, 131, 79, 0.3);
+        }
+        
+        .step-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+            padding-top: 3px;
+        }
+        
+        .step-content {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+        
+        .step-content p {
+            margin-bottom: 10px;
+        }
+        
+        .step-content ul {
+            padding-left: 18px;
+            margin-top: 10px;
+        }
+        
+        .step-content li {
+            margin-bottom: 8px;
+        }
+        
+        .priority-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+        
+        .priority-high {
+            background: rgba(220, 38, 38, 0.1);
+            color: #dc2626;
+        }
+        
+        .priority-medium {
+            background: rgba(234, 88, 12, 0.1);
+            color: #ea580c;
+        }
+        
+        .priority-low {
+            background: rgba(22, 163, 74, 0.1);
+            color: #16a34a;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s cubic-bezier(0.17, 0.67, 0.35, 0.98) forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .highlight-text {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.03), rgba(15, 23, 42, 0.1), rgba(15, 23, 42, 0.03));
+            margin: 20px 0;
+        }
+        
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        
+        .badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .badge-primary {
+            background: rgba(15, 23, 42, 0.08);
+            color: var(--primary);
+        }
+        
+        .badge-secondary {
+            background: rgba(168, 131, 79, 0.1);
+            color: var(--secondary);
+        }
+        
+        .badge-accent {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--accent);
+        }
+        
+        .card-hover-effect {
+            transition: transform 0.4s cubic-bezier(0.17, 0.67, 0.35, 0.98), box-shadow 0.4s ease;
+        }
+        
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 150%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="parallax-bg"></div>
+        <div class="header">
+            <div class="header-content">
+                <div class="profile">
+                    <div class="profile-image shimmer">陈</div>
+                    <div class="profile-info">
+                        <h1>陈思齐</h1>
+                        <p>广东外语外贸大学 · 国际商务专业</p>
+                    </div>
+                </div>
+                <div class="header-stats">
+                    <div class="stat">
+                        <div class="stat-value">3.43</div>
+                        <div class="stat-label">GPA</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">86.13</div>
+                        <div class="stat-label">加权平均</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">26Fall</div>
+                        <div class="stat-label">申请季</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="nav-container">
+            <div class="nav-tabs">
+                <div class="nav-tab active" data-tab="overview">概览</div>
+                <div class="nav-tab" data-tab="schools">院校</div>
+                <div class="nav-tab" data-tab="timeline">时间规划</div>
+                <div class="nav-tab" data-tab="preparation">背景提升</div>
+                <div class="nav-tab" data-tab="language">语言规划</div>
+                <div class="nav-indicator"></div>
+            </div>
+        </div>
+        
+        <div class="tab-content active" id="overview">
+            <div class="content">
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L1 21h22L12 2zm0 4l7.53 13H4.47L12 6zm-1 10h2v2h-2zm0-6h2v4h-2z"/>
+                            </svg>
+                        </div>
+                        <h2 class="section-title">基本信息</h2>
+                    </div>
+                    <div class="card card-hover-effect">
+                        <div class="card-content">
+                            <p><strong>姓名：</strong>陈思齐</p>
+                            <p><strong>本科学校：</strong>广东外语外贸大学</p>
+                            <p><strong>学院：</strong>国际商务英语学院</p>
+                            <p><strong>专业：</strong>国际商务</p>
+                            <p><strong>GPA：</strong><span class="highlight-text">3.43/4.0</span>（加权平均成绩<span class="highlight-text">86.13</span>分）</p>
+                            <p><strong>入学时间：</strong>2022年8月28日</p>
+                            <p><strong>学制：</strong>4年</p>
+                            <p><strong>语言成绩：</strong>尚未参加雅思考试</p>
+                            <p><strong>申请目标：</strong>2026年秋季（26Fall）英国法律硕士，倾向于<span class="highlight-text">商法</span>方向</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 14.5L3 12v8l9 4.5V17.5z"/>
+                            </svg>
+                        </div>
+                        <h2 class="section-title">专业背景</h2>
+                    </div>
+                    <div class="card card-hover-effect">
+                        <div class="card-content">
+                            <h3>核心课程</h3>
+                            <div class="badge-container">
+                                <span class="badge badge-primary">营销学原理</span>
+                                <span class="badge badge-primary">微观经济学</span>
+                                <span class="badge badge-primary">国际贸易实务</span>
+                                <span class="badge badge-primary">组织行为学</span>
+                            </div>
+                            
+                            <div class="divider"></div>
+                            
+                            <h3>法律相关课程</h3>
+                            <div class="badge-container">
+                                <span class="badge badge-secondary">劳动法 <small>(必修)</small></span>
+                                <span class="badge badge-secondary">知识产权法 <small>(选修)</small></span>
+                                <span class="badge badge-secondary">国际法 <small>(必修)</small></span>
+                                <span class="badge badge-accent">投资法 <small>(计划选修)</small></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
+                            </svg>
+                        </div>
+                        <h2 class="section-title">实习经历</h2>
+                    </div>
+                    <div class="card card-hover-effect">
+                        <div class="card-header">
+                            <h3 class="card-title">广东品胜律师事务所</h3>
+                            <span class="card-badge">律师助理</span>
+                        </div>
+                        <div class="card-content">
+                            <p>2024.7-2024.8，2025.1</p>
+                            <div class="divider"></div>
+                            <p>负责协助律师处理案件文书、法律研究及客户沟通工作，参与商业合同审核与起草</p>
+                            <div class="badge-container">
+                                <span class="badge badge-primary">合同审核</span>
+                                <span class="badge badge-primary">法律研究</span>
+                                <span class="badge badge-primary">客户沟通</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-hover-effect">
+                        <div class="card-header">
+                            <h3 class="card-title">金鹏律师事务所</h3>
+                            <span class="card-badge">律师助理</span>
+                        </div>
+                        <div class="card-content">
+                            <p>2024.8</p>
+                            <div class="divider"></div>
+                            <p>参与商业法律咨询项目，协助撰写法律意见书，进行案例研究与分析</p>
+                            <div class="badge-container">
+                                <span class="badge badge-primary">法律咨询</span>
+                                <span class="badge badge-primary">意见书撰写</span>
+                                <span class="badge badge-primary">案例分析</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-hover-effect">
+                        <div class="card-header">
+                            <h3 class="card-title">广州鸿绒信息科技有限公司</h3>
+                            <span class="card-badge">股东/实习岗位</span>
+                        </div>
+                        <div class="card-content">
+                            <p>2023.9-2024.11</p>
+                            <div class="divider"></div>
+                            <p>参与公司运营与管理，了解企业法律事务，协助处理知识产权相关问题</p>
+                            <div class="badge-container">
+                                <span class="badge badge-primary">企业管理</span>
+                                <span class="badge badge-primary">知识产权</span>
+                                <span class="badge badge-primary">商业运营</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="schools">
+            <div class="content">
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                            </svg>
+                        </div>
+                        <h2 class="section-title">冲刺院校</h2>
+                    </div>
+                    
+                    <div class="school-card">
+                        <div class="school-logo shimmer">爱大</div>
+                        <div class="school-info">
+                            <div class="school-name">爱丁堡大学</div>
+                            <div class="school-program">LLM International Economic Law</div>
+                            <div class="school-stats">
+                                <div class="school-stat">
+                                    <span class="school-stat-label">QS排名：</span>
+                                    <span class="school-stat-value">27</span>
+                                </div>
+                                <div class="school-stat">
+                                    <span class="school-stat-label">学费：</span>
+                                    <span class="school-stat-value">£30,500/年</span>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <p>全球顶尖法学院，商法和国际经济法领域享有极高声誉，校友网络强大</p>
+                            <div class="badge-container">
+                                <span class="badge badge-secondary">雅思7.0</span>
+                                <span class="badge badge-secondary">写作7.0</span>
+                                <span class="badge badge-accent">截止：2026.1.13</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="school-card">
+                        <div class="school-logo shimmer">布大</div>
+                        <div class="school-info">
+                            <div class="school-name">布里斯托大学</div>
+                            <div class="school-program">LLM Law - International Commercial Law</div>
+                            <div class="school-stats">
+                                <div class="school-stat">
+                                    <span class="school-stat-label">QS排名：</span>
+                                    <span class="school-stat-value">54</span>
+                                </div>
+                                <div class="school-stat">
+                                    <span class="school-stat-label">学费：</span>
+                                    <span class="school-stat-value">£28,600/年</span>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <p>英国顶尖法学院之一，国际商法领域声誉卓著，37门选修课程，高度灵活的课程设置</p>
+                            <div class="badge-container">
+                                <span class="badge badge-secondary">雅思7.0</span>
+                                <span class="badge badge-secondary">小分6.5</span>
+                                <span class="badge badge-accent">截止：2026.7.25</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                            </svg>
+                        </div>
+                        <h2 class="section-title">稳妥院校</h2>
+                    </div>
+                    
+                    <div class="school-card">
+                        <div class="school-logo shimmer">格大</div>
+                        <div class="school-info">
+                            <div class="school-name">格拉斯哥大学</div>
+                            <div class="school-program">LLM International Commercial Law</div>
+                            <div class="school-stats">
+                                <div class="school-stat">
+                                    <span class="school-stat-label">QS排名：</span>
+                                    <span class="school-stat-value">78</span>
+                                </div>
+                                <div class="school-stat">
+                                    <span class="school-stat-label">学费：</span>
+                                    <span class="school-stat-value">£28,500/年</span>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <p>苏格兰历史名校，注重电子商务和全球贸易法律框架，实践导向型教学</p>
+                            <div class="badge-container">
+                                <span class="badge badge-secondary">雅思7.0</span>
+                                <span class="badge badge-secondary">小分6.5</span>
+                                <span class="badge badge-accent">截止：2025.11.4</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="school-card">
+                        <div class="school-logo shimmer">杜大</div>
+                        <div class="school-info">
+                            <div class="school-name">杜伦大学</div>
+                            <div class="school-program">LLM International Trade and Commercial Law</div>
+                            <div class="school-stats">
+                                <div class="school-stat">
+                                    <span class="school-stat-label">QS排名：</span>
+                                    <span class="school-stat-value">89</span>
+                                </div>
+                                <div class="school-stat">
+                                    <span class="school-stat-label">学费：</span>
+                                    <span class="school-stat-value">£29,600/年</span>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <p>英国古老名校，学术氛围浓厚，小班教学，国际视角下的商业和业务交易规则</p>
+                            <div class="badge-container">
+                                <span class="badge badge-secondary">雅思7.0</span>
+                                <span class="badge badge-secondary">写作7.0</span>
+                                <span class="badge badge-accent">建议：2026.3前</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="school-card">
+                        <div class="school-logo shimmer">伯大</div>
+                        <div class="school-info">
+                            <div class="school-name">伯明翰大学</div>
+                            <div class="school-program">LLM International Commercial Law</div>
+                            <div class="school-stats">
+                                <div class="school-stat">
+                                    <span class="school-stat-label">QS排名：</span>
+                                    <span class="school-stat-value">80</span>
+                                </div>
+                                <div class="school-stat">
+                                    <span class="school-stat-label">学费：</span>
+                                    <span class="school-stat-value">£27,200/年</span>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <p>位于英国第二大城市，商业法律教育历史悠久，40门专业课程选择，校企合作紧密</p>
+                            <div class="badge-container">
+                                <span class="badge badge-secondary">雅思6.5</span>
+                                <span class="badge badge-secondary">小分6.0</span>
+                                <span class="badge badge-accent">截止：2026.5.12</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                            </svg>
+                        </div>
+                        <h2 class="section-title">保底院校</h2>
+                    </div>
+                    
+                    <div class="school-card">
+                        <div class="school-logo shimmer">南大</div>
+                        <div class="school-info">
+                            <div class="school-name">南安普顿大学</div>
+                            <div class="school-program">LLM International Commercial and Corporate Law</div>
+                            <div class="school-stats">
+                                <div class="school-stat">
+                                    <span class="school-stat-label">QS排名：</span>
+                                    <span class="school-stat-value">80</span>
+                                </div>
+                                <div class="school-stat">
+                                    <span class="school-stat-label">学费：</span>
+                                    <span class="school-stat-value">£25,400/年</span>
+                                </div>
+                            </div>
+                            <div class="divider"></div>
+                            <p>商业和公司法专业知识享有盛誉，培养实用法律技能，结合学院在国际和国家法律改革前沿的研究优势</p>
+                            <div class="badge-container">
+                                <span class="badge badge-secondary">雅思7.0</span>
+                                <span class="badge badge-secondary">小分6.5</span>
+                                <span class="badge badge-accent">截止：2026.8.26</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="timeline">
+            <div class="content">
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                            </svg>
+                        </div>
+                        <h2 class="section-title">2025年上半年</h2>
+                        <span class="card-badge">大三下学期</span>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">3月</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">制定申请规划</div>
+                                <div class="timeline-desc">
+                                    <ul>
+                                        <li>制定详细的申请规划和背景提升计划</li>
+                                        <li>开始雅思基础备考</li>
+                                        <li>联系现有律所实习单位，寻求推荐至更高级别律所的机会</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">4月</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">确定目标院校</div>
+                                <div class="timeline-desc">
+                                    <ul>
+                                        <li>确定目标院校和专业列表</li>
+                                        <li>研究各校申请要求和截止日期</li>
+                                        <li>准备简历和个人陈述初稿</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">5月</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">联系推荐人</div>
+                                <div class="timeline-desc">
+                                    <ul>
+                                        <li>联系潜在推荐人（教授和实习单位主管）</li>
+                                        <li>雅思备考进入强化阶段</li>
+                                        <li>申请暑期律所实习</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">6月</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">期末考试</div>
+                                <div class="timeline-desc">
+                                    <ul>
+                                        <li>期末考试，确保GPA稳步提升</li>
+                                        <li>完成个人陈述第一稿</li>
+                                        <li>确定暑期实习计划</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                            </svg>
+                        </div>
+                        <h2 class="section-title">2025年下半年</h2>
+                        <span class="card-badge">大四上学期</span>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">7月-8月</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">暑期实习</div>
+                                <div class="timeline-desc">
+                                    <ul>
+                                        <li>完成暑期高端律所实习</li>
+                                        <li>雅思强化备考</li>
+                                        <li>修改完善个人陈述</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">9月</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">雅思考试</div>
+                                <div class="timeline-desc">
+                                    <ul>
+                                
+                                        <li>参加首次雅思考试</li>
+                                        <li>开始准备正式申请材料</li>
+                                        <li>选择与国际商法相关的选修课程</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">10月</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">准备申请材料</div>
+                                <div class="timeline-desc">
+                                    <ul>
+                                        <li>完成所有申请材料的准备工作</li>
+                                        <li>获取推荐信</li>
+                                        <li>开始提交早期申请</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">11月</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">提交申请</div>
+                                <div class="timeline-desc">
+                                    <ul>
+                                        <li>参加第二次雅思考试（如需要）</li>
+                                        <li>继续提交申请</li>
+                                        <li>准备可能的面试</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">12月</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">完成申请</div>
+                                <div class="timeline-desc">
+                                    <ul>
+                                        <li>完成大部分学校的申请提交</li>
+                                        <li>开始寒假实习</li>
+                                        <li>准备补充材料（如有要求）</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                            </svg>
+                        </div>
+                        <h2 class="section-title">2026年上半年</h2>
+                        <span class="card-badge">大四下学期</span>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">1月</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">寒假实习</div>
+                                <div class="timeline-desc">
+                                    <ul>
+                                        <li>继续寒假实习</li>
+                                        <li>准备可能的面试和追加材料</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">2月-3月</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">收到申请结果</div>
+                                <div class="timeline-desc">
+                                    <ul>
+                                        <li>陆续收到申请结果</li>
+                                        <li>准备并提交补充材料（如需要）</li>
+                                        <li>如有条件录取，准备满足条件的计划</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">4月-5月</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">确定就读学校</div>
+                                <div class="timeline-desc">
+                                    <ul>
+                                        <li>比较各校录取结果和奖学金情况</li>
+                                        <li>确定最终就读学校</li>
+                                        <li>准备签证申请材料</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">6月-7月</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">完成学业</div>
+                                <div class="timeline-desc">
+                                    <ul>
+                                        <li>雅思达Con，换取无条件Offer</li>
+                                        <li>完成学位课程</li>
+                                        <li>申请签证</li>
+                                        <li>准备行前事宜</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-date">8月-9月</div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">出国留学</div>
+                                <div class="timeline-desc">
+                                    <p>启程前往英国，开始法律硕士学习生涯</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="preparation">
+            <div class="content">
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
+                            </svg>
+                        </div>
+                        <h2 class="section-title">实习经历优化</h2>
+                    </div>
+                    
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-title">高端律所实习<span class="priority-badge priority-high">极高优先级</span></div>
+                            <div class="step-content">
+                                <p><strong>目标：</strong>争取在红圈律所（如君合、金杜、年利达等）获得实习机会</p>
+                                <p><strong>时间：</strong>2025年5月-8月（暑期）和2025年12月-2026年2月（寒假）</p>
+                                <p><strong>策略：</strong></p>
+                                <ul>
+                                    <li>利用现有律所人脉资源，请求推荐至更高级别律所</li>
+                                    <li>通过校友网络和法律招聘平台（如"法律人"）主动申请</li>
+                                    <li>参加律所举办的校园宣讲会和招聘活动</li>
+                                    <li>重点关注有国际业务的律所，尤其是与英国有合作的机构</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-title">实习内容深化</div>
+                            <div class="step-content">
+                                <p>在现有或未来实习中，争取参与更多实质性工作：</p>
+                                <ul>
+                                    <li>协助起草国际商业合同或法律文件</li>
+                                    <li>参与跨境交易或国际商事仲裁案件</li>
+                                    <li>撰写法律研究报告，尤其是与国际商法相关的议题</li>
+                                </ul>
+                                <p>建立专业作品集，收集实习期间完成的法律文件样本（去除敏感信息）</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 14.5L3 12v8l9 4.5V17.5z"/>
+                            </svg>
+                        </div>
+                        <h2 class="section-title">学术背景提升</h2>
+                    </div>
+                    
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-title">GPA优化策略</div>
+                            <div class="step-content">
+                                <p><strong>目标：</strong>将总GPA提升至3.5+，加权平均分提升至88+</p>
+                                <p><strong>策略：</strong></p>
+                                <ul>
+                                    <li>大四重点课程争取90+分数</li>
+                                    <li>选修与国际商法相关的专业课程，如"投资法"、"国际经济法"等</li>
+                                    <li>与任课教授建立良好关系，争取学术指导和推荐信</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-title">法律研究项目<span class="priority-badge priority-high">高优先级</span></div>
+                            <div class="step-content">
+                                <p><strong>目标：</strong>完成1-2个与国际商法相关的研究项目</p>
+                                <p><strong>时间：</strong>2025年9月-2026年5月</p>
+                                <p><strong>策略：</strong></p>
+                                <ul>
+                                    <li>与法学院教授合作，参与其研究项目</li>
+                                    <li>独立开展小型研究，如"一带一路"框架下的国际商事仲裁研究</li>
+                                    <li>尝试撰写学术论文并投稿至学术期刊或参加学术会议</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-title">专业证书与竞赛</div>
+                            <div class="step-content">
+                                <ul>
+                                    <li>参加模拟法庭比赛，尤其是国际商法相关的竞赛</li>
+                                    <li>参加法律案例分析大赛或法律写作比赛</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/>
+                            </svg>
+                        </div>
+                        <h2 class="section-title">语言与软实力提升</h2>
+                    </div>
+                    
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-title">法律英语能力</div>
+                            <div class="step-content">
+                                <ul>
+                                    <li>参加法律英语专项培训课程</li>
+                                    <li>阅读英文法律期刊和案例报告，建立专业词汇库</li>
+                                    <li>参加英文法律文书写作工作坊</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-title">国际视野拓展</div>
+                            <div class="step-content">
+                                <ul>
+                                    <li>参加国际法律研讨会或网络讲座</li>
+                                    <li>关注并分析国际商业法律热点案例</li>
+                                    <li>尝试联系目标院校的在读学生或校友，了解申请要点</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="language">
+            <div class="content">
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                            </svg>
+                        </div>
+                        <h2 class="section-title">雅思考试规划</h2>
+                    </div>
+                    
+                    <div class="card card-hover-effect">
+                        <div class="card-header">
+                            <h3 class="card-title">目标分数</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="language-progress">
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <div class="skill-name">总分</div>
+                                        <div class="skill-value">7.0-7.5</div>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" style="width: 0%" data-width="75%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <div class="skill-name">听力</div>
+                                        <div class="skill-value">6.5+</div>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" style="width: 0%" data-width="70%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <div class="skill-name">阅读</div>
+                                        <div class="skill-value">6.5+</div>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" style="width: 0%" data-width="70%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <div class="skill-name">写作</div>
+                                        <div class="skill-value">7.0</div>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" style="width: 0%" data-width="80%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-header">
+                                        <div class="skill-name">口语</div>
+                                        <div class="skill-value">6.5+</div>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-fill" style="width: 0%" data-width="70%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p><strong>备注：</strong>爱丁堡大学要求写作7.0，其他院校普遍要求小分6.5</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-hover-effect">
+                        <div class="card-header">
+                            <h3 class="card-title">备考时间表</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-date">2025年3月-5月</div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-title">基础阶段</div>
+                                        <div class="timeline-desc">
+                                            <ul>
+                                                <li>每周投入15-20小时</li>
+                                                <li>完成剑桥雅思1-8的阅读和听力练习</li>
+                                                <li>系统学习写作和口语技巧</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-date">2025年6月-8月</div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-title">强化阶段</div>
+                                        <div class="timeline-desc">
+                                            <ul>
+                                                <li>每周投入20-25小时</li>
+                                                <li>完成剑桥雅思9-17的全套练习</li>
+                                                <li>参加模拟考试，找出弱点并针对性训练</li>
+                                                <li>重点提升写作能力，达到7分水平</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-date">2025年9月</div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-title">首次正式考试</div>
+                                        <div class="timeline-desc">
+                                            <p>目标：总分7.0+，写作6.5+</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-date">2025年11月</div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-title">二次考试（如需要）</div>
+                                        <div class="timeline-desc">
+                                            <p>目标：总分7.0+，写作7.0+</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/>
+                            </svg>
+                        </div>
+                        <h2 class="section-title">备考资源与方法</h2>
+                    </div>
+                    
+                    <div class="card card-hover-effect">
+                        <div class="card-header">
+                            <h3 class="card-title">推荐学习资料</h3>
+                        </div>
+                        <div class="card-content">
+                            <ul>
+                                <li>《剑桥雅思真题集》（最新版）</li>
+                                <li>《雅思写作高分范文》（法律专业方向）</li>
+                                <li>《雅思口语真题库》</li>
+                                <li>British Council和IDP提供的官方备考资源</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-hover-effect">
+                        <div class="card-header">
+                            <h3 class="card-title">备考方法</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="steps">
+                                <div class="step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-title">写作</div>
+                                    <div class="step-content">
+                                        <p>每周完成2-3篇Task 1和Task 2，重点练习法律相关主题</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-title">口语</div>
+                                    <div class="step-content">
+                                        <p>找外教或语伴每周练习2-3次，熟悉Part 1-3的常见话题</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-title">阅读</div>
+                                    <div class="step-content">
+                                        <p>每天阅读30分钟英文法律文章或案例，提高专业阅读速度</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-title">听力</div>
+                                    <div class="step-content">
+                                        <p>每天听30分钟英文法律讲座或播客，提高专业听力理解能力</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card card-hover-effect">
+                        <div class="card-header">
+                            <h3 class="card-title">特别说明</h3>
+                        </div>
+                        <div class="card-content">
+                            <ul>
+                                <li>英国大多数法学院接受"后补雅思"政策，可以先申请后提交语言成绩</li>
+                                <li>建议在2026年3月前获得满足条件的雅思成绩</li>
+                                <li>部分学校（如爱丁堡大学）不接受IELTS One Skill Retake，需注意</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="floating-button">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="white"/>
+            </svg>
+        </div>
+    </div>
+    
+    <script>
+        // 初始化导航标签
+        function initTabs() {
+            const tabs = document.querySelectorAll('.nav-tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const indicator = document.querySelector('.nav-indicator');
+            
+            // 设置初始指示器位置和宽度
+            const activeTab = document.querySelector('.nav-tab.active');
+            if (activeTab && indicator) {
+                indicator.style.width = `${activeTab.offsetWidth}px`;
+                indicator.style.transform = `translateX(${activeTab.offsetLeft}px)`;
+            }
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // 移除所有活动状态
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // 添加活动状态到点击的标签
+                    tab.classList.add('active');
+                    const tabId = tab.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                    
+                    // 移动指示器
+                    indicator.style.width = `${tab.offsetWidth}px`;
+                    indicator.style.transform = `translateX(${tab.offsetLeft}px)`;
+                    
+                    // 初始化新标签内容的动画
+                    initSections();
+                });
+            });
+        }
+        
+        // 初始化新标签内容的动画
+        function initSections() {
+            const sections = document.querySelectorAll('.tab-content.active .section');
+            sections.forEach((section, index) => {
+                setTimeout(() => {
+                    section.classList.add('visible');
+                }, 100 * index);
+            });
+        }
+        
+        // 初始化进度条
+        function initProgressBars() {
+            const progressFills = document.querySelectorAll('.progress-fill');
+            const skillFills = document.querySelectorAll('.skill-fill');
+            
+            // 检查元素是否在视口中
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+            
+            // 设置进度条宽度
+            function setProgressWidth() {
+                progressFills.forEach(fill => {
+                    if (isElementInViewport(fill) && fill.style.width === '0%') {
+                        const width = fill.getAttribute('data-width') || '0%';
+                        setTimeout(() => {
+                            fill.style.width = width;
+                        }, 300);
+                    }
+                });
+                
+                skillFills.forEach(fill => {
+                    if (isElementInViewport(fill) && fill.style.width === '0%') {
+                        const width = fill.getAttribute('data-width') || '0%';
+                        setTimeout(() => {
+                            fill.style.width = width;
+                        }, 300);
+                    }
+                });
+            }
+            
+            // 初始检查
+            setProgressWidth();
+            
+            // 滚动时检查
+            window.addEventListener('scroll', setProgressWidth);
+        }
+        
+        // 视差效果
+        function initParallax() {
+            const parallaxBg = document.querySelector('.parallax-bg');
+            
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                if (parallaxBg) {
+                    parallaxBg.style.transform = `translateY(${scrollY * 0.3}px)`;
+                }
+            });
+        }
+        
+        // 浮动按钮功能
+        function initFloatingButton() {
+            const floatingButton = document.querySelector('.floating-button');
+            if (floatingButton) {
+                floatingButton.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+                
+                // 滚动时显示/隐藏浮动按钮
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        floatingButton.style.opacity = '1';
+                    } else {
+                        floatingButton.style.opacity = '0';
+                    }
+                });
+            }
+        }
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            initTabs();
+            initSections();
+            initProgressBars();
+            initParallax();
+            initFloatingButton();
+        });
+    </script>
+</body>
+</html>
+
