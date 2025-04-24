@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>祝可心 - 2026秋季研究生申请规划</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@100;300;400;500;700;900&display=swap');
+        
+        :root {
+            --primary-color: #1a2639;
+            --secondary-color: #d4a373;
+            --accent-color: #e76f51;
+            --background-color: #faf6f1;
+            --text-color: #2d3142;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        /* 头部区域 */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f6f5f4 0%, #e8e6e1 100%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            padding: 0 2rem;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s forwards 0.5s;
+        }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .hero-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards;
+            animation-delay: calc(0.2s * var(--order));
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .info-card h3 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .info-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        /* 导航栏 */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            padding: 1.5rem 0;
+        }
+        
+        .nav.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .nav-logo {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-item {
+            list-style: none;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* 专业方向部分 */
+        .directions {
+            padding: 8rem 2rem;
+            background-color: var(--light-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 4rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .directions-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .direction-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .direction-tab {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            background-color: transparent;
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .direction-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--secondary-color);
+            border-radius: 30px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: -1;
+        }
+        
+        .direction-tab:hover {
+            color: var(--light-color);
+        }
+        
+        .direction-tab:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .direction-tab.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .direction-content {
+            display: none;
+            animation: fadeIn 0.8s forwards;
+        }
+        
+        .direction-content.active {
+            display: block;
+        }
+        
+        .schools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .school-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards;
+            animation-delay: calc(0.1s * var(--order));
+        }
+        
+        .school-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .school-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #364156 100%);
+            color: white;
+        }
+        
+        .school-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .school-program {
+            font-size: 1rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .school-rank {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        
+        .school-body {
+            padding: 1.5rem;
+        }
+        
+        .school-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .school-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+        
+        .school-info-label {
+            min-width: 100px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .school-info-value {
+            flex: 1;
+        }
+        
+        .school-advantage {
+            background-color: rgba(212, 163, 115, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .school-advantage h4 {
+            font-size: 1rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .school-footer {
+            padding: 1rem 1.5rem;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .admission-chance {
+            display: flex;
+            align-items: center;
+        }
+        
+        .chance-label {
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+        }
+        
+        .chance-bar {
+            width: 100px;
+            height: 6px;
+            background-color: #e9ecef;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .chance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .chance-high .chance-fill {
+            background-color: #40916c;
+            width: 80%;
+        }
+        
+        .chance-medium .chance-fill {
+            background-color: #e9c46a;
+            width: 50%;
+        }
+        
+        .chance-low .chance-fill {
+            background-color: #e76f51;
+            width: 30%;
+        }
+        
+        /* 时间轴部分 */
+        .timeline {
+            padding: 8rem 2rem;
+            background-color: var(--background-color);
+            position: relative;
+        }
+        
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--secondary-color);
+        }
+        
+        .timeline-item {
+            margin-bottom: 4rem;
+            position: relative;
+            width: 100%;
+            display: flex;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 4rem;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 4rem;
+            text-align: left;
+        }
+        
+        .timeline-item:nth-child(odd)::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: calc(50% - 10px);
+            width: 20px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .timeline-item:nth-child(even)::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: calc(50% - 10px);
+            width: 20px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            z-index: 2;
+        }
+        
+        .timeline-content {
+            width: calc(50% - 4rem);
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+        
+        .timeline-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-date {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .timeline-text {
+            font-size: 0.95rem;
+            color: var(--text-color);
+        }
+        
+        .timeline-tasks {
+            margin-top: 1rem;
+            padding-left: 1.2rem;
+        }
+        
+        .timeline-tasks li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        /* 背景提升部分 */
+        .improvement {
+            padding: 8rem 2rem;
+            background-color: var(--light-color);
+        }
+        
+        .improvement-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .improvement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .improvement-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .improvement-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .improvement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .improvement-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #e9c46a 100%);
+            color: white;
+        }
+        
+        .improvement-title {
+            font-size: 1.3rem;
+            margin-bottom: 0;
+        }
+        
+        .improvement-body {
+            padding: 1.5rem;
+        }
+        
+        .improvement-list {
+            list-style: none;
+        }
+        
+        .improvement-item {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .improvement-item::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+        }
+        
+        /* 风险评估部分 */
+        .risks {
+            padding: 8rem 2rem;
+            background-color: var(--background-color);
+        }
+        
+        .risks-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .risk-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 3rem;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .risk-table thead {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .risk-table th,
+        .risk-table td {
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .risk-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .risk-table tbody tr {
+            transition: var(--transition);
+        }
+        
+        .risk-table tbody tr:hover {
+            background-color: rgba(212, 163, 115, 0.05);
+        }
+        
+        .risk-level {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .risk-high {
+            background-color: rgba(231, 111, 81, 0.1);
+            color: #e76f51;
+        }
+        
+        .risk-medium {
+            background-color: rgba(233, 196, 106, 0.1);
+            color: #e9c46a;
+        }
+        
+        .risk-low {
+            background-color: rgba(64, 145, 108, 0.1);
+            color: #40916c;
+        }
+        
+        /* 页脚 */
+        .footer {
+            padding: 4rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-text {
+            max-width: 400px;
+            opacity: 0.8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* 动画 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 1200px) {
+            .hero-info {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .timeline-container::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                justify-content: flex-start !important;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-right: 0;
+                margin-left: 60px;
+                text-align: left;
+                width: calc(100% - 60px);
+            }
+            
+            .timeline-item:nth-child(odd)::before,
+            .timeline-item:nth-child(even)::before {
+                left: 30px;
+                right: auto;
+            }
+            
+            .timeline-dot {
+                left: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .schools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .improvement-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .risk-table {
+                font-size: 0.9rem;
+            }
+            
+            .risk-table th,
+            .risk-table td {
+                padding: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">祝可心</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#about" class="nav-link">学生情况</a></li>
+                <li class="nav-item"><a href="#directions" class="nav-link">申请方向</a></li>
+                <li class="nav-item"><a href="#timeline" class="nav-link">时间规划</a></li>
+                <li class="nav-item"><a href="#improvement" class="nav-link">背景提升</a></li>
+                <li class="nav-item"><a href="#risks" class="nav-link">风险评估</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 头部区域 -->
+    <section class="hero" id="about">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">祝可心 - 研究生申请规划</h1>
+            <h2 class="hero-subtitle">2026年秋季入学 · 香港/新加坡顶尖院校</h2>
+            
+            <div class="hero-info">
+                <div class="info-card" style="--order: 1;">
+                    <h3>基本信息</h3>
+                    <p><strong>本科学校：</strong>华盛顿大学</p>
+                    <p><strong>专业：</strong>语言学（Linguistics）</p>
+                    <p><strong>GPA：</strong>3.08/4.0（最近一学期GPA为3.8）</p>
+                    <p><strong>学分情况：</strong>当前累计153学分，毕业要求180学分</p>
+                </div>
+                
+                <div class="info-card" style="--order: 2;">
+                    <h3>申请目标</h3>
+                    <p><strong>国家/地区：</strong>香港、新加坡（Top 5院校）</p>
+                    <p><strong>专业方向：</strong>人工智能伦理、商业法律/法律合规、教育学</p>
+                    <p><strong>入学季：</strong>2026年秋季入学（26Fall）</p>
+                </div>
+                
+                <div class="info-card" style="--order: 3;">
+                    <h3>就业意向</h3>
+                    <p>偏向工作而非创业</p>
+                    <p>不考虑体制内就业</p>
+                    <p>希望在国际环境中发展</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- 专业方向部分 -->
+<section class="directions" id="directions">
+    <h2 class="section-title">申请专业与学校</h2>
+    <div class="directions-container">
+        <div class="direction-tabs">
+            <button class="direction-tab active" data-tab="ai">AI伦理与语言学</button>
+            <button class="direction-tab" data-tab="law">法律合规/商业法</button>
+            <button class="direction-tab" data-tab="edu">教育学</button>
+        </div>
+        
+        <!-- AI伦理方向 -->
+        <div class="direction-content active" id="ai-content">
+            <div class="schools-grid">
+                <div class="school-card" style="--order: 1;">
+                    <div class="school-header">
+                        <h3 class="school-name">香港大学</h3>
+                        <p class="school-program">人工智能、伦理与社会硕士</p>
+                        <span class="school-rank">QS排名：17</span>
+                    </div>
+                    <div class="school-body">
+                        <div class="school-info">
+                            <div class="school-info-item">
+                                <span class="school-info-label">学费：</span>
+                                <span class="school-info-value">270,000港币</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">雅思要求：</span>
+                                <span class="school-info-value">总分7.0，小分5.5</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">申请时间：</span>
+                                <span class="school-info-value">2025.10.22-2025.1.24（第一轮）</span>
+                            </div>
+                        </div>
+                        <div class="school-advantage">
+                            <h4>项目优势</h4>
+                            <p>跨学科课程设置，完美结合语言学背景与AI技术，符合当前就业市场需求</p>
+                        </div>
+                    </div>
+                    <div class="school-footer">
+                        <div class="admission-chance chance-medium">
+                            <span class="chance-label">录取可能性：中等</span>
+                            <div class="chance-bar">
+                                <div class="chance-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="school-card" style="--order: 2;">
+                    <div class="school-header">
+                        <h3 class="school-name">香港理工大学</h3>
+                        <p class="school-program">生成式人工智能与人文科学硕士</p>
+                        <span class="school-rank">QS排名：57</span>
+                    </div>
+                    <div class="school-body">
+                        <div class="school-info">
+                            <div class="school-info-item">
+                                <span class="school-info-label">学费：</span>
+                                <span class="school-info-value">276,000港币</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">雅思要求：</span>
+                                <span class="school-info-value">总分6.0</span>
+                            </div>
+                        </div>
+                        <div class="school-advantage">
+                            <h4>项目优势</h4>
+                            <p>新兴交叉学科，语言学背景学生适合，就业前景广阔</p>
+                        </div>
+                    </div>
+                    <div class="school-footer">
+                        <div class="admission-chance chance-high">
+                            <span class="chance-label">录取可能性：较高</span>
+                            <div class="chance-bar">
+                                <div class="chance-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="school-card" style="--order: 3;">
+                    <div class="school-header">
+                        <h3 class="school-name">新加坡国立大学</h3>
+                        <p class="school-program">人工智能与创新硕士</p>
+                        <span class="school-rank">QS排名：8</span>
+                    </div>
+                    <div class="school-body">
+                        <div class="school-info">
+                            <div class="school-info-item">
+                                <span class="school-info-label">学费：</span>
+                                <span class="school-info-value">54,391新币</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">雅思要求：</span>
+                                <span class="school-info-value">总分6.0</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">申请时间：</span>
+                                <span class="school-info-value">2024.11.8-2025.1.31</span>
+                            </div>
+                        </div>
+                        <div class="school-advantage">
+                            <h4>项目优势</h4>
+                            <p>课程设计兼顾技术与人文，适合非STEM背景学生，与新加坡国家AI战略2.0对接</p>
+                        </div>
+                    </div>
+                    <div class="school-footer">
+                        <div class="admission-chance chance-medium">
+                            <span class="chance-label">录取可能性：中等</span>
+                            <div class="chance-bar">
+                                <div class="chance-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="school-card" style="--order: 4;">
+                    <div class="school-header">
+                        <h3 class="school-name">新加坡国立大学</h3>
+                        <p class="school-program">英语语言和语言学硕士</p>
+                        <span class="school-rank">QS排名：8</span>
+                    </div>
+                    <div class="school-body">
+                        <div class="school-info">
+                            <div class="school-info-item">
+                                <span class="school-info-label">学费：</span>
+                                <span class="school-info-value">40,550新币</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">雅思要求：</span>
+                                <span class="school-info-value">总分6.0</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">申请时间：</span>
+                                <span class="school-info-value">2024.11.1-2025.1.15</span>
+                            </div>
+                        </div>
+                        <div class="school-advantage">
+                            <h4>项目优势</h4>
+                            <p>与本科语言学背景高度相关，研究语言结构和社会背景下的语言定性研究</p>
+                        </div>
+                    </div>
+                    <div class="school-footer">
+                        <div class="admission-chance chance-high">
+                            <span class="chance-label">录取可能性：高</span>
+                            <div class="chance-bar">
+                                <div class="chance-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 法律合规方向 -->
+        <div class="direction-content" id="law-content">
+            <div class="schools-grid">
+                <div class="school-card" style="--order: 1;">
+                    <div class="school-header">
+                        <h3 class="school-name">香港大学</h3>
+                        <p class="school-program">普通法硕士</p>
+                        <span class="school-rank">QS排名：17</span>
+                    </div>
+                    <div class="school-body">
+                        <div class="school-info">
+                            <div class="school-info-item">
+                                <span class="school-info-label">学费：</span>
+                                <span class="school-info-value">200,200港币</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">雅思要求：</span>
+                                <span class="school-info-value">总分7.0，小分6.5</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">申请时间：</span>
+                                <span class="school-info-value">2024.11.13-2024.12.13（第一轮）</span>
+                            </div>
+                        </div>
+                        <div class="school-advantage">
+                            <h4>项目优势</h4>
+                            <p>专为非普通法司法管辖区学生设计，国际认可度高</p>
+                        </div>
+                    </div>
+                    <div class="school-footer">
+                        <div class="admission-chance chance-low">
+                            <span class="chance-label">录取难度：较高</span>
+                            <div class="chance-bar">
+                                <div class="chance-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="school-card" style="--order: 2;">
+                    <div class="school-header">
+                        <h3 class="school-name">香港中文大学</h3>
+                        <p class="school-program">普通法法学硕士</p>
+                        <span class="school-rank">QS排名：36</span>
+                    </div>
+                    <div class="school-body">
+                        <div class="school-info">
+                            <div class="school-info-item">
+                                <span class="school-info-label">学费：</span>
+                                <span class="school-info-value">165,120港币</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">雅思要求：</span>
+                                <span class="school-info-value">总分6.5</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">申请时间：</span>
+                                <span class="school-info-value">2024.9.1-2025.1.31（第一轮）</span>
+                            </div>
+                        </div>
+                        <div class="school-advantage">
+                            <h4>项目优势</h4>
+                            <p>课程设置灵活，聚焦跨境法律应用</p>
+                        </div>
+                    </div>
+                    <div class="school-footer">
+                        <div class="admission-chance chance-medium">
+                            <span class="chance-label">录取难度：中等</span>
+                            <div class="chance-bar">
+                                <div class="chance-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 教育学方向 -->
+        <div class="direction-content" id="edu-content">
+            <div class="schools-grid">
+                <div class="school-card" style="--order: 1;">
+                    <div class="school-header">
+                        <h3 class="school-name">新加坡南洋理工大学</h3>
+                        <p class="school-program">教育硕士（英语）</p>
+                        <span class="school-rank">QS排名：15</span>
+                    </div>
+                    <div class="school-body">
+                        <div class="school-info">
+                            <div class="school-info-item">
+                                <span class="school-info-label">学费：</span>
+                                <span class="school-info-value">41,900新币</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">雅思要求：</span>
+                                <span class="school-info-value">总分6.5</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">申请时间：</span>
+                                <span class="school-info-value">2025.5.5-2025.6.19（2026年1月入学）</span>
+                            </div>
+                        </div>
+                        <div class="school-advantage">
+                            <h4>项目优势</h4>
+                            <p>就业方向明确，可进入国际学校任教或担任行政职位</p>
+                        </div>
+                    </div>
+                    <div class="school-footer">
+                        <div class="admission-chance chance-high">
+                            <span class="chance-label">录取可能性：高</span>
+                            <div class="chance-bar">
+                                <div class="chance-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="school-card" style="--order: 2;">
+                    <div class="school-header">
+                        <h3 class="school-name">新加坡南洋理工大学</h3>
+                        <p class="school-program">教育领导学硕士</p>
+                        <span class="school-rank">QS排名：15</span>
+                    </div>
+                    <div class="school-body">
+                        <div class="school-info">
+                            <div class="school-info-item">
+                                <span class="school-info-label">学费：</span>
+                                <span class="school-info-value">44,145新币</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">雅思要求：</span>
+                                <span class="school-info-value">总分6.5</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">申请时间：</span>
+                                <span class="school-info-value">2025.5.5-2025.6.19（2026年入学）</span>
+                            </div>
+                        </div>
+                        <div class="school-advantage">
+                            <h4>项目优势</h4>
+                            <p>专为教育领导者设计，强调当代领导方法和循证实践</p>
+                        </div>
+                    </div>
+                    <div class="school-footer">
+                        <div class="admission-chance chance-medium">
+                            <span class="chance-label">录取可能性：中等</span>
+                            <div class="chance-bar">
+                                <div class="chance-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="school-card" style="--order: 3;">
+                    <div class="school-header">
+                        <h3 class="school-name">新加坡南洋理工大学</h3>
+                        <p class="school-program">文学硕士（咨询与指导）</p>
+                        <span class="school-rank">QS排名：15</span>
+                    </div>
+                    <div class="school-body">
+                        <div class="school-info">
+                            <div class="school-info-item">
+                                <span class="school-info-label">学费：</span>
+                                <span class="school-info-value">52,320新币（总学费）</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">雅思要求：</span>
+                                <span class="school-info-value">总分6.5</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">申请时间：</span>
+                                <span class="school-info-value">2024.11.1-2025.1.6</span>
+                            </div>
+                        </div>
+                        <div class="school-advantage">
+                            <h4>项目优势</h4>
+                            <p>经新加坡咨询协会全面认证，培养专业咨询师</p>
+                        </div>
+                    </div>
+                    <div class="school-footer">
+                        <div class="admission-chance chance-medium">
+                            <span class="chance-label">录取可能性：中等</span>
+                            <div class="chance-bar">
+                                <div class="chance-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="school-card" style="--order: 4;">
+                    <div class="school-header">
+                        <h3 class="school-name">香港科技大学</h3>
+                        <p class="school-program">国际语言教育硕士项目</p>
+                        <span class="school-rank">QS排名：47</span>
+                    </div>
+                    <div class="school-body">
+                        <div class="school-info">
+                            <div class="school-info-item">
+                                <span class="school-info-label">学费：</span>
+                                <span class="school-info-value">135,000港币</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">雅思要求：</span>
+                                <span class="school-info-value">总分7.0，写作7.0，其他5.5</span>
+                            </div>
+                        </div>
+                        <div class="school-advantage">
+                            <h4>项目优势</h4>
+                            <p>专注英语作为第二语言教学，与语言学专业高度相关</p>
+                        </div>
+                    </div>
+                    <div class="school-footer">
+                        <div class="admission-chance chance-medium">
+                            <span class="chance-label">录取可能性：中等</span>
+                            <div class="chance-bar">
+                                <div class="chance-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="school-card" style="--order: 5;">
+                    <div class="school-header">
+                        <h3 class="school-name">香港大学</h3>
+                        <p class="school-program">教育学硕士</p>
+                        <span class="school-rank">QS排名：17</span>
+                    </div>
+                    <div class="school-body">
+                        <div class="school-info">
+                            <div class="school-info-item">
+                                <span class="school-info-label">学费：</span>
+                                <span class="school-info-value">229,800港币</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">雅思要求：</span>
+                                <span class="school-info-value">总分6.5，小分6.0</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">申请时间：</span>
+                                <span class="school-info-value">2024.11.6-2025.2.3（第一轮）</span>
+                            </div>
+                        </div>
+                        <div class="school-advantage">
+                            <h4>项目优势</h4>
+                            <p>香港顶尖教育学院，毕业生在香港和国外教育领域就业前景广阔</p>
+                        </div>
+                    </div>
+                    <div class="school-footer">
+                        <div class="admission-chance chance-medium">
+                            <span class="chance-label">录取可能性：中等</span>
+                            <div class="chance-bar">
+                                <div class="chance-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="school-card" style="--order: 6;">
+                    <div class="school-header">
+                        <h3 class="school-name">香港中文大学</h3>
+                        <p class="school-program">教育学硕士</p>
+                        <span class="school-rank">QS排名：36</span>
+                    </div>
+                    <div class="school-body">
+                        <div class="school-info">
+                            <div class="school-info-item">
+                                <span class="school-info-label">学费：</span>
+                                <span class="school-info-value">183,000港币</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">雅思要求：</span>
+                                <span class="school-info-value">总分6.5</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">申请时间：</span>
+                                <span class="school-info-value">2024.9.1-2025.2.28</span>
+                            </div>
+                        </div>
+                        <div class="school-advantage">
+                            <h4>项目优势</h4>
+                            <p>课程设置灵活，提供多个专业方向选择</p>
+                        </div>
+                    </div>
+                    <div class="school-footer">
+                        <div class="admission-chance chance-medium">
+                            <span class="chance-label">录取可能性：中等</span>
+                            <div class="chance-bar">
+                                <div class="chance-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="school-card" style="--order: 7;">
+                    <div class="school-header">
+                        <h3 class="school-name">香港理工大学</h3>
+                        <p class="school-program">咨商与辅导硕士</p>
+                        <span class="school-rank">QS排名：57</span>
+                    </div>
+                    <div class="school-body">
+                        <div class="school-info">
+                            <div class="school-info-item">
+                                <span class="school-info-label">学费：</span>
+                                <span class="school-info-value">217,500港币（总学费）</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">雅思要求：</span>
+                                <span class="school-info-value">总分6.0</span>
+                            </div>
+                        </div>
+                        <div class="school-advantage">
+                            <h4>项目优势</h4>
+                            <p>培养专业咨询师，语言学背景学生可转型为语言教育咨询师</p>
+                        </div>
+                    </div>
+                    <div class="school-footer">
+                        <div class="admission-chance chance-high">
+                            <span class="chance-label">录取可能性：高</span>
+                            <div class="chance-bar">
+                                <div class="chance-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="school-card" style="--order: 8;">
+                    <div class="school-header">
+                        <h3 class="school-name">香港理工大学</h3>
+                        <p class="school-program">学校与社区心理硕士</p>
+                        <span class="school-rank">QS排名：57</span>
+                    </div>
+                    <div class="school-body">
+                        <div class="school-info">
+                            <div class="school-info-item">
+                                <span class="school-info-label">学费：</span>
+                                <span class="school-info-value">231,000港币</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">雅思要求：</span>
+                                <span class="school-info-value">总分6.0</span>
+                            </div>
+                        </div>
+                        <div class="school-advantage">
+                            <h4>项目优势</h4>
+                            <p>专注学校心理健康服务，与教育领域紧密结合</p>
+                        </div>
+                    </div>
+                    <div class="school-footer">
+                        <div class="admission-chance chance-medium">
+                            <span class="chance-label">录取可能性：中等</span>
+                            <div class="chance-bar">
+                                <div class="chance-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="school-card" style="--order: 9;">
+                    <div class="school-header">
+                        <h3 class="school-name">香港城市大学</h3>
+                        <p class="school-program">辅导学硕士</p>
+                        <span class="school-rank">QS排名：62</span>
+                    </div>
+                    <div class="school-body">
+                        <div class="school-info">
+                            <div class="school-info-item">
+                                <span class="school-info-label">学费：</span>
+                                <span class="school-info-value">186,000港币</span>
+                            </div>
+                            <div class="school-info-item">
+                                <span class="school-info-label">雅思要求：</span>
+                                <span class="school-info-value">总分6.5</span>
+                            </div>
+                        </div>
+                        <div class="school-advantage">
+                            <h4>项目优势</h4>
+                            <p>注重实践技能培养，提供专业实习机会</p>
+                        </div>
+                    </div>
+                    <div class="school-footer">
+                        <div class="admission-chance chance-high">
+                            <span class="chance-label">录取可能性：高</span>
+                            <div class="chance-bar">
+                                <div class="chance-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- 时间轴部分 -->
+    <section class="timeline" id="timeline">
+        <h2 class="section-title">申请时间规划</h2>
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2025年1-5月</span>
+                    <h3 class="timeline-title">春季学期</h3>
+                    <ul class="timeline-tasks">
+                        <li>确定申请方向和目标院校</li>
+                        <li>完成剩余学分，保持高GPA</li>
+                        <li>联系潜在推荐人，确认推荐意向</li>
+                        <li>参加雅思模拟测试，开始备考</li>
+                        <li>准备OPT申请材料</li>
+                        <li>开始寻找与申请方向相关的实习机会</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2025年6-8月</span>
+                    <h3 class="timeline-title">夏季</h3>
+                    <ul class="timeline-tasks">
+                        <li>参加第一次雅思考试（7月中旬）</li>
+                        <li>开始实习工作</li>
+                        <li>准备个人陈述初稿</li>
+                        <li>整理本科成绩单和学位证明</li>
+                        <li>参加相关领域的研讨会或短期课程</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2025年9-12月</span>
+                    <h3 class="timeline-title">秋季</h3>
+                    <ul class="timeline-tasks">
+                        <li>如需，参加第二次雅思考试（9月初）</li>
+                        <li>完善个人陈述和简历</li>
+                        <li>收集推荐信</li>
+                        <li>准备申请材料</li>
+                        <li>提交第一批申请（香港大学、新加坡国立大学等）</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2026年1-3月</span>
+                    <h3 class="timeline-title">冬季/春季初</h3>
+                    <ul class="timeline-tasks">
+                        <li>提交剩余申请</li>
+                        <li>准备面试（如有）</li>
+                        <li>接收录取结果</li>
+                        <li>比较不同项目的优劣势</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2026年4-8月</span>
+                    <h3 class="timeline-title">春季末/夏季</h3>
+                    <ul class="timeline-tasks">
+                        <li>确认录取并缴纳押金</li>
+                        <li>申请住宿</li>
+                        <li>办理签证</li>
+                        <li>准备行前事宜</li>
+                        <li>入学</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 背景提升部分 -->
+    <section class="improvement" id="improvement">
+        <h2 class="section-title">背景提升建议</h2>
+        <div class="improvement-container">
+            <div class="improvement-grid">
+                <div class="improvement-card">
+                    <div class="improvement-header">
+                        <h3 class="improvement-title">GPA提升策略</h3>
+                    </div>
+                    <div class="improvement-body">
+                        <ul class="improvement-list">
+                            <li class="improvement-item">保持当前学期的高GPA表现（3.8或以上）</li>
+                            <li class="improvement-item">确保剩余的核心专业课和选修专业课获得A或A-</li>
+                            <li class="improvement-item">考虑是否可以重修部分低分课程（如有条件）</li>
+                            <li class="improvement-item">选择与申请方向相关的选修课程（AI伦理、教育学、法律基础等）</li>
+                            <li class="improvement-item">避免选择过于技术性的计算机课程，除非有足够的准备</li>
+                            <li class="improvement-item">咨询学术顾问，了解是否有GPA提升的替代方案</li>
+                            <li class="improvement-item">积极参与课堂讨论，与教授建立良好关系（为推荐信做准备）</li>
+                            <li class="improvement-item">认真完成每项作业，争取在期末项目中表现突出</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="improvement-card">
+                    <div class="improvement-header">
+                        <h3 class="improvement-title">实习经历规划</h3>
+                    </div>
+                    <div class="improvement-body">
+                        <ul class="improvement-list">
+                            <li class="improvement-item"><strong>AI伦理方向（优先考虑）：</strong> 目标公司如微软、谷歌、OpenAI等有AI伦理团队的科技公司；职位类型如AI内容审核、伦理研究助理、政策分析实习生</li>
+                            <li class="improvement-item"><strong>法律合规方向：</strong> 目标机构如跨国企业法务部门、贸易公司、法律咨询机构；职位类型如法务助理、合规实习生、国际贸易文件处理</li>
+                            <li class="improvement-item"><strong>教育方向：</strong> 目标机构如国际学校、语言培训机构、教育科技公司；职位类型如教学助理、课程设计助理、升学顾问助理</li>
+                            <li class="improvement-item">利用华盛顿大学在西雅图的地理优势，联系当地科技公司</li>
+                            <li class="improvement-item">通过家庭关系寻找中国企业的法务实习机会</li>
+                            <li class="improvement-item">联系华盛顿大学语言学系的教育项目或当地国际学校</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="improvement-card">
+                    <div class="improvement-header">
+                        <h3 class="improvement-title">科研/项目经历</h3>
+                    </div>
+                    <div class="improvement-body">
+                        <ul class="improvement-list">
+                            <li class="improvement-item"><strong>AI伦理方向：</strong> 参与语言学系与计算机系的跨学科研究项目；开展小型研究，探讨AI在语言处理中的伦理问题；撰写一篇关于AI与语言学交叉领域的研究论文</li>
+                            <li class="improvement-item"><strong>法律合规方向：</strong> 参加模拟法庭或法律诊所活动（如有）；撰写关于国际贸易法或跨境电商法律问题的研究报告；参与法律相关的志愿者项目，积累实践经验</li>
+                            <li class="improvement-item"><strong>教育方向：</strong> 设计并实施一个小型语言教学项目；参与语言学系的教学助理工作；开发创新的语言教学工具或教材</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="improvement-card">
+                    <div class="improvement-header">
+                        <h3 class="improvement-title">语言成绩规划</h3>
+                    </div>
+                    <div class="improvement-body">
+                        <ul class="improvement-list">
+                            <li class="improvement-item"><strong>最高要求：</strong> 香港大学 - 总分7.0，小分不低于5.5（AI伦理）；总分7.0，小分6.5（普通法）</li>
+                            <li class="improvement-item"><strong>中等要求：</strong> 香港科技大学 - 总分7.0，写作7.0，其他5.5</li>
+                            <li class="improvement-item"><strong>基本要求：</strong> 新加坡国立大学 - 总分6.0；香港理工大学 - 总分6.0</li>
+                            <li class="improvement-item"><strong>评估阶段（2025年3-4月）：</strong> 参加一次雅思模拟测试，确定当前水平；分析各部分得分情况，确定重点提升方向</li>
+                            <li class="improvement-item"><strong>强化阶段（2025年5-6月）：</strong> 每周安排15-20小时雅思学习；重点提升写作和口语部分；参加专业雅思培训课程（如需）</li>
+                            <li class="improvement-item"><strong>实战阶段（2025年7月）：</strong> 第一次正式考试，目标达到基本要求（总分6.5）；根据考试结果调整备考策略</li>
+                            <li class="improvement-item"><strong>冲刺阶段（2025年8-9月，如需）：</strong> 针对性提高薄弱环节；第二次正式考试，目标达到最高要求（总分7.0）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 风险评估部分 -->
+    <section class="risks" id="risks">
+        <h2 class="section-title">申请风险评估</h2>
+        <div class="risks-container">
+            <table class="risk-table">
+                <thead>
+                    <tr>
+                        <th>风险因素</th>
+                        <th>风险等级</th>
+                        <th>应对策略</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GPA偏低（3.08/4.0）</td>
+                        <td><span class="risk-level risk-high">高风险</span></td>
+                        <td>强调最近一学期GPA提升至3.8；重点展示专业课成绩；提供额外的学术成就证明</td>
+                    </tr>
+                    <tr>
+                        <td>跨专业申请</td>
+                        <td><span class="risk-level risk-medium">中等风险</span></td>
+                        <td>在个人陈述中强调语言学与目标专业的联系；通过选修课和实习弥补专业背景差距</td>
+                    </tr>
+                    <tr>
+                        <td>缺乏相关实习经验</td>
+                        <td><span class="risk-level risk-medium">中等风险</span></td>
+                        <td>尽快获取相关领域的实习；参与校内相关项目；强调可迁移的技能</td>
+                    </tr>
+                    <tr>
+                        <td>语言成绩不达标</td>
+                        <td><span class="risk-level risk-medium">中等风险</span></td>
+                        <td>提前规划考试时间；针对性备考；考虑多次考试的可能性</td>
+                    </tr>
+                    <tr>
+                        <td>申请材料准备不充分</td>
+                        <td><span class="risk-level risk-low">低风险</span></td>
+                        <td>提前规划申请时间表；寻求专业指导；多次修改完善申请材料</td>
+                    </tr>
+                    <tr>
+                        <td>竞争激烈的申请季</td>
+                        <td><span class="risk-level risk-medium">中等风险</span></td>
+                        <td>申请多个项目以分散风险；考虑不同梯度的学校；准备备选方案</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <div class="footer-logo">祝可心 - 研究生申请规划</div>
+                <p class="footer-text">本规划方案基于学生当前情况和目标院校要求制定，旨在提供申请指导和背景提升建议。随着申请季的推进，具体策略可能需要根据实际情况进行调整。</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>重要链接</h3>
+                <ul>
+                    <li><a href="#">香港大学官网</a></li>
+                    <li><a href="#">新加坡国立大学官网</a></li>
+                    <li><a href="#">香港理工大学官网</a></li>
+                    <li><a href="#">新加坡南洋理工大学官网</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>联系方式</h3>
+                <ul>
+ <li><a href="#">北京尚博佳文教育咨询有限公司</a></li>
+                <li><a href="#">地址：北京市怀柔区怀北镇怀北路308号(群注)</a></li>
+                <li><a href="#">电话：18519739539</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 研究生申请规划 | 史老师</p>
+        </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+        
+        // 专业方向切换
+        const directionTabs = document.querySelectorAll('.direction-tab');
+        const directionContents = document.querySelectorAll('.direction-content');
+        
+        directionTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.tab;
+                
+                // 移除所有active类
+                directionTabs.forEach(t => t.classList.remove('active'));
+                directionContents.forEach(c => c.classList.remove('active'));
+                
+                // 添加active类到当前tab和对应内容
+                tab.classList.add('active');
+                document.getElementById(`${target}-content`).classList.add('active');
+            });
+        });
+        
+        // 滚动动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        // 观察时间轴内容
+        document.querySelectorAll('.timeline-content').forEach(item => {
+            observer.observe(item);
+        });
+        
+        // 观察背景提升卡片
+        document.querySelectorAll('.improvement-card').forEach(card => {
+            observer.observe(card);
+        });
+        
+        // 初始化学校卡片动画
+        document.querySelectorAll('.school-card').forEach(card => {
+            setTimeout(() => {
+                card.style.opacity = 1;
+                card.style.transform = 'translateY(0)';
+            }, 100 * parseInt(card.style.getPropertyValue('--order')));
+        });
+    </script>
+</body>
+</html>
