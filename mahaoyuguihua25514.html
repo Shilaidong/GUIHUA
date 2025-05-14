@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马昊宇 | 2026秋季英联邦留学申请规划</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #0f2e4d;
+            --secondary-color: #c8a97e;
+            --accent-color: #e63946;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --light-text: #f8f9fa;
+            --transition-slow: 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+            --transition-fast: 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 600;
+        }
+
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease-out;
+        }
+
+        .loader-content {
+            color: var(--secondary-color);
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 2px;
+            background-color: rgba(200, 169, 126, 0.3);
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.5s ease;
+        }
+
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1a4a7c 100%);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            padding: 0 2rem;
+            color: var(--light-text);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            transition: transform var(--transition-fast);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--light-text);
+            opacity: 0.7;
+            transition: opacity var(--transition-fast);
+        }
+
+        .scroll-indicator:hover {
+            opacity: 1;
+        }
+
+        .scroll-text {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .scroll-arrow {
+            width: 20px;
+            height: 20px;
+            border-right: 2px solid var(--light-text);
+            border-bottom: 2px solid var(--light-text);
+            transform: rotate(45deg);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: rotate(45deg) translateY(0);
+            }
+            40% {
+                transform: rotate(45deg) translateY(-10px);
+            }
+            60% {
+                transform: rotate(45deg) translateY(-5px);
+            }
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease, padding 0.3s ease;
+        }
+
+        .nav.scrolled {
+            background-color: rgba(15, 46, 77, 0.95);
+            padding: 1rem 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: 1rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color var(--transition-fast);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .section {
+            padding: 8rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+
+        .profile-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .profile-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .profile-image-frame {
+            position: relative;
+            width: 100%;
+            padding-bottom: 120%;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-image-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f2e4d 0%, #1a4a7c 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .profile-details {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .profile-intro {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .profile-stat-item {
+            padding: 1.5rem;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .profile-stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-stat-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .academic-section {
+            background-color: #fff;
+            border-radius: 16px;
+            padding: 4rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-top: 4rem;
+        }
+
+        .grades-chart {
+            width: 100%;
+            height: 400px;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .timeline-section {
+            margin-top: 8rem;
+        }
+
+        .timeline {
+            position: relative;
+            margin-top: 4rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--secondary-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 100%;
+            display: flex;
+        }
+
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity var(--transition-slow), transform var(--transition-slow);
+        }
+
+        .timeline-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: -30px;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-date {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            right: 0;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            z-index: 2;
+        }
+
+        .university-section {
+            margin-top: 8rem;
+        }
+
+        .university-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .university-card {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .university-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .university-image {
+            height: 200px;
+            background-color: var(--primary-color);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .university-content {
+            padding: 2rem;
+        }
+
+        .university-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .university-location {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .university-location::before {
+            content: '📍';
+            margin-right: 0.5rem;
+        }
+
+        .university-programs {
+            margin-top: 1.5rem;
+        }
+
+        .program-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .program-item:last-child {
+            border-bottom: none;
+        }
+
+        .program-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .program-details {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .strategy-section {
+            margin-top: 8rem;
+        }
+
+        .strategy-tabs {
+            display: flex;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .strategy-tab {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            color: #666;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            white-space: nowrap;
+        }
+
+        .strategy-tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .strategy-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .strategy-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .strategy-item {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .strategy-item-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .strategy-item-title::before {
+            content: '🎯';
+            margin-right: 0.8rem;
+        }
+
+        .strategy-item-content {
+            line-height: 1.8;
+        }
+
+        .timeline-chart {
+            width: 100%;
+            height: 500px;
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .contact-section {
+            margin-top: 8rem;
+            text-align: center;
+            padding-bottom: 4rem;
+        }
+
+        .contact-title {
+            margin-bottom: 2rem;
+        }
+
+        .contact-text {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--secondary-color);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all var(--transition-fast);
+            box-shadow: 0 5px 15px rgba(200, 169, 126, 0.3);
+        }
+
+        .contact-button:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(15, 46, 77, 0.3);
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 6rem 1.5rem;
+            }
+
+            .academic-section {
+                padding: 2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                justify-content: flex-start !important;
+            }
+
+            .timeline-content {
+                width: calc(100% - 50px);
+                margin-left: 50px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-date,
+            .timeline-item:nth-child(even) .timeline-date {
+                left: 0;
+                top: -30px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* 3D Animation Container */
+        .animation-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <div class="loader-content">
+            <h2>马昊宇</h2>
+            <p>2026秋季英联邦留学申请规划</p>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav" id="main-nav">
+        <a href="#" class="logo">马昊宇</a>
+        <div class="nav-links">
+            <a href="#profile" class="nav-link">个人简介</a>
+            <a href="#academic" class="nav-link">学术表现</a>
+            <a href="#timeline" class="nav-link">申请时间轴</a>
+            <a href="#universities" class="nav-link">目标院校</a>
+            <a href="#strategy" class="nav-link">申请策略</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="animation-container" id="hero-animation"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">马昊宇</h1>
+            <h2 class="hero-subtitle">2026秋季英联邦本科留学申请规划</h2>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">A*</div>
+                    <div class="stat-label">A-Level 数学成绩</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">ECE</div>
+                    <div class="stat-label">电子电气工程专业方向</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2026</div>
+                    <div class="stat-label">秋季入学目标</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-text">向下滚动探索</div>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <section class="section" id="profile">
+        <h2 class="section-title">个人简介</h2>
+        <div class="profile-section">
+            <div class="profile-image">
+                <div class="profile-image-frame">
+                    <div class="profile-image-inner">
+                        马昊宇
+                    </div>
+                </div>
+            </div>
+            <div class="profile-details">
+                <p class="profile-intro">
+                    马昊宇，就读于山东省胜利一中国际部，正在攻读A-Level课程（爱德思考试局）。作为学校顶尖学生之一，马昊宇在数理化方面表现出色，已获得数学A*成绩，其他科目预计也将取得优异成绩。他计划申请香港、新加坡及英国的顶尖大学，主攻电子电气工程（ECE）专业，为2026年秋季入学做准备。
+                </p>
+                <div class="profile-stats">
+                    <div class="profile-stat-item">
+                        <div class="profile-stat-label">学校</div>
+                        <div class="profile-stat-value">山东省胜利一中国际部</div>
+                    </div>
+                    <div class="profile-stat-item">
+                        <div class="profile-stat-label">课程体系</div>
+                        <div class="profile-stat-value">A-Level课程（爱德思考试局）</div>
+                    </div>
+                    <div class="profile-stat-item">
+                        <div class="profile-stat-label">学科组合</div>
+                        <div class="profile-stat-value">数学、进阶数学、物理、化学</div>
+                    </div>
+                    <div class="profile-stat-item">
+                        <div class="profile-stat-label">语言成绩</div>
+                        <div class="profile-stat-value">雅思6分（计划提升至7分）</div>
+                    </div>
+                    <div class="profile-stat-item">
+                        <div class="profile-stat-label">SAT目标</div>
+                        <div class="profile-stat-value">1450+</div>
+                    </div>
+                    <div class="profile-stat-item">
+                        <div class="profile-stat-label">申请方向</div>
+                        <div class="profile-stat-value">香港、新加坡、英国</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="academic">
+        <div class="academic-section">
+            <h2 class="section-title">学术表现</h2>
+            <p>马昊宇在A-Level课程中展现出色的学术能力，特别是在数理方面。他的成绩在同龄学生中处于顶尖水平，为申请顶尖大学奠定了坚实基础。</p>
+            <div class="grades-chart" id="grades-chart"></div>
+            <div class="profile-stats">
+                <div class="profile-stat-item">
+                    <div class="profile-stat-label">数学</div>
+                    <div class="profile-stat-value">A* (已获得)</div>
+                </div>
+                <div class="profile-stat-item">
+                    <div class="profile-stat-label">进阶数学</div>
+                    <div class="profile-stat-value">A* (预估)</div>
+                </div>
+                <div class="profile-stat-item">
+                    <div class="profile-stat-label">物理</div>
+                    <div class="profile-stat-value">A* (预估)</div>
+                </div>
+                <div class="profile-stat-item">
+                    <div class="profile-stat-label">化学</div>
+                    <div class="profile-stat-value">A/A* (预估)</div>
+                </div>
+            </div>
+            <div class="profile-stats" style="margin-top: 2rem;">
+                <div class="profile-stat-item">
+                    <div class="profile-stat-label">课外活动</div>
+                    <div class="profile-stat-value">AMC数学竞赛参与者</div>
+                </div>
+                <div class="profile-stat-item">
+                    <div class="profile-stat-label">项目经历</div>
+                    <div class="profile-stat-value">小组项目获第一名</div>
+                </div>
+                <div class="profile-stat-item">
+                    <div class="profile-stat-label">海外经历</div>
+                    <div class="profile-stat-value">英国游学一个多月</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="timeline">
+        <div class="timeline-section">
+            <h2 class="section-title">申请时间轴</h2>
+            <p>以下是马昊宇2026秋季入学的申请时间规划，包括各个阶段的关键任务和目
+            <p>以下是马昊宇2026秋季入学的申请时间规划，包括各个阶段的关键任务和目标。按照此时间轴执行，可确保申请过程有序进行。</p>
+            <div class="timeline-chart" id="timeline-chart"></div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025年5月-8月</div>
+                        <h3 class="timeline-title">AS考试结束后</h3>
+                        <ul>
+                            <li>完成AS考试</li>
+                            <li>开始雅思强化学习，目标7.0分</li>
+                            <li>规划暑期活动和竞赛参与</li>
+                            <li>确保预估成绩达到4个A*</li>
+                            <li>开始SAT备考，目标1450+</li>
+                            <li>启动个人电子工程项目</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025年9月-12月</div>
+                        <h3 class="timeline-title">A2学年第一学期</h3>
+                        <ul>
+                            <li>准备申请材料（个人陈述、推荐信等）</li>
+                            <li>参加SAT正式考试</li>
+                            <li>递交香港大学早申请（10月15日前）</li>
+                            <li>递交英国UCAS申请（牛津等10月15日截止）</li>
+                            <li>完成所有香港大学申请（11月底前）</li>
+                            <li>准备可能的面试（尤其是港中文）</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2026年1月-4月</div>
+                        <h3 class="timeline-title">A2学年第二学期</h3>
+                        <ul>
+                            <li>递交新加坡大学申请（1月-3月）</li>
+                            <li>参加可能的港中文面试</li>
+                            <li>收到更多香港大学申请结果</li>
+                            <li>收到英国大学申请结果</li>
+                            <li>比较各校录取结果和奖学金情况</li>
+                            <li>做出最终学校选择决定</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2026年5月-8月</div>
+                        <h3 class="timeline-title">毕业季</h3>
+                        <ul>
+                            <li>完成A2最终考试</li>
+                            <li>准备签证申请材料</li>
+                            <li>收到A-Level最终成绩</li>
+                            <li>确认最终录取结果</li>
+                            <li>申请学生签证</li>
+                            <li>准备行前事宜（机票、住宿等）</li>
+                            <li>参加新生入学教育</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="universities">
+        <div class="university-section">
+            <h2 class="section-title">目标院校</h2>
+            <p>基于马昊宇的学术背景和专业兴趣，以下是推荐的目标院校和专业方向。这些院校在电子电气工程领域享有盛誉，且与马昊宇的学术背景高度匹配。</p>
+            <div class="university-grid">
+                <div class="university-card">
+                    <div class="university-image">香港大学</div>
+                    <div class="university-content">
+                        <h3 class="university-name">香港大学</h3>
+                        <div class="university-location">香港特别行政区</div>
+                        <p>香港大学是录取概率最高的港前三学校，对马昊宇的4A*预估成绩具有很强竞争力。</p>
+                        <div class="university-programs">
+                            <div class="program-item">
+                                <div class="program-name">电子工程学士 (CODE 6987)</div>
+                                <div class="program-details">工程学院提供的电子工程专业，学生大二才选具体方向，适合马昊宇的数理背景，就业前景广阔。</div>
+                            </div>
+                            <div class="program-item">
+                                <div class="program-name">理学士 (CODE 6901)</div>
+                                <div class="program-details">理学院专业，与马昊宇的优势高度匹配，大一入学后大二才选具体专业方向。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="university-card">
+                    <div class="university-image">香港科技大学</div>
+                    <div class="university-content">
+                        <h3 class="university-name">香港科技大学</h3>
+                        <div class="university-location">香港特别行政区</div>
+                        <p>港科大优先录取港籍学生，但对大陆高成绩学生仍有较高录取率，工程学院在亚洲排名靠前。</p>
+                        <div class="university-programs">
+                            <div class="program-item">
+                                <div class="program-name">电子与计算机工程</div>
+                                <div class="program-details">港科大工程学院的强势专业，亚洲排名靠前，提供丰富的实习和科研机会，对未来赴美读研有优势。</div>
+                            </div>
+                            <div class="program-item">
+                                <div class="program-name">Science A（含数学、物理等理科专业）</div>
+                                <div class="program-details">包括数学、物理等理科专业，与马昊宇的学科背景匹配，可以在大二选择具体专业方向。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="university-card">
+                    <div class="university-image">香港中文大学</div>
+                    <div class="university-content">
+                        <h3 class="university-name">香港中文大学</h3>
+                        <div class="university-location">香港特别行政区</div>
+                        <p>港中文需要面试且偏好高考生，录取相对不稳定，但工程学院实力雄厚。</p>
+                        <div class="university-programs">
+                            <div class="program-item">
+                                <div class="program-name">电子工程学</div>
+                                <div class="program-details">港中文工程学院的传统强势专业，课程设置全面，涵盖电子设计、通信系统等。</div>
+                            </div>
+                            <div class="program-item">
+                                <div class="program-name">机械与自动化工程学</div>
+                                <div class="program-details">结合机械工程与自动化技术，就业方向广泛，包括制造业、自动化系统设计等。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="university-card">
+                    <div class="university-image">香港城市大学</div>
+                    <div class="university-content">
+                        <h3 class="university-name">香港城市大学</h3>
+                        <div class="university-location">香港特别行政区</div>
+                        <p>港城市的2+2项目具有高性价比，适合未来有意向赴美读研的学生。</p>
+                        <div class="university-programs">
+                            <div class="program-item">
+                                <div class="program-name">电子电机工程</div>
+                                <div class="program-details">课程设置实用性强，注重实践能力培养。</div>
+                            </div>
+                            <div class="program-item">
+                                <div class="program-name">2+2双学位项目</div>
+                                <div class="program-details">与哥伦比亚大学和加州伯克利大学合作的2+2项目，只需交港城市的学费，可获得两所大学的学位，性价比高。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="university-card">
+                    <div class="university-image">香港理工大学</div>
+                    <div class="university-content">
+                        <h3 class="university-name">香港理工大学</h3>
+                        <div class="university-location">香港特别行政区</div>
+                        <p>港理工可作为保底选择，且有可能提供奖学金。凭借4A*成绩，有望获得港理工全额或半额奖学金。</p>
+                        <div class="university-programs">
+                            <div class="program-item">
+                                <div class="program-name">电气工程（荣誉）学士 (JS3170)</div>
+                                <div class="program-details">应用性强，就业前景好，可作为保底选择。</div>
+                            </div>
+                            <div class="program-item">
+                                <div class="program-name">理学学士课程 (JS3008)</div>
+                                <div class="program-details">包含数学、物理等理科专业，与马昊宇的学科背景匹配。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="university-card">
+                    <div class="university-image">新加坡国立大学</div>
+                    <div class="university-content">
+                        <h3 class="university-name">新加坡国立大学</h3>
+                        <div class="university-location">新加坡</div>
+                        <p>新加坡国立大学工程学院在亚洲排名靠前，但竞争激烈。申请需要提供实际A-Level成绩或预估成绩+SAT成绩。</p>
+                        <div class="university-programs">
+                            <div class="program-item">
+                                <div class="program-name">电气工程</div>
+                                <div class="program-details">新加坡国立大学的强势专业，在亚洲享有盛誉，提供多元化的学习和研究机会。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="university-card">
+                    <div class="university-image">南洋理工大学</div>
+                    <div class="university-content">
+                        <h3 class="university-name">南洋理工大学</h3>
+                        <div class="university-location">新加坡</div>
+                        <p>南洋理工EEE专业是招收中国学生最多的专业，录取机会较大。</p>
+                        <div class="university-programs">
+                            <div class="program-item">
+                                <div class="program-name">电气与电子工程 (EEE)</div>
+                                <div class="program-details">南洋理工的王牌专业，招收中国学生最多的专业，录取机会相对较大。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="university-card">
+                    <div class="university-image">牛津大学</div>
+                    <div class="university-content">
+                        <h3 class="university-name">牛津大学</h3>
+                        <div class="university-location">英国</div>
+                        <p>作为顶尖申请目标，选择牛津大学工程科学，避开需要额外考试的剑桥工程。</p>
+                        <div class="university-programs">
+                            <div class="program-item">
+                                <div class="program-name">工程科学</div>
+                                <div class="program-details">牛津大学的综合工程项目，涵盖多个工程领域，为学生提供扎实的工程基础。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="university-card">
+                    <div class="university-image">帝国理工学院</div>
+                    <div class="university-content">
+                        <h3 class="university-name">帝国理工学院</h3>
+                        <div class="university-location">英国</div>
+                        <p>帝国理工的工程专业在英国排名靠前，是理想的申请目标。</p>
+                        <div class="university-programs">
+                            <div class="program-item">
+                                <div class="program-name">电气与电子工程</div>
+                                <div class="program-details">帝国理工的强势专业，提供先进的实验室和研究设施，就业前景广阔。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="strategy">
+        <div class="strategy-section">
+            <h2 class="section-title">申请策略</h2>
+            <p>根据马昊宇的学术背景和目标院校，我们制定了以下申请策略，帮助他最大化录取机会。</p>
+            <div class="strategy-tabs">
+                <div class="strategy-tab active" data-tab="academic">学术提升</div>
+                <div class="strategy-tab" data-tab="language">语言成绩</div>
+                <div class="strategy-tab" data-tab="activities">课外活动</div>
+                <div class="strategy-tab" data-tab="application">申请材料</div>
+                <div class="strategy-tab" data-tab="interview">面试准备</div>
+            </div>
+            <div class="strategy-content active" id="academic-content">
+                <div class="strategy-item">
+                    <h3 class="strategy-item-title">A-Level考试</h3>
+                    <div class="strategy-item-content">
+                        <p><strong>目标：</strong>确保数学、进阶数学、物理达到A*，化学至少达到A</p>
+                        <p><strong>当前情况：</strong>数学A*已出，进阶数学和物理有望A*，化学略有不确定</p>
+                        <p><strong>行动计划：</strong></p>
+                        <ul>
+                            <li>每周安排额外2-3小时复习化学，巩固弱项</li>
+                            <li>与学校老师沟通，确保预估成绩能够达到4个A*</li>
+                            <li>重点关注AS阶段的化学考试，确保获得优异成绩</li>
+                        </ul>
+                        <p><strong>重要性：</strong>香港大学录取主要看重学术成绩，4A*是获得顶尖大学录取的关键</p>
+                    </div>
+                </div>
+            </div>
+            <div class="strategy-content" id="language-content">
+                <div class="strategy-item">
+                    <h3 class="strategy-item-title">雅思考试规划</h3>
+                    <div class="strategy-item-content">
+                        <p><strong>目标成绩：</strong>总分7.0，小分不低于6.5（满足所有香港大学要求）</p>
+                        <p><strong>当前情况：</strong>雅思去年考过6分，计划今年暑假再考</p>
+                        <p><strong>学习计划：</strong></p>
+                        <ul>
+                            <li>2025年5月-6月：每周安排10小时雅思学习，重点提升写作和口语能力</li>
+                            <li>2025年7月：参加雅思强化训练营，每天练习口语30分钟</li>
+                            <li>2025年8月：参加正式考试，如未达标，9月再考一次</li>
+                        </ul>
+                        <p><strong>资源推荐：</strong>剑桥雅思真题集（最新版）、学校提供的模拟考试资源、线上口语伙伴练习平台</p>
+                    </div>
+                </div>
+                <div class="strategy-item">
+                    <h3 class="strategy-item-title">SAT考试规划（新加坡申请）</h3>
+                    <div class="strategy-item-content">
+                        <p><strong>目标成绩：</strong>总分1450+，英语部分680+，数学部分770+</p>
+                        <p><strong>用途：</strong>作为新加坡大学申请的补充材料，特别是在A-Level实际成绩出来前</p>
+                        <p><strong>学习计划：</strong></p>
+                        <ul>
+                            <li>2025年6月-7月：熟悉SAT考试形式和内容，每周完成1-2套模拟题</li>
+                            <li>2025年8月-9月：参加SAT强化班，每周完成2-3套模拟题</li>
+                            <li>2025年10月：参加正式考试</li>
+                        </ul>
+                        <p><strong>备考策略：</strong>利用数学优势，确保数学部分接近满分，重点提升英语阅读速度和理解能力</p>
+                    </div>
+                </div>
+            </div>
+            <div class="strategy-content" id="activities-content">
+                <div class="strategy-item">
+                    <h3 class="strategy-item-title">学科竞赛</h3>
+                    <div class="strategy-item-content">
+                        <p><strong>当前情况：</strong>曾参加AMC（数学）或物理相关竞赛，获奖有限</p>
+                        <p><strong>建议参加的竞赛：</strong></p>
+                        <ul>
+                            <li>工程类：丘成桐中学科学奖</li>
+                            <li>物理类：现有BPHO Senior金奖</li>
+                        </ul>
+                        <p><strong>行动计划：</strong></p>
+                        <ul>
+                            <li>立即开始准备物理或数学奥赛，争取在2025年6月前参加</li>
+                            <li>与学校老师沟通，获取竞赛指导和支持</li>
+                            <li>参加至少一项国际认可的竞赛，提升申请竞争力</li>
+                        </ul>
+                        <p><strong>重要性：</strong>虽然香港大学主要看重学术成绩，但竞赛经历可以丰富申请材料，展示学生的学术潜力</p>
+                    </div>
+                </div>
+                <div class="strategy-item">
+                    <h3 class="strategy-item-title">项目实践</h3>
+                    <div class="strategy-item-content">
+                        <p><strong>当前情况：</strong>有小组项目获第一名，但缺乏系统性的项目经历</p>
+                        <p><strong>建议活动：</strong></p>
+                        <ul>
+                            <li>开发一个小型电子工程项目（如智能家居设备、简易机器人等）</li>
+                            <li>参与学校科技创新比赛或科技展示活动</li>
+                            <li>尝试编写与电子工程相关的程序或应用</li>
+                        </ul>
+                        <p><strong>行动计划：</strong></p>
+                        <ul>
+                            <li>2025年6月前完成一个个人电子工程项目</li>
+                            <li>记录项目过程，形成可展示的作品集</li>
+                            <li>寻找机会在校内外展示项目成果</li>
+                        </ul>
+                        <p><strong>重要性：</strong>项目经历可以证明学生对电子电气工程的兴趣和实践能力，增强个人陈述的说服力</p>
+                    </div>
+                </div>
+            </div>
+            <div class="strategy-content" id="application-content">
+                <div class="strategy-item">
+                    <h3 class="strategy-item-title">香港地区申请策略</h3>
+                    <div class="strategy-item-content">
+                        <p><strong>整体逻辑：</strong></p>
+                        <ul>
+                            <li>香港大学录取主要看重学术成绩，马昊宇的4A*预估成绩具有很强竞争力</li>
+                            <li>港大是录取概率最高的港前三学校，港中文因需要面试且偏好高考生，录取不稳定</li>
+                            <li>港科技优先录取港籍学生，但对大陆高成绩学生仍有较高录取率</li>
+                            <li>港理工可作为保底选择，且有可能提供奖学金</li>
+                            <li>港城市的2+2项目具有高性价比，适合未来有意向赴美读研的学生</li>
+                        </ul>
+                        <p><strong>申请时间：</strong></p>
+                        <ul>
+                            <li>港大：9月27日开始，11月27日首轮截止</li>
+                            <li>港科大：10月4日开始，11月21日首轮截止</li>
+                            <li>港中文：10月2日开始，11月14日首轮截止</li>
+                            <li>港理工：9月25日开始，11月19日首轮截止</li>
+                            <li>港城市：9月26日开始，11月15日首轮截止</li>
+                        </ul>
+                        <p><strong>申请材料准备：</strong>10月前完成所有申请材料，包括个人陈述、推荐信、成绩单等</p>
+                    </div>
+                </div>
+                <div class="strategy-item">
+                    <h3 class="strategy-item-title">新加坡地区申请策略</h3>
+                    <div class="strategy-item-content">
+                        <p><strong>整体逻辑：</strong></p>
+                        <ul>
+                            <li>新加坡大学申请需要提供实际A-Level成绩或预估成绩+SAT成绩（录取几率低）</li>
+                            <li>南洋理工EEE专业是招收中国学生最多的专业，录取机会较大</li>
+                            <li>新加坡国立大学工程学院在亚洲排名靠前，但竞争激烈</li>
+                        </ul>
+                        <p><strong>申请准备：</strong>准备SAT成绩，提高竞争力；准备优质的个人陈述，突出对工程专业的兴趣和实践经历</p>
+                    </div>
+                </div>
+                <div class="strategy-item">
+                    <h3 class="strategy-item-title">英国地区申请策略</h3>
+                    <div class="strategy-item-content">
+                        <p><strong>整体逻辑：</strong></p>
+                        <ul>
+                            <li>配合学校老师申请英国大学，避免与学校产生冲突</li>
+                            <li>选择牛津大学工程科学作为顶尖申请目标，避开需要额外考试的剑桥工程</li>
+                            <li>帝国理工和UCL的工程专业在英国排名靠前，是理想的申请目标</li>
+                            <li>曼彻斯特大学可作为相对稳妥的选择</li>
+                        </ul>
+                        <p><strong>申请准备：</strong>准备高质量的个人陈述，突出对工程专业的热情和理解；准备可能的面试（特别是牛津）</p>
+                    </div>
+                </div>
+            </div>
+            <div class="strategy-content" id="interview-content">
+                <div class="strategy-item">
+                    <h3 class="strategy-item-title">香港大学面试准备</h3>
+                    <div class="strategy-item-content">
+                        <p><strong>重点院校：</strong>港中文面试几率较高，其他院校视情况而定</p>
+                        <p><strong>准备内容：</strong></p>
+                        <ul>
+                            <li>熟悉自己的个人陈述内容，能够详细解释其中提到的项目和经历</li>
+                            <li>准备3-5个关于为什么选择该专业的有力理由</li>
+                            <li>了解目标院校的课程设置和特色，能够说明为什么选择该校</li>
+                            <li>准备回答关于学术背景、课外活动和未来规划的问题</li>
+                            <li>进行模拟面试训练，提高英语口语表达能力</li>
+                        </ul>
+                        <p><strong>面试技巧：</strong>保持自信但不傲慢，展示对专业的热情和理解，准备一些关于自己独特优势的例子</p>
+                    </div>
+                </div>
+                <div class="strategy-item">
+                    <h3 class="strategy-item-title">牛津大学面试准备</h3>
+                    <div class="strategy-item-content">
+                        <p><strong>面试特点：</strong>牛津大学工程科学面试通常包含学术问题和逻辑思维测试</p>
+                        <p><strong>准备内容：</strong></p>
+                        <ul>
+                            <li>复习A-Level数学、物理的核心概念和应用</li>
+                            <li>练习解决开放性工程问题，培养分析思维</li>
+                            <li>阅读相关工程领域的最新发展和研究</li>
+                            <li>准备讨论自己的项目经历和解决问题的方法</li>
+                            <li>进行多次模拟面试，适应英国学术面试风格</li>
+                        </ul>
+                        <p><strong>面试技巧：</strong>展示思考过程而不仅仅是答案，积极参与讨论，不怕承认不知道但展示学习意愿</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+         <div class="footer-content">
+            <div class="footer-logo">马昊宇 | 2026秋季英联邦留学申请规划</div>
+            <div class="footer-links">
+                <a href="#profile" class="footer-link">个人简介</a>
+                <a href="#academic" class="footer-link">学术表现</a>
+                <a href="#timeline" class="footer-link">申请时间轴</a>
+                <a href="#universities" class="footer-link">目标院校</a>
+                <a href="#strategy" class="footer-link">申请策略</a>
+            </div>
+            <div class="footer-copyright">© 2025 马昊宇留学规划 AFY-EDU | 版权所有</div>
+        </div>
+    </footer>
+
+    <script>
+        // 加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const loader = document.querySelector('.loader');
+            const progress = document.getElementById('progress');
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        loader.style.opacity = '0';
+                        setTimeout(() => {
+                            loader.style.display = 'none';
+                            animateHero();
+                        }, 1000);
+                    }, 500);
+                } else {
+                    width += 1;
+                    progress.style.width = width + '%';
+                }
+            }, 20);
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // 英雄区动画
+        function animateHero() {
+            gsap.to('.hero-title', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power3.out'
+            });
+
+            gsap.to('.hero-subtitle', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                delay: 0.3,
+                ease: 'power3.out'
+            });
+
+            gsap.to('.hero-stats', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                delay: 0.6,
+                ease: 'power3.out'
+            });
+        }
+
+        // 滚动动画
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 大学卡片动画
+        const universityCards = document.querySelectorAll('.university-card');
+        universityCards.forEach((card, index) => {
+            gsap.fromTo(card, 
+                { opacity: 0, y: 50 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top bottom-=100',
+                        toggleActions: 'play none none none'
+                    },
+                    delay: index * 0.1
+                }
+            );
+        });
+
+        // 时间轴动画
+        const timelineItems = document.querySelectorAll('.timeline-content');
+        timelineItems.forEach((item) => {
+            gsap.fromTo(item, 
+                { opacity: 0, y: 30 },
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top bottom-=100',
+                        toggleActions: 'play none none none'
+                    }
+                }
+            );
+        });
+
+        // 策略标签切换
+        const strategyTabs = document.querySelectorAll('.strategy-tab');
+        const strategyContents = document.querySelectorAll('.strategy-content');
+
+        strategyTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                
+                strategyTabs.forEach(t => t.classList.remove('active'));
+                strategyContents.forEach(c => c.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(`${tabId}-content`).classList.add('active');
+            });
+        });
+
+        // 3D动画背景
+        function initThreeBackground() {
+            const container = document.getElementById('hero-animation');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+            camera.position.z = 5;
+            
+            const renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(width, height);
+            container.appendChild(renderer.domElement);
+            
+            // 创建粒子
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 1500;
+            
+            const posArray = new Float32Array(particlesCount * 3);
+            
+            for(let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 10;
+            }
+            
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.02,
+                color: 0xc8a97e,
+                transparent: true,
+                opacity: 0.8
+            });
+            
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+            
+            // 动画
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                particlesMesh.rotation.y += 0.0005;
+                particlesMesh.rotation.x += 0.0002;
+                
+                renderer.render(scene, camera);
+            }
+            
+            animate();
+            
+            // 响应窗口调整
+            window.addEventListener('resize', () => {
+                const newWidth = container.clientWidth;
+                const newHeight = container.clientHeight;
+                
+                camera.aspect = newWidth / newHeight;
+                camera.updateProjectionMatrix();
+                
+                renderer.setSize(newWidth, newHeight);
+            });
+        }
+        
+        // 等页面加载完成后初始化3D背景
+        window.addEventListener('load', initThreeBackground);
+
+        // 成绩图表
+        function createGradesChart() {
+            const data = [
+                { subject: "数学", grade: 100, status: "已获得" },
+                { subject: "进阶数学", grade: 95, status: "预估" },
+                { subject: "物理", grade: 93, status: "预估" },
+                { subject: "化学", grade: 88, status: "预估" }
+            ];
+            
+            const width = document.getElementById('grades-chart').clientWidth;
+            const height = 400;
+            const margin = { top: 40, right: 40, bottom: 60, left: 60 };
+            const innerWidth = width - margin.left - margin.right;
+            const innerHeight = height - margin.top - margin.bottom;
+            
+            const svg = d3.select('#grades-chart')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            const g = svg.append('g')
+                .attr('transform', `translate(${margin.left}, ${margin.top})`);
+            
+            // 创建比例尺
+            const xScale = d3.scaleBand()
+                .domain(data.map(d => d.subject))
+                .range([0, innerWidth])
+                .padding(0.3);
+            
+            const yScale = d3.scaleLinear()
+                .domain([0, 100])
+                .range([innerHeight, 0]);
+            
+            // 添加坐标轴
+            g.append('g')
+                .attr('transform', `translate(0, ${innerHeight})`)
+                .call(d3.axisBottom(xScale))
+                .selectAll('text')
+                .style('font-size', '14px');
+            
+            g.append('g')
+                .call(d3.axisLeft(yScale))
+                .selectAll('text')
+                .style('font-size', '12px');
+            
+            // 添加标题
+            svg.append('text')
+                .attr('x', width / 2)
+                .attr('y', 20)
+                .attr('text-anchor', 'middle')
+                .style('font-size', '18px')
+                .style('font-weight', '600')
+                .text('A-Level 成绩表现');
+            
+            // 添加Y轴标签
+            svg.append('text')
+                .attr('transform', 'rotate(-90)')
+                .attr('x', -height / 2)
+                .attr('y', 20)
+                .attr('text-anchor', 'middle')
+                .style('font-size', '14px')
+                .text('成绩 (%)');
+            
+            // 创建渐变
+            const defs = svg.append('defs');
+            
+            const gradient = defs.append('linearGradient')
+                .attr('id', 'bar-gradient')
+                .attr('x1', '0%')
+                .attr('y1', '0%')
+                .attr('x2', '0%')
+                .attr('y2', '100%');
+            
+            gradient.append('stop')
+                .attr('offset', '0%')
+                .attr('stop-color', '#0f2e4d');
+            
+            gradient.append('stop')
+                .attr('offset', '100%')
+                .attr('stop-color', '#1a4a7c');
+            
+            // 添加柱状图
+            const bars = g.selectAll('.bar')
+                .data(data)
+                .enter()
+                .append('rect')
+                .attr('class', 'bar')
+                .attr('x', d => xScale(d.subject))
+                .attr('y', innerHeight)
+                .attr('width', xScale.bandwidth())
+                .attr('height', 0)
+                .attr('fill', 'url(#bar-gradient)')
+                .attr('rx', 4)
+                .attr('ry', 4);
+            
+            // 添加动画
+            bars.transition()
+                .duration(1000)
+                .delay((d, i) => i * 200)
+                .attr('y', d => yScale(d.grade))
+                .attr('height', d => innerHeight - yScale(d.grade));
+            
+            // 添加数值标签
+            g.selectAll('.label')
+                .data(data)
+                .enter()
+                .append('text')
+                .attr('class', 'label')
+                .attr('x', d => xScale(d.subject) + xScale.bandwidth() / 2)
+                .attr('y', d => yScale(d.grade) - 10)
+                .attr('text-anchor', 'middle')
+                .style('font-size', '14px')
+                .style('font-weight', '600')
+                .style('opacity', 0)
+                .text(d => `${d.grade}% (${d.grade >= 90 ? 'A*' : 'A'})`)
+                .transition()
+                .duration(1000)
+                .delay((d, i) => i * 200 + 500)
+                .style('opacity', 1);
+            
+            // 添加状态标签
+            g.selectAll('.status')
+                .data(data)
+                .enter()
+                .append('text')
+                .attr('class', 'status')
+                .attr('x', d => xScale(d.subject) + xScale.bandwidth() / 2)
+                .attr('y', d => yScale(d.grade) - 30)
+                .attr('text-anchor', 'middle')
+                .style('font-size', '12px')
+                .style('fill', d => d.status === '已获得' ? '#c8a97e' : '#666')
+                .style('opacity', 0)
+                .text(d => d.status)
+                .transition()
+                .duration(1000)
+                .delay((d, i) => i * 200 + 700)
+                .style('opacity', 1);
+        }
+
+        // 时间轴图表
+        function createTimelineChart() {
+            const data = [
+                { period: "2025年5-8月", phase: "准备阶段", tasks: ["完成AS考试", "雅思备考", "SAT备考", "竞赛参与"] },
+                { period: "2025年9-12月", phase: "申请阶段", tasks: ["递交香港大学申请", "递交英国UCAS申请", "参加SAT考试", "准备面试"] },
+                { period: "2026年1-4月", phase: "录取阶段", tasks: ["递交新加坡大学申请", "收到录取结果", "比较各校录取情况", "做出最终选择"] },
+                { period: "2026年5-8月", phase: "毕业阶段", tasks: ["完成A2考试", "准备签证材料", "确认最终录取", "准备行前事宜"] }
+            ];
+            
+            const width = document.getElementById('timeline-chart').clientWidth;
+            const height = 500;
+            const margin = { top: 50, right: 40, bottom: 50, left: 40 };
+            const innerWidth = width - margin.left - margin.right;
+            const innerHeight = height - margin.top - margin.bottom;
+            
+            const svg = d3.select('#timeline-chart')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+            
+            const g = svg.append('g')
+                .attr('transform', `translate(${margin.left}, ${margin.top})`);
+            
+            // 创建比例尺
+            const xScale = d3.scaleBand()
+                .domain(data.map(d => d.period))
+                .range([0, innerWidth])
+                .padding(0.2);
+            
+            // 添加主轴线
+            g.append('line')
+                .attr('x1', 0)
+                .attr('y1', innerHeight / 2)
+                .attr('x2', innerWidth)
+                .attr('y2', innerHeight / 2)
+                .attr('stroke', '#c8a97e')
+                .attr('stroke-width', 3);
+            
+            // 创建时间节点
+            const timeNodes = g.selectAll('.time-node')
+                .data(data)
+                .enter()
+                .append('g')
+                .attr('class', 'time-node')
+                .attr('transform', d => `translate(${xScale(d.period) + xScale.bandwidth() / 2}, ${innerHeight / 2})`);
+            
+            // 添加节点圆圈
+            timeNodes.append('circle')
+                .attr('r', 0)
+                .attr('fill', '#0f2e4d')
+                .attr('stroke', '#c8a97e')
+                .attr('stroke-width', 2)
+                .transition()
+                .duration(800)
+                .delay((d, i) => i * 200)
+                .attr('r', 15);
+            
+            // 添加时间标签
+            timeNodes.append('text')
+                .attr('y', 40)
+                .attr('text-anchor', 'middle')
+                .style('font-size', '14px')
+                .style('font-weight', '600')
+                .style('opacity', 0)
+                .text(d => d.period)
+                .transition()
+                .duration(800)
+                .delay((d, i) => i * 200 + 200)
+                .style('opacity', 1);
+            
+            // 添加阶段标签
+            timeNodes.append('text')
+                .attr('y', 60)
+                .attr('text-anchor', 'middle')
+                .style('font-size', '12px')
+                .style('fill', '#666')
+                .style('opacity', 0)
+                .text(d => d.phase)
+                .transition()
+                .duration(800)
+                .delay((d, i) => i * 200 + 400)
+                .style('opacity', 1);
+            
+            // 添加任务列表
+            timeNodes.each(function(d, i) {
+                const node = d3.select(this);
+                const yOffset = i % 2 === 0 ? -80 : -140; // 上下交错排列
+                
+                const taskGroup = node.append('g')
+                    .attr('transform', `translate(0, ${yOffset})`);
+                
+                // 添加背景框
+                taskGroup.append('rect')
+                    .attr('x', -100)
+                    .attr('y', -20)
+                    .attr('width', 200)
+                    .attr('height', 0)
+                    .attr('rx', 5)
+                    .attr('ry', 5)
+                    .attr('fill', 'white')
+                    .attr('stroke', '#c8a97e')
+                    .attr('stroke-width', 1)
+                    .attr('opacity', 0)
+                    .transition()
+                    .duration(800)
+                    .delay((d, i) => i * 200 + 600)
+                    .attr('height', d.tasks.length * 20 + 30)
+                    .attr('opacity', 1);
+                
+                // 添加连接线
+                node.append('line')
+                    .attr('x1', 0)
+                    .attr('y1', 0)
+                    .attr('x2', 0)
+                    .attr('y2', yOffset + (d.tasks.length * 20 + 30) / 2)
+                    .attr('stroke', '#c8a97e')
+                    .attr('stroke-width', 1)
+                    .attr('stroke-dasharray', '3,3')
+                    .attr('opacity', 0)
+                    .transition()
+                    .duration(800)
+                    .delay((d, i) => i * 200 + 500)
+                    .attr('opacity', 1);
+                
+                // 添加任务列表
+                d.tasks.forEach((task, j) => {
+                    taskGroup.append('text')
+                        .attr('y', j * 20)
+                        .attr('text-anchor', 'middle')
+                        .style('font-size', '12px')
+                        .style('opacity', 0)
+                        .text(task)
+                        .transition()
+                        .duration(400)
+                        .delay((d, i) => i * 200 + 800 + j * 100)
+                        .style('opacity', 1);
+                });
+            });
+        }
+        
+        // 等页面加载完成后创建图表
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                createGradesChart();
+                createTimelineChart();
+            }, 1500); // 等加载动画完成后再创建图表
+        });
+    </script>
+</body>
+</html>
